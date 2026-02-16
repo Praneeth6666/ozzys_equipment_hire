@@ -17,7 +17,7 @@ const CONTRACTS_LESS_THAN_3_MONTHS = ['1month', 'less'];
 const QUOTE_STORAGE_KEY = 'ozzys_quote_request';
 
 export default function Pricing() {
-  const [contractId, setContractId] = useState('1month');
+  const [contractId, setContractId] = useState('1year');
   const [daysLessThanMonth, setDaysLessThanMonth] = useState(7);
 
   const rate = RATES.find((r) => r.id === contractId)?.rate ?? 70;
