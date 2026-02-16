@@ -1,0 +1,97 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Brand colours */
+  --white: #ffffff;
+  --black: #000000;
+  --light-black: #303234;
+  --light-blue: #1685f9;
+  --light-blue-print: #006FD6;
+  --orange: #ed7225;
+  --backdrop-from: #16244a;
+  --backdrop-to: #0F1832;
+
+  --bg: var(--backdrop-to);
+  --bg-elevated: var(--backdrop-from);
+  --bg-card: #1a2f52;
+  --primary: var(--light-blue);
+  --primary-dim: rgba(22, 133, 249, 0.2);
+  --secondary: var(--orange);
+  --secondary-dim: rgba(237, 114, 37, 0.15);
+  --text: var(--white);
+  --text-muted: rgba(255, 255, 255, 0.78);
+  --border: rgba(255, 255, 255, 0.12);
+  --font-heading: 'Syne', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --container: min(1200px, 100% - 2rem);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--backdrop-from) 0%, var(--backdrop-to) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-stretch: normal;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s;
+}
+a:hover {
+  color: var(--secondary);
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+section {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+}
+
+.container {
+  width: var(--container);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
