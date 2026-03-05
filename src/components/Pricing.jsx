@@ -4,11 +4,11 @@ import './Pricing.css';
 const DAYS_PER_MONTH = 30;
 
 const RATES = [
-  { id: '1year', label: '1 year', rate: 45 },
-  { id: '6months', label: '6 months', rate: 50 },
-  { id: '3months', label: '3 months', rate: 55 },
-  { id: '1month', label: '1 month', rate: 65 },
-  { id: 'less', label: 'Less than 1 month', rate: 70 },
+  { id: '1year', label: '1 year', rate: 60 },
+  { id: '6months', label: '6 months', rate: 70 },
+  { id: '3months', label: '3 months', rate: 80 },
+  { id: '1month', label: '1 month', rate: 90 },
+  { id: 'less', label: 'Less than 1 month', rate: 95 },
 ];
 
 const INSURANCE_PERCENT = 8;
@@ -17,7 +17,7 @@ const CONTRACTS_LESS_THAN_3_MONTHS = ['1month', 'less'];
 const QUOTE_STORAGE_KEY = 'ozzys_quote_request';
 
 export default function Pricing() {
-  const [contractId, setContractId] = useState('1year');
+  const [contractId, setContractId] = useState('1month');
   const [daysLessThanMonth, setDaysLessThanMonth] = useState(7);
 
   const rate = RATES.find((r) => r.id === contractId)?.rate ?? 70;
