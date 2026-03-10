@@ -7,8 +7,14 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <a href="https://www.ozzysequipmenthire.com.au" className="footer-logo" target="_blank" rel="noopener noreferrer">
-            Ozzy's <span className="logo-accent">Equipment Hire</span>
+          <a
+            href="https://www.ozzysequipmenthire.com.au"
+            className="footer-logo"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ozzy's Equipment Hire"
+          >
+            <img src="/logo.svg" alt="Ozzy's Equipment Hire" className="footer-logo-img" />
           </a>
           <p>Mobile LED trailer hire across Melbourne and Victoria.</p>
         </div>

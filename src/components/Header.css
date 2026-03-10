@@ -13,24 +13,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 88px;
-  padding: 1rem 0;
+  height: 88px;
+  padding: 0;
 }
 
 .logo {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.25rem;
-  font-stretch: normal;
-  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
   color: var(--text);
 }
 .logo:hover {
   color: var(--text);
   opacity: 0.9;
 }
-.logo-accent {
-  color: var(--primary);
+
+.logo-img {
+  height: 100%;
+  width: auto;
+  display: block;
 }
 
 .nav {

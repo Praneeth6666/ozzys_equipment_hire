@@ -14,8 +14,14 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-inner container">
-        <a href="https://www.ozzysequipmenthire.com.au" className="logo" target="_blank" rel="noopener noreferrer">
-          Ozzy's <span className="logo-accent">Equipment Hire</span>
+        <a
+          href="https://www.ozzysequipmenthire.com.au"
+          className="logo"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ozzy's Equipment Hire"
+        >
+          <img src="/logo.svg" alt="Ozzy's Equipment Hire" className="logo-img" />
         </a>
         <nav className={`nav ${menuOpen ? 'nav-open' : ''}`}>
           {NAV_LINKS.map(({ href, label }) => (

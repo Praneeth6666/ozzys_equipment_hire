@@ -16,18 +16,20 @@
   max-width: 320px;
 }
 .footer-logo {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-stretch: normal;
-  letter-spacing: 0.01em;
-  font-size: 1.1rem;
   color: var(--text);
-  display: block;
+  display: inline-flex;
+  align-items: center;
   margin-bottom: 0.5rem;
 }
 .footer-logo:hover {
   color: var(--text);
   opacity: 0.9;
+}
+
+.footer-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 .footer-brand p {
   color: var(--text-muted);

@@ -62,6 +62,19 @@
   color: var(--text-muted);
   margin-left: 0.25rem;
 }
+.pricing-highlight td {
+  border-bottom: none;
+  padding-top: 1rem;
+  color: var(--text);
+}
+.pricing-highlight td:first-child {
+  font-weight: 700;
+  color: var(--secondary);
+}
+.pricing-highlight td:last-child {
+  color: var(--text);
+  font-weight: 500;
+}
 .pricing-table tbody tr:last-child td {
   border-bottom: none;
 }
@@ -106,6 +119,25 @@
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+}
+.quote-radio-group {
+  display: grid;
+  gap: 0.5rem;
+}
+.quote-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.9rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.quote-radio input {
+  width: 16px;
+  height: 16px;
 }
 .quote-calc-field select:focus,
 .quote-calc-field input:focus {
