@@ -48,7 +48,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact" aria-label="Contact Ozzy's Equipment Hire">
       <div className="container">
         <div className="contact-card">
           <div className="contact-content">
@@ -58,27 +58,43 @@ export default function Contact() {
               hire across Melbourne and Victoria.
             </p>
             <div className="contact-details">
-              <a href="mailto:ozzysequipmenthire@gmail.com" className="contact-link">
+              <a
+                href="mailto:ozzysequipmenthire@gmail.com"
+                className="contact-link"
+                rel="noopener noreferrer"
+              >
                 ozzysequipmenthire@gmail.com
               </a>
-              <a href="https://www.ozzysequipmenthire.com.au" target="_blank" rel="noopener noreferrer" className="contact-link">
+              <a
+                href="https://www.ozzysequipmenthire.com.au"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-link"
+              >
                 www.ozzysequipmenthire.com.au
               </a>
-              <p className="contact-location">Based in Melbourne, serving Victoria</p>
+              <p className="contact-location">📍 Based in Melbourne, serving Victoria</p>
             </div>
           </div>
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <label htmlFor="name">Name</label>
+          <form
+            className="contact-form"
+            onSubmit={handleSubmit}
+            aria-label="Equipment hire enquiry form"
+            noValidate
+          >
+            <label htmlFor="name">Name <span aria-label="required">*</span></label>
             <input
               id="name"
               type="text"
-              placeholder="Your name"
+              placeholder="Your full name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
               disabled={status === 'sending'}
+              aria-required="true"
             />
-            <label htmlFor="email">Email</label>
+
+            <label htmlFor="email">Email <span aria-label="required">*</span></label>
             <input
               id="email"
               type="email"
@@ -87,8 +103,10 @@ export default function Contact() {
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={status === 'sending'}
+              aria-required="true"
             />
-            <label htmlFor="phone">Phone</label>
+
+            <label htmlFor="phone">Phone Number</label>
             <input
               id="phone"
               type="tel"
@@ -96,8 +114,12 @@ export default function Contact() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               disabled={status === 'sending'}
+              pattern="[0-9\s\-\+\(\)]+"
+              aria-describedby="phone-hint"
             />
-            <label htmlFor="message">Message</label>
+            <small id="phone-hint">Format: 0412 345 678</small>
+
+            <label htmlFor="message">Message <span aria-label="required">*</span></label>
             <textarea
               id="message"
               rows="4"
@@ -106,21 +128,25 @@ export default function Contact() {
               onChange={(e) => setMessage(e.target.value)}
               required
               disabled={status === 'sending'}
+              aria-required="true"
             />
+
             {status === 'success' && (
-              <p className="form-message form-message--success">
-                Thanks! We'll get back to you soon.
+              <p className="form-message form-message--success" role="alert">
+                ✓ Thanks! We'll get back to you within 24 hours.
               </p>
             )}
             {status === 'error' && (
-              <p className="form-message form-message--error">
-                Something went wrong. Please try again or email us directly.
+              <p className="form-message form-message--error" role="alert">
+                ✗ Something went wrong. Please try again or email us directly at ozzysequipmenthire@gmail.com
               </p>
             )}
+
             <button
               type="submit"
               className="btn btn-primary btn-full"
               disabled={status === 'sending'}
+              aria-busy={status === 'sending'}
             >
               {status === 'sending' ? 'Sending…' : 'Send enquiry'}
             </button>
