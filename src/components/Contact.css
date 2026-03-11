@@ -32,6 +32,13 @@
 .contact-link {
   font-weight: 600;
   font-size: 1.05rem;
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.contact-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
 }
 .contact-location {
   margin-top: 0.5rem;

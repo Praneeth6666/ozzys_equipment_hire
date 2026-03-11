@@ -38,6 +38,12 @@
   line-height: 1.5;
 }
 
+.footer-logo img {
+  height: 70px; /* Bigger than header logo */
+  width: auto;
+  object-fit: contain;
+}
+
 .footer-nav {
   display: flex;
   gap: 1.5rem;

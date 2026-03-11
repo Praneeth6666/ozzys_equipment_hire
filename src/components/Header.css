@@ -18,20 +18,21 @@
 }
 
 .logo {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  height: 90%;
-  color: var(--text);
+  text-decoration: none;
 }
+
+.logo img {
+  height: 90px;
+  padding: 7%;
+  width: auto;
+  object-fit: contain;
+}
+
 .logo:hover {
   color: var(--text);
   opacity: 0.9;
-}
-
-.logo-img {
-  height: 100%;
-  width: auto;
-  display: block;
 }
 
 .nav {

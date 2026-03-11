@@ -11,17 +11,16 @@ const NAV_LINKS = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  function handleLogoClick(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   return (
     <header className="header">
       <div className="header-inner container">
-        <a
-          href="https://www.ozzysequipmenthire.com.au"
-          className="logo"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ozzy's Equipment Hire"
-        >
-          <img src="/logo.svg" alt="Ozzy's Equipment Hire" className="logo-img" />
+        <a href="/" onClick={handleLogoClick} className="logo">
+          <img src="/logo.svg" alt="Ozzy's Equipment Hire" />
         </a>
         <nav className={`nav ${menuOpen ? 'nav-open' : ''}`}>
           {NAV_LINKS.map(({ href, label }) => (

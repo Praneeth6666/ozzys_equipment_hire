@@ -14,7 +14,8 @@ const RATES = [
 const INSURANCE_PERCENT = 8;
 const DELIVERY_SETUP_FEE = 350;
 const CONTRACTS_LESS_THAN_3_MONTHS = ['1month', 'less'];
-const LESS_THAN_7_DAYS_FLAT_HIRE = 500;
+const LESS_THAN_3_DAYS_FLAT_HIRE = 300;
+const THREE_TO_SIX_DAYS_FLAT_HIRE = 500;
 const QUOTE_STORAGE_KEY = 'ozzys_quote_request';
 
 export default function Pricing() {
@@ -25,8 +26,16 @@ export default function Pricing() {
   const rate = RATES.find((r) => r.id === contractId)?.rate ?? 70;
   const quote = useMemo(() => {
     const days = contractId === 'less' ? daysLessThanMonth : DAYS_PER_MONTH;
-    const useFlatHire = contractId === 'less' && days < 7;
-    const hire = useFlatHire ? LESS_THAN_7_DAYS_FLAT_HIRE : rate * days;
+
+    // Determine which flat hire applies
+    let useFlatHire = false;
+    let flatHireAmount = 0;
+    if (contractId === 'less' && days <= 6) {
+      useFlatHire = true;
+      flatHireAmount = days <= 2 ? LESS_THAN_3_DAYS_FLAT_HIRE : THREE_TO_SIX_DAYS_FLAT_HIRE;
+    }
+
+    const hire = useFlatHire ? flatHireAmount : rate * days;
     const subtotal = Math.round(hire * 100) / 100;
     const insurance = Math.round((subtotal * INSURANCE_PERCENT) / 100 * 100) / 100;
     const canChooseDelivery = CONTRACTS_LESS_THAN_3_MONTHS.includes(contractId);
@@ -40,6 +49,7 @@ export default function Pricing() {
       rate,
       days,
       useFlatHire,
+      flatHireAmount,
       canChooseDelivery,
       contractLabel: RATES.find((r) => r.id === contractId)?.label ?? 'Custom',
     };
@@ -52,7 +62,7 @@ export default function Pricing() {
     const hireLine = contractId === 'less'
       ? (
         quote.useFlatHire
-          ? `- Hire: Flat $${LESS_THAN_7_DAYS_FLAT_HIRE} (under 7 days)`
+          ? `- Hire: Flat $${quote.flatHireAmount} (${quote.days} days)`
           : `- Hire: ${quote.days} days × $${quote.rate} = $${quote.subtotal.toFixed(2)} (ex GST)`
       )
       : `- Monthly hire (ex GST): $${(quote.subtotal + quote.insurance).toFixed(2)} (hire $${quote.subtotal.toFixed(2)} + insurance $${quote.insurance.toFixed(2)})`;
@@ -92,16 +102,22 @@ export default function Pricing() {
                   </tr>
                 ))}
                 <tr className="pricing-highlight">
-                  <td>Less than 7 days</td>
+                  <td>1–2 days</td>
                   <td colSpan={2}>
-                    Flat ${LESS_THAN_7_DAYS_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
+                    Flat ${LESS_THAN_3_DAYS_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
+                  </td>
+                </tr>
+                <tr className="pricing-highlight">
+                  <td>3–6 days</td>
+                  <td colSpan={2}>
+                    Flat ${THREE_TO_SIX_DAYS_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
                   </td>
                 </tr>
               </tbody>
             </table>
             <p className="pricing-notes">
               Monthly figures based on 30 days. Delivery, setup &amp; installation is an optional one-off $350 fee for rentals less than 3 months (self pickup available).
-              Less than 7 days is a flat ${LESS_THAN_7_DAYS_FLAT_HIRE} + insurance (8%), all prices exclude GST. 15Amp connection to be provided by client. Insurance is 8% of total hire price.
+              1–2 days is a flat ${LESS_THAN_3_DAYS_FLAT_HIRE}, 3–6 days is a flat ${THREE_TO_SIX_DAYS_FLAT_HIRE}, plus insurance (8%), all prices exclude GST. 15Amp connection to be provided by client. Insurance is 8% of total hire price.
             </p>
           </div>
 
@@ -160,7 +176,7 @@ export default function Pricing() {
             <div className="quote-calc-summary">
               <div className="quote-row">
                 <span>
-                  {quote.useFlatHire ? 'Hire (flat, under 7 days)' : `Hire (${quote.days} days × $${quote.rate})`}
+                  {quote.useFlatHire ? `Hire (flat, ${quote.days} days)` : `Hire (${quote.days} days × $${quote.rate})`}
                 </span>
                 <span>${quote.subtotal.toFixed(2)} <small>ex GST</small></span>
               </div>
