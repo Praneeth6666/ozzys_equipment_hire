@@ -7,6 +7,7 @@ const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState(''); // added
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
 
@@ -29,7 +30,7 @@ export default function Contact() {
         const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message }),
+          body: JSON.stringify({ name, email, phone, message }), // include phone
         });
         if (!res.ok) throw new Error('Send failed');
       } else {
@@ -39,6 +40,7 @@ export default function Contact() {
       setStatus('success');
       setName('');
       setEmail('');
+      setPhone(''); // reset
       setMessage('');
     } catch {
       setStatus('error');
@@ -84,6 +86,15 @@ export default function Contact() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              disabled={status === 'sending'}
+            />
+            <label htmlFor="phone">Phone</label>
+            <input
+              id="phone"
+              type="tel"
+              placeholder="e.g. 0412 345 678"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               disabled={status === 'sending'}
             />
             <label htmlFor="message">Message</label>
