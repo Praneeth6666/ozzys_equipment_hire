@@ -102,15 +102,15 @@ export default function Pricing() {
                   </tr>
                 ))}
                 <tr className="pricing-highlight">
-                  <td>1–2 days</td>
-                  <td colSpan={2}>
-                    Flat ${LESS_THAN_3_DAYS_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
-                  </td>
-                </tr>
-                <tr className="pricing-highlight">
                   <td>3–6 days</td>
                   <td colSpan={2}>
                     Flat ${THREE_TO_SIX_DAYS_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
+                  </td>
+                </tr>
+                <tr className="pricing-highlight">
+                  <td>1–2 days</td>
+                  <td colSpan={2}>
+                    Flat ${LESS_THAN_3_DAYS_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
                   </td>
                 </tr>
               </tbody>
