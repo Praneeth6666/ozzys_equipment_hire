@@ -14,8 +14,7 @@ const RATES = [
 const INSURANCE_PERCENT = 8;
 const DELIVERY_SETUP_FEE = 350;
 const CONTRACTS_LESS_THAN_3_MONTHS = ['1month', 'less'];
-const LESS_THAN_3_DAYS_FLAT_HIRE = 300;
-const THREE_TO_SIX_DAYS_FLAT_HIRE = 500;
+const LESS_THAN_A_WEEK_FLAT_HIRE = 500;
 const QUOTE_STORAGE_KEY = 'ozzys_quote_request';
 
 export default function Pricing() {
@@ -30,9 +29,9 @@ export default function Pricing() {
     // Determine which flat hire applies
     let useFlatHire = false;
     let flatHireAmount = 0;
-    if (contractId === 'less' && days <= 6) {
+    if (contractId === 'less' && days < 7) {
       useFlatHire = true;
-      flatHireAmount = days <= 2 ? LESS_THAN_3_DAYS_FLAT_HIRE : THREE_TO_SIX_DAYS_FLAT_HIRE;
+      flatHireAmount = LESS_THAN_A_WEEK_FLAT_HIRE;
     }
 
     const hire = useFlatHire ? flatHireAmount : rate * days;
@@ -102,22 +101,16 @@ export default function Pricing() {
                   </tr>
                 ))}
                 <tr className="pricing-highlight">
-                  <td>3–6 days</td>
+                  <td>1–6 days</td>
                   <td colSpan={2}>
-                    Flat ${THREE_TO_SIX_DAYS_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
-                  </td>
-                </tr>
-                <tr className="pricing-highlight">
-                  <td>1–2 days</td>
-                  <td colSpan={2}>
-                    Flat ${LESS_THAN_3_DAYS_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
+                    Flat ${LESS_THAN_A_WEEK_FLAT_HIRE} + insurance (8%) <span className="pricing-table-note">ex GST</span>
                   </td>
                 </tr>
               </tbody>
             </table>
             <p className="pricing-notes">
               Monthly figures based on 30 days. Delivery, setup &amp; installation is an optional one-off $350 fee for rentals less than 3 months (self pickup available).
-              1–2 days is a flat ${LESS_THAN_3_DAYS_FLAT_HIRE}, 3–6 days is a flat ${THREE_TO_SIX_DAYS_FLAT_HIRE}, plus insurance (8%), all prices exclude GST. 15Amp connection to be provided by client. Insurance is 8% of total hire price.
+              1–6 days is a flat ${LESS_THAN_A_WEEK_FLAT_HIRE}, plus insurance (8%), all prices exclude GST. 15Amp connection to be provided by client. Insurance is 8% of total hire price.
             </p>
           </div>
 
