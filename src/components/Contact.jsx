@@ -54,8 +54,8 @@ export default function Contact() {
           <div className="contact-content">
             <h2>Get in touch</h2>
             <p>
-              Tell us about your event or campaign. We'll provide a tailored quote for mobile LED trailer
-              hire across Melbourne and Victoria.
+              Tell us about your LED, VMS or mobile billboard trailer hire needs. We&apos;ll provide a tailored
+              quote for trailer hire near you across Melbourne and Victoria.
             </p>
             <div className="contact-details">
               <a
@@ -73,7 +73,9 @@ export default function Contact() {
               >
                 www.ozzysequipmenthire.com.au
               </a>
-              <p className="contact-location">📍 Based in Melbourne, serving Victoria</p>
+              <p className="contact-location">
+                📍 Melbourne, VIC — LED, VMS &amp; billboard trailers delivered across Victoria
+              </p>
             </div>
           </div>
           <form

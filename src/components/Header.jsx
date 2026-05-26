@@ -3,7 +3,10 @@ import './Header.css';
 
 const NAV_LINKS = [
   { href: '#services', label: 'Services' },
+  { href: '#areas', label: 'Areas' },
+  { href: '#hire-guide', label: 'Guide' },
   { href: '#pricing', label: 'Pricing' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#about', label: 'About' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -20,7 +23,7 @@ export default function Header() {
     <header className="header">
       <div className="header-inner container">
         <a href="/" onClick={handleLogoClick} className="logo">
-          <img src="/logo.svg" alt="Ozzy's Equipment Hire" />
+          <img src="/logo.svg" alt="Ozzy's Equipment Hire — LED, VMS and billboard trailer hire Melbourne" width={180} height={90} />
         </a>
         <nav className={`nav ${menuOpen ? 'nav-open' : ''}`}>
           {NAV_LINKS.map(({ href, label }) => (

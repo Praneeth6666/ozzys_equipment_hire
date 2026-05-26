@@ -14,13 +14,18 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Ozzy's Equipment Hire"
           >
-            <img src="/logo.svg" alt="Ozzy's Equipment Hire" className="footer-logo-img" />
+            <img src="/logo.svg" alt="Ozzy's Equipment Hire — LED, VMS and billboard trailer hire Melbourne" className="footer-logo-img" width={160} height={80} />
           </a>
-          <p>Mobile LED trailer hire across Melbourne and Victoria.</p>
+          <p>
+            LED trailers, VMS trailers &amp; mobile billboard trailer hire near you — Melbourne &amp; Victoria.
+          </p>
         </div>
-        <nav className="footer-nav">
+        <nav className="footer-nav" aria-label="Footer navigation">
           <a href="#services">Services</a>
+          <a href="#areas">Areas</a>
+          <a href="#hire-guide">Guide</a>
           <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
           <a href="https://www.ozzysequipmenthire.com.au" target="_blank" rel="noopener noreferrer">Website</a>

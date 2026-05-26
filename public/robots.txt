@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ozzysequipmenthire.com.au/sitemap.xml

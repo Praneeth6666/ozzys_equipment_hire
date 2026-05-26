@@ -1,0 +1,18 @@
+{
+  "name": "Ozzy's Equipment Hire",
+  "short_name": "Ozzy's Hire",
+  "description": "LED trailers, VMS trailers and mobile billboard trailer hire in Melbourne and Victoria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1832",
+  "theme_color": "#1685f9",
+  "lang": "en-AU",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

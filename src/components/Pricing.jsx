@@ -76,9 +76,10 @@ export default function Pricing() {
     <section id="pricing" className="pricing">
       <div className="container">
         <div className="pricing-header">
-          <h2>Hire rates</h2>
+          <h2>LED, VMS &amp; billboard trailer hire rates</h2>
           <p className="pricing-sub">
-            Monthly pricing by contract length. All prices exclude GST. Insurance is 8% of hire.
+            Transparent daily rates for mobile LED trailers, VMS trailers and billboard trailers near you.
+            All prices exclude GST. Insurance is 8% of hire.
           </p>
         </div>
 
