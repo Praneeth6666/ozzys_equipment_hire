@@ -4,11 +4,11 @@ import './Pricing.css';
 const DAYS_PER_MONTH = 30;
 
 const RATES = [
-  { id: '1year', label: '1 year', rate: 60 },
-  { id: '6months', label: '6 months', rate: 70 },
-  { id: '3months', label: '3 months', rate: 80 },
-  { id: '1month', label: '1 month', rate: 90 },
-  { id: 'less', label: 'Less than 1 month', rate: 95 },
+  { id: '1year', label: '1 year', rate: 45 },
+  { id: '6months', label: '6 months', rate: 50 },
+  { id: '3months', label: '3 months', rate: 60 },
+  { id: '1month', label: '1 month', rate: 70 },
+  { id: 'less', label: 'Less than 1 month', rate: 75 },
 ];
 
 const INSURANCE_PERCENT = 8;
