@@ -6,14 +6,15 @@ export default function Hero() {
       <div className="hero-bg" aria-hidden />
       <div className="container hero-inner">
         <div className="hero-content">
-          <p className="hero-badge">LED · VMS · Mobile billboard trailers · Melbourne &amp; Victoria</p>
+          <p className="hero-badge">VMS sign hire · LED trailer sign hire · Melbourne &amp; Victoria</p>
           <h1 className="hero-title">
-            LED, VMS &amp; mobile billboard trailer hire
-            <span className="hero-title-accent"> near you</span>
+            VMS sign hire &amp; LED trailer sign hire
+            <span className="hero-title-accent"> Melbourne</span>
           </h1>
           <p className="hero-desc">
-            Looking for LED trailers near me, VMS trailers near me or billboard trailers near me? We deliver
-            high-impact mobile screens for events, roadworks and outdoor campaigns across Melbourne and Victoria.
+            Hire VMS signs, LED trailer signs and LED screen trailers for events, roadworks and campaigns.
+            Trailer LED sign hire and mobile LED screen trailer hire Melbourne with delivery, setup and
+            flexible rates.
           </p>
           <div className="hero-actions">
             <a href="#pricing" className="btn btn-primary">
@@ -33,7 +34,7 @@ export default function Hero() {
             height={1024}
             fetchPriority="high"
             decoding="async"
-            alt="Mobile LED billboard trailer with digital display for hire in Melbourne and Victoria"
+            alt="LED screen trailer and VMS sign hire in Melbourne — mobile LED trailer display"
             className="hero-image"
           />
         </div>

@@ -7,15 +7,15 @@ export default function Areas() {
       <div className="container">
         <div className="areas-inner">
           <div className="areas-content">
-            <h2 id="areas-heading">LED &amp; billboard trailer hire near you</h2>
+            <h2 id="areas-heading">VMS sign hire &amp; LED trailer sign hire Melbourne</h2>
             <p className="areas-lead">
-              Searching for <strong>LED trailers near me</strong>, <strong>VMS trailers near me</strong> or{' '}
-              <strong>billboard trailers near me</strong>? We are based in Melbourne and deliver mobile LED,
-              VMS and mobile billboard trailers across Victoria.
+              Searching for <strong>VMS sign hire</strong>, <strong>LED trailer sign hire Melbourne</strong> or{' '}
+              <strong>mobile LED screen trailer hire Melbourne</strong>? We are based in Melbourne and deliver
+              VMS signs, LED trailer signs and LED screen trailers across Victoria.
             </p>
             <p>
               From city activations to regional road campaigns, Ozzy&apos;s Equipment Hire brings high-impact
-              mobile screens to your location with setup, content support and flexible hire periods.
+              mobile LED screens to your location with setup, content support and flexible hire periods.
             </p>
           </div>
           <div className="areas-list-wrap">

@@ -76,10 +76,10 @@ export default function Pricing() {
     <section id="pricing" className="pricing">
       <div className="container">
         <div className="pricing-header">
-          <h2>LED, VMS &amp; billboard trailer hire rates</h2>
+          <h2>VMS sign hire &amp; LED trailer sign hire rates</h2>
           <p className="pricing-sub">
-            Transparent daily rates for mobile LED trailers, VMS trailers and billboard trailers near you.
-            All prices exclude GST. Insurance is 8% of hire.
+            Transparent daily rates for VMS sign hire, LED trailer sign hire and LED screen trailer hire in
+            Melbourne. All prices exclude GST. Insurance is 8% of hire.
           </p>
         </div>
 

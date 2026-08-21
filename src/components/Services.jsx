@@ -19,7 +19,7 @@ const ICONS = {
       <circle cx="16" cy="18" r="1" />
     </svg>
   ),
-  billboard: (
+  screen: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <rect x="3" y="5" width="18" height="11" rx="1" />
       <path d="M12 16v3M8 21h8" />
@@ -33,9 +33,9 @@ export default function Services() {
     <section id="services" className="services" aria-labelledby="services-heading">
       <div className="container">
         <div className="services-header">
-          <h2 id="services-heading">LED, VMS &amp; mobile billboard trailer hire</h2>
+          <h2 id="services-heading">VMS sign hire &amp; LED trailer sign hire</h2>
           <p className="services-sub">
-            Hire LED trailers, VMS trailers and billboard trailers near you — delivered across Melbourne and
+            VMS sign hire, LED trailer sign hire and LED screen trailer hire — delivered across Melbourne and
             Victoria with setup and support.
           </p>
         </div>

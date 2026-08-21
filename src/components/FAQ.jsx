@@ -6,10 +6,10 @@ export default function FAQ() {
     <section id="faq" className="faq" aria-labelledby="faq-heading">
       <div className="container">
         <div className="faq-header">
-          <h2 id="faq-heading">LED, VMS &amp; billboard trailer hire — FAQs</h2>
+          <h2 id="faq-heading">VMS sign hire &amp; LED trailer sign hire — FAQs</h2>
           <p className="faq-sub">
-            Common questions about hiring LED trailers, VMS trailers and mobile billboard trailers near you in
-            Melbourne and Victoria.
+            Common questions about VMS sign hire, LED trailer sign hire Melbourne and LED screen trailer hire
+            across Victoria.
           </p>
         </div>
         <dl className="faq-list">

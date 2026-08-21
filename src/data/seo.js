@@ -4,34 +4,34 @@ export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
 
 export const FAQ_ITEMS = [
   {
-    question: 'Where can I hire LED trailers near me in Melbourne?',
+    question: 'Do you offer VMS sign hire in Melbourne?',
     answer:
-      "Ozzy's Equipment Hire is Melbourne-based and delivers mobile LED trailers across Greater Melbourne and Victoria. Whether you're in the CBD, eastern suburbs, western suburbs or regional Victoria, contact us for availability and a quote for LED trailer hire near you.",
+      "Yes. Ozzy's Equipment Hire provides VMS sign hire across Melbourne and Victoria. Our variable message sign trailers are used for roadworks, traffic management, construction sites and events, with delivery, setup and programming support.",
   },
   {
-    question: 'Do you offer VMS trailer hire near me?',
+    question: 'Can I get LED trailer sign hire in Melbourne?',
     answer:
-      'Yes. We hire variable message sign (VMS) trailers for roadworks, traffic management, construction sites and events. Our VMS trailers are available for short- and long-term hire across Melbourne and Victoria with delivery, setup and technical support.',
+      "We specialise in LED trailer sign hire Melbourne. Whether you need a trailer LED sign hire for a festival, retail activation or roadside campaign, we deliver and set up high-visibility LED trailer signs across Greater Melbourne and regional Victoria.",
   },
   {
-    question: 'Can I hire billboard trailers or mobile billboard trailers near me?',
+    question: 'What is an LED screen trailer and can I hire one?',
     answer:
-      'We provide mobile billboard trailer hire — high-visibility LED billboard trailers for outdoor advertising, brand activations, product launches and campaigns. If you are searching for billboard trailers near me in Melbourne or Victoria, we deliver to your site with flexible hire terms.',
+      'An LED screen trailer is a towable mobile LED display — also called LED trailer screen hire. We hire LED screen trailers for events, advertising and public messaging. Ask us about LED trailer screen hire for short- or long-term use.',
   },
   {
-    question: 'What is the difference between LED trailers, VMS trailers and billboard trailers?',
+    question: 'Do you provide mobile LED screen trailer hire Melbourne?',
     answer:
-      'LED trailers are general-purpose mobile LED screens for events and campaigns. VMS (variable message sign) trailers are built for traffic and safety messaging on roads and worksites. Billboard trailers (mobile billboard trailers) focus on large-format advertising and brand visibility. We can help you choose the right trailer for your project.',
+      'Yes. We offer mobile LED screen trailer hire Melbourne and mobile trailer LED screen hire Melbourne, including delivery and setup. Our units are weather-ready and suitable for events, sport, construction messaging and outdoor campaigns.',
   },
   {
-    question: 'How much does mobile LED or billboard trailer hire cost?',
+    question: 'How much does VMS sign hire or LED trailer sign hire cost?',
     answer:
-      'Rates depend on hire length, delivery and setup. Day rates start from $60 per day (ex GST) on longer contracts, with short-term and weekly options available. Use our pricing calculator or contact us for a tailored quote for LED, VMS or billboard trailer hire.',
+      'Rates depend on hire length, delivery and setup. Day rates start from $60 per day (ex GST) on longer contracts, with short-term and weekly options available. Use our pricing calculator or contact us for a tailored quote for VMS sign hire, LED trailer sign hire or LED screen trailer hire.',
   },
   {
-    question: 'Which areas do you service for trailer hire near me?',
+    question: 'Which areas do you service for VMS sign hire and LED trailer screen hire?',
     answer:
-      'We service Melbourne CBD, inner and outer suburbs, Geelong, Ballarat, Bendigo, Gippsland and wider Victoria. Tell us your event or site location when you enquire and we will confirm delivery and setup for LED, VMS or mobile billboard trailers.',
+      'We service Melbourne CBD, inner and outer suburbs, Geelong, Ballarat, Bendigo, Gippsland and wider Victoria. Tell us your site or event location when you enquire and we will confirm delivery for VMS sign hire, LED trailer sign hire and mobile LED screen trailer hire.',
   },
 ];
 
@@ -61,38 +61,54 @@ export const USE_CASES = [
 
 export const HIRE_SERVICES = [
   {
-    id: 'led',
-    title: 'LED Trailer Hire',
-    desc: 'Mobile LED trailers near you for festivals, sport, retail activations and corporate events. Bright, weather-ready screens with expert setup across Melbourne and Victoria.',
-  },
-  {
     id: 'vms',
-    title: 'VMS Trailer Hire',
-    desc: 'Variable message sign (VMS) trailers for traffic management, roadworks and site safety. Hire VMS trailers near me with delivery, programming support and flexible terms.',
+    title: 'VMS Sign Hire',
+    desc: 'Variable message sign (VMS) hire for traffic management, roadworks and site safety. VMS sign hire with delivery, programming support and flexible terms across Melbourne and Victoria.',
   },
   {
-    id: 'billboard',
-    title: 'Mobile Billboard Trailers',
-    desc: 'Billboard trailer and mobile billboard trailer hire for maximum outdoor visibility. Ideal for campaigns, launches and roadside advertising anywhere in Victoria.',
+    id: 'led',
+    title: 'LED Trailer Sign Hire',
+    desc: 'LED trailer sign hire Melbourne for festivals, sport, retail and campaigns. Trailer LED sign hire with bright, weather-ready displays and expert setup.',
+  },
+  {
+    id: 'screen',
+    title: 'LED Screen Trailer Hire',
+    desc: 'LED screen trailer and LED trailer screen hire for events and outdoor messaging. Mobile LED screen trailer hire Melbourne with delivery and on-site support.',
   },
 ];
 
 export const KEYWORD_CLUSTERS = [
   {
-    title: 'LED trailers near me',
-    copy: 'For brands and event teams searching LED trailers near me, we provide mobile LED trailer hire with delivery, setup and technical support across Melbourne and Victoria.',
+    title: 'VMS sign hire',
+    copy: 'Our highest-demand service: VMS sign hire for roadworks, traffic control and construction messaging. Variable message signs are programmed to your schedule and delivered across Melbourne and Victoria.',
   },
   {
-    title: 'VMS trailers near me',
-    copy: 'For roadworks, traffic control and site safety teams searching VMS trailers near me, our variable message sign trailers are available for short and long-term hire.',
+    title: 'LED trailer sign hire',
+    copy: 'LED trailer sign hire puts a bright mobile display on site for events, launches and roadside campaigns. We supply, deliver and set up the trailer so your message is live when you need it.',
   },
   {
-    title: 'Billboard trailers near me',
-    copy: 'For campaign visibility, businesses searching billboard trailers near me can hire mobile billboard trailers that place your message where your audience is.',
+    title: 'LED trailer sign hire Melbourne',
+    copy: 'For local campaigns, LED trailer sign hire Melbourne covers the CBD, suburbs and regional Victoria. Melbourne-based fleet, fast turnaround and flexible hire periods.',
   },
   {
-    title: 'Mobile billboard trailers',
-    copy: 'Our mobile billboard trailers combine LED display quality, mobility and rapid deployment, making them ideal for activations, launches and roadside campaigns.',
+    title: 'Trailer LED sign hire',
+    copy: 'Trailer LED sign hire is the same towable LED display, ready for activations, sport and outdoor advertising. Choose short-term or contracted trailer LED sign hire to match your dates.',
+  },
+  {
+    title: 'LED screen trailer',
+    copy: 'An LED screen trailer is a mobile LED wall on wheels — high brightness, weather-ready and easy to position. Hire an LED screen trailer for events, public messaging and brand visibility.',
+  },
+  {
+    title: 'LED trailer screen hire',
+    copy: 'LED trailer screen hire covers events, construction notices and outdoor media. We handle delivery, setup and content support so the screen is ready on arrival.',
+  },
+  {
+    title: 'Mobile LED screen trailer hire Melbourne',
+    copy: 'Mobile LED screen trailer hire Melbourne is for teams that need a large-format screen delivered locally. We service Greater Melbourne with setup and technical support.',
+  },
+  {
+    title: 'Mobile trailer LED screen hire Melbourne',
+    copy: 'Need mobile trailer LED screen hire Melbourne for a festival, match day or roadside campaign? Enquire with dates and location and we will confirm availability and a quote.',
   },
 ];
 

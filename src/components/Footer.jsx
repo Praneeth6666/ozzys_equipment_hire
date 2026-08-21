@@ -14,10 +14,10 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Ozzy's Equipment Hire"
           >
-            <img src="/logo.svg" alt="Ozzy's Equipment Hire — LED, VMS and billboard trailer hire Melbourne" className="footer-logo-img" width={160} height={80} />
+            <img src="/logo.svg" alt="Ozzy's Equipment Hire — VMS sign hire and LED trailer sign hire Melbourne" className="footer-logo-img" width={160} height={80} />
           </a>
           <p>
-            LED trailers, VMS trailers &amp; mobile billboard trailer hire near you — Melbourne &amp; Victoria.
+            VMS sign hire, LED trailer sign hire &amp; LED screen trailer hire — Melbourne &amp; Victoria.
           </p>
         </div>
         <nav className="footer-nav" aria-label="Footer navigation">

@@ -23,7 +23,7 @@ export default function Header() {
     <header className="header">
       <div className="header-inner container">
         <a href="/" onClick={handleLogoClick} className="logo">
-          <img src="/logo.svg" alt="Ozzy's Equipment Hire — LED, VMS and billboard trailer hire Melbourne" width={180} height={90} />
+          <img src="/logo.svg" alt="Ozzy's Equipment Hire — VMS sign hire and LED trailer sign hire Melbourne" width={180} height={90} />
         </a>
         <nav className={`nav ${menuOpen ? 'nav-open' : ''}`}>
           {NAV_LINKS.map(({ href, label }) => (
