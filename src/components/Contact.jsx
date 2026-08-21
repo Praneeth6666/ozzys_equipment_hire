@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './Contact.css';
 import { QUOTE_STORAGE_KEY } from './Pricing';
 
-const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
+const FORMSPREE_ID = typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_FORMSPREE_ID : '';
 
 export default function Contact() {
   const [name, setName] = useState('');
