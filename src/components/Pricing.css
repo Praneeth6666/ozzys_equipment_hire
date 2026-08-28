@@ -53,7 +53,7 @@
   color: var(--text-muted);
 }
 .pricing-table td:last-child {
-  color: var(--primary);
+  color: var(--primary-text);
   font-weight: 600;
 }
 .pricing-table-note {
@@ -69,7 +69,7 @@
 }
 .pricing-highlight td:first-child {
   font-weight: 700;
-  color: var(--secondary);
+  color: var(--secondary-text);
 }
 .pricing-highlight td:last-child {
   color: var(--text);
@@ -178,7 +178,7 @@
   font-weight: 600;
 }
 .quote-row-total span:last-child {
-  color: var(--primary);
+  color: var(--primary-text);
 }
 
 @media (max-width: 768px) {

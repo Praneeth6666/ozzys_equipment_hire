@@ -1,0 +1,64 @@
+/**
+ * Self-hosted fonts.
+ *
+ * These used to come from fonts.googleapis.com via a render-blocking
+ * <link rel="stylesheet">, which cost two DNS + TLS handshakes before the
+ * browser could paint anything — the single biggest chunk of the 2.7 s mobile
+ * FCP. Now both files are same-origin, preloaded, and the @font-face rules are
+ * inlined into <head> at build time.
+ *
+ * Both faces are variable, so one file each covers every weight the site uses.
+ * Latin subset only — the copy is English/en-AU. DM Sans is the weight-only
+ * instance, not the one that also carries the optical-size axis: nothing here
+ * varies `font-optical-sizing`, and dropping that axis halves the file.
+ */
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Syne';
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+  src: url('/fonts/syne-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/**
+ * Metric-matched fallbacks. `font-display: swap` means the first paint uses a
+ * local face and then swaps — which is what was moving the hero and shifting
+ * layout. These override the local face's metrics to match the web font's, so
+ * the swap is close to invisible and contributes ~0 to CLS.
+ *
+ * Percentages derived from each font's unitsPerEm / ascent / descent and the
+ * weighted average glyph advance (xWidthAvg), measured against Arial and
+ * Helvetica — which share an xWidthAvg, so one face covers both platforms.
+ */
+@font-face {
+  font-family: 'DM Sans Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 104.53%;
+  ascent-override: 94.9%;
+  descent-override: 29.66%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Syne Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 98.47%;
+  ascent-override: 93.93%;
+  descent-override: 27.93%;
+  line-gap-override: 0%;
+}

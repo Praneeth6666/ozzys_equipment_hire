@@ -23,11 +23,17 @@
   text-decoration: none;
 }
 
+/* Explicit box, not `width: auto`: the logo's real aspect is 336:193, so an
+   auto width meant the header re-laid-out the moment the file decoded. The
+   numbers below *are* that aspect (136 / 78 = 1.744), so nothing letterboxes
+   and the `sizes` hint in Header.jsx describes the real rendered width — the
+   old 157x90 box left 21px of empty space and made the browser pick a
+   needlessly large candidate. */
 .logo img {
-  height: 90px;
-  padding: 7%;
-  width: auto;
-  object-fit: contain;
+  display: block;
+  width: 136px;
+  height: 78px;
+  margin: 6px 0;
 }
 
 .logo:hover {
@@ -46,7 +52,7 @@
   font-size: 0.95rem;
 }
 .nav-link:hover {
-  color: var(--primary);
+  color: var(--primary-text);
 }
 
 .menu-toggle {

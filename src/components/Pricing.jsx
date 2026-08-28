@@ -16,6 +16,7 @@ const DELIVERY_SETUP_FEE = 350;
 const CONTRACTS_LESS_THAN_3_MONTHS = ['1month', 'less'];
 const LESS_THAN_A_WEEK_FLAT_HIRE = 500;
 const QUOTE_STORAGE_KEY = 'ozzys_quote_request';
+const QUOTE_EVENT = 'ozzys:quote-request';
 
 export default function Pricing() {
   const [contractId, setContractId] = useState('1year');
@@ -68,8 +69,12 @@ export default function Pricing() {
     const text = `Quote request:\n- Contract: ${quote.contractLabel}\n- Rate: $${quote.rate} per day\n${hireLine}\n- Insurance (8%): $${quote.insurance.toFixed(2)}${deliveryLine}\n- Total (ex GST): $${quote.total.toFixed(2)}\n\nI would like to proceed with this quote.`;
     try {
       sessionStorage.setItem(QUOTE_STORAGE_KEY, text);
-    } catch (_) {}
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    } catch {}
+    // <Contact> is already mounted, so its mount-time reader has long since run.
+    // This tells it to pick up the quote we just wrote, then scroll + focus.
+    // The event carries the text too, so it works even when sessionStorage is
+    // unavailable (private mode, storage disabled).
+    window.dispatchEvent(new CustomEvent(QUOTE_EVENT, { detail: text }));
   }
 
   return (
@@ -201,4 +206,4 @@ export default function Pricing() {
   );
 }
 
-export { QUOTE_STORAGE_KEY };
+export { QUOTE_STORAGE_KEY, QUOTE_EVENT };

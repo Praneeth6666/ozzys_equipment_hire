@@ -26,10 +26,15 @@
   opacity: 0.9;
 }
 
+/* 122 / 70 is the logo's real 336:193 aspect, so the box matches the image and
+   nothing shifts when it decodes. This used to be split across two rules —
+   `.footer-logo-img` said 32px tall and the more specific `.footer-logo img`
+   said 70px with an auto width — so the reserved box never matched what
+   rendered. */
 .footer-logo-img {
-  height: 32px;
-  width: auto;
   display: block;
+  width: 122px;
+  height: 70px;
 }
 .footer-brand p {
   color: var(--text-muted);
@@ -37,23 +42,29 @@
   margin: 0;
   line-height: 1.5;
 }
-
-.footer-logo img {
-  height: 70px; /* Bigger than header logo */
-  width: auto;
-  object-fit: contain;
+.footer-brand .footer-contact {
+  margin-top: 0.5rem;
+}
+.footer-contact a {
+  color: var(--text-muted);
+}
+.footer-contact a:hover {
+  color: var(--primary-text);
 }
 
+/* Eight links at a 1.5rem gap need ~576px in a row — well past a phone's
+   viewport, which pushed the whole document into horizontal scroll. */
 .footer-nav {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
 }
 .footer-nav a {
   color: var(--text-muted);
   font-size: 0.95rem;
 }
 .footer-nav a:hover {
-  color: var(--primary);
+  color: var(--primary-text);
 }
 
 .footer-bottom {

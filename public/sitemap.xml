@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.ozzysequipmenthire.com.au/</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ozzysequipmenthire.com.au/" />
+    <image:image>
+      <image:loc>https://www.ozzysequipmenthire.com.au/img/hero-trailer-768.jpg</image:loc>
+      <image:title>LED screen trailer hire Melbourne</image:title>
+      <image:caption>Mobile LED screen trailer used for VMS sign hire and LED trailer sign hire in Melbourne.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.ozzysequipmenthire.com.au/img/og-image.jpg</image:loc>
+      <image:title>Ozzy&apos;s Equipment Hire — VMS sign hire Melbourne</image:title>
+      <image:caption>VMS sign hire, LED trailer sign hire and LED screen trailer hire across Victoria.</image:caption>
+    </image:image>
   </url>
 </urlset>

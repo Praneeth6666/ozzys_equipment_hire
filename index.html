@@ -16,17 +16,19 @@
     <meta property="og:title" content="VMS Sign Hire | LED Trailer Sign Hire Melbourne" />
     <meta property="og:description" content="VMS sign hire, LED trailer sign hire and LED screen trailer hire across Melbourne and Victoria. Delivery, setup and expert support." />
     <meta property="og:url" content="https://www.ozzysequipmenthire.com.au/" />
-    <meta property="og:image" content="https://www.ozzysequipmenthire.com.au/trailer.png" />
-    <meta property="og:image:width" content="768" />
-    <meta property="og:image:height" content="1024" />
-    <meta property="og:image:alt" content="LED screen trailer and VMS sign hire in Melbourne" />
+    <meta property="og:image" content="https://www.ozzysequipmenthire.com.au/img/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://www.ozzysequipmenthire.com.au/img/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ozzy's Equipment Hire — VMS sign hire and LED trailer sign hire in Melbourne" />
     <meta property="og:locale" content="en_AU" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="VMS Sign Hire | LED Trailer Sign Hire Melbourne" />
     <meta name="twitter:description" content="VMS sign hire, LED trailer sign hire and LED screen trailer hire in Melbourne and Victoria. Get a quote from Ozzy's Equipment Hire." />
-    <meta name="twitter:image" content="https://www.ozzysequipmenthire.com.au/trailer.png" />
-    <meta name="twitter:image:alt" content="LED screen trailer and VMS sign hire in Melbourne" />
+    <meta name="twitter:image" content="https://www.ozzysequipmenthire.com.au/img/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Ozzy's Equipment Hire — VMS sign hire and LED trailer sign hire in Melbourne" />
 
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
@@ -34,7 +36,8 @@
     <meta name="geo.region" content="AU-VIC" />
     <meta name="geo.placename" content="Melbourne" />
 
-    <meta name="theme-color" content="#FF6B35" />
+    <!-- Matches manifest.webmanifest's theme_color; Lighthouse flags a mismatch. -->
+    <meta name="theme-color" content="#0F1832" />
     <meta name="application-name" content="Ozzy's Equipment Hire" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="format-detection" content="telephone=no" />
@@ -42,15 +45,39 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/logo.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon-180.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts are same-origin now (see src/fonts.css); no third-party handshake
+         stands between the HTML and first paint. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-var.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/syne-latin-var.woff2" crossorigin />
+
+    <!-- LCP image. Split by media so mobile preloads exactly what <picture> picks. -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      media="(max-width: 900px)"
+      href="/img/hero-trailer-600.avif"
+      imagesrcset="/img/hero-trailer-360.avif 360w, /img/hero-trailer-480.avif 480w, /img/hero-trailer-600.avif 600w"
+      imagesizes="calc(100vw - 4rem)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      media="(min-width: 901px)"
+      href="/img/hero-trailer-768.avif"
+      imagesrcset="/img/hero-trailer-600.avif 600w, /img/hero-trailer-768.avif 768w"
+      imagesizes="(max-width: 1280px) 45vw, 600px"
+      fetchpriority="high"
+    />
+
+    <!-- Only touched once the quote form is submitted. -->
     <link rel="dns-prefetch" href="https://formspree.io" />
-    <link rel="preload" as="image" href="/trailer.png" imagesrcset="/trailer.png 768w, /trailer@2x.png 1536w" imagesizes="(max-width: 768px) 100vw, 50vw" fetchpriority="high" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
 
     <script type="module" src="/src/main.jsx"></script>
 
@@ -61,11 +88,14 @@
       "@type": ["LocalBusiness", "EquipmentRental"],
       "@id": "https://www.ozzysequipmenthire.com.au/#business",
       "name": "Ozzy's Equipment Hire",
-      "image": "https://www.ozzysequipmenthire.com.au/logo.png",
+      "image": "https://www.ozzysequipmenthire.com.au/img/og-image.jpg",
+      "logo": { "@id": "https://www.ozzysequipmenthire.com.au/#logo" },
       "description": "Melbourne-based VMS sign hire, LED trailer sign hire and LED screen trailer hire across Victoria. Delivery, setup and programming support.",
       "url": "https://www.ozzysequipmenthire.com.au",
       "email": "ozzysequipmenthire@gmail.com",
+      "telephone": "+61469316068",
       "priceRange": "$$",
+      "currenciesAccepted": "AUD",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Melbourne",
@@ -154,7 +184,9 @@
       "name": "VMS Sign Hire | LED Trailer Sign Hire Melbourne",
       "description": "VMS sign hire, LED trailer sign hire Melbourne, trailer LED sign hire and LED screen trailer hire with delivery and setup.",
       "isPartOf": { "@id": "https://www.ozzysequipmenthire.com.au/#website" },
-      "about": [
+      "about": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
+      "mainEntity": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
+      "keywords": [
         "VMS sign hire",
         "LED trailer sign hire",
         "LED trailer sign hire Melbourne",
@@ -164,7 +196,14 @@
         "mobile LED screen trailer hire Melbourne",
         "mobile trailer LED screen hire Melbourne"
       ],
-      "primaryImageOfPage": "https://www.ozzysequipmenthire.com.au/trailer.png",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.ozzysequipmenthire.com.au/img/hero-trailer-768.jpg",
+        "width": 768,
+        "height": 1024,
+        "caption": "LED screen trailer and VMS sign hire in Melbourne"
+      },
+      "breadcrumb": { "@id": "https://www.ozzysequipmenthire.com.au/#breadcrumb" },
       "inLanguage": "en-AU"
     }
     </script>
@@ -177,10 +216,23 @@
       "@id": "https://www.ozzysequipmenthire.com.au/#organization",
       "name": "Ozzy's Equipment Hire",
       "url": "https://www.ozzysequipmenthire.com.au",
-      "logo": "https://www.ozzysequipmenthire.com.au/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.ozzysequipmenthire.com.au/#logo",
+        "url": "https://www.ozzysequipmenthire.com.au/img/logo.png",
+        "contentUrl": "https://www.ozzysequipmenthire.com.au/img/logo.png",
+        "width": 480,
+        "height": 276,
+        "caption": "Ozzy's Equipment Hire"
+      },
+      "sameAs": [
+        "https://www.facebook.com/ozzysequipmenthire",
+        "https://www.instagram.com/ozzysequipmenthire"
+      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Customer Service",
+        "telephone": "+61469316068",
         "email": "ozzysequipmenthire@gmail.com",
         "areaServed": "AU",
         "availableLanguage": "English"
@@ -226,6 +278,7 @@
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": "https://www.ozzysequipmenthire.com.au/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -254,8 +307,10 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
+      "@id": "https://www.ozzysequipmenthire.com.au/#product",
       "name": "LED Trailer Sign Hire",
       "description": "VMS sign hire, LED trailer sign hire and LED screen trailer hire in Melbourne and Victoria.",
+      "image": "https://www.ozzysequipmenthire.com.au/img/hero-trailer-768.jpg",
       "brand": { "@type": "Brand", "name": "Ozzy's Equipment Hire" },
       "category": "Equipment Rental",
       "offers": {
@@ -264,10 +319,18 @@
         "lowPrice": "60",
         "highPrice": "95",
         "offerCount": "5",
-        "unitText": "DAY",
         "availability": "https://schema.org/InStock",
         "seller": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
-        "url": "https://www.ozzysequipmenthire.com.au/#pricing"
+        "url": "https://www.ozzysequipmenthire.com.au/#pricing",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "priceCurrency": "AUD",
+          "minPrice": "60",
+          "maxPrice": "95",
+          "unitCode": "DAY",
+          "unitText": "per day (ex GST)",
+          "valueAddedTaxIncluded": false
+        }
       }
     }
     </script>
@@ -342,7 +405,10 @@
           <li>LED trailer sign hire Melbourne for events and campaigns</li>
           <li>LED screen trailer and mobile LED screen trailer hire Melbourne</li>
         </ul>
-        <p><a href="mailto:ozzysequipmenthire@gmail.com">ozzysequipmenthire@gmail.com</a></p>
+        <p>
+          Call <a href="tel:+61469316068">0469 316 068</a> or email
+          <a href="mailto:ozzysequipmenthire@gmail.com">ozzysequipmenthire@gmail.com</a>
+        </p>
       </div>
     </noscript>
     <div id="root"></div>

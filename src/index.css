@@ -18,13 +18,22 @@
   --bg-card: #1a2f52;
   --primary: var(--light-blue);
   --primary-dim: rgba(22, 133, 249, 0.2);
+  /* The brand blue is only 3.65:1 against white and 3.66:1 as text on the card
+     background — both under WCAG AA's 4.5:1 for body text. These two shifted
+     tints carry text; --primary stays as-is for borders, dots and glows, where
+     the text rule doesn't apply. */
+  --primary-text: #4da3ff;   /* blue text on the dark surfaces — 5.1:1 on cards */
+  --primary-solid: #0b6ed4;  /* solid fill behind white text — 5.0:1 */
   --secondary: var(--orange);
   --secondary-dim: rgba(237, 114, 37, 0.15);
+  /* Same story as the blue: the brand orange lands at 4.47:1 on the card
+     background, just under AA. Nudged a shade lighter for text only. */
+  --secondary-text: #f07d33;
   --text: var(--white);
   --text-muted: rgba(255, 255, 255, 0.78);
   --border: rgba(255, 255, 255, 0.12);
-  --font-heading: 'Syne', system-ui, sans-serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-heading: 'Syne', 'Syne Fallback', system-ui, sans-serif;
+  --font-body: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
   --radius: 12px;
   --radius-lg: 20px;
   --container: min(1200px, 100% - 2rem);
@@ -34,13 +43,25 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 .skip-link {
   position: absolute;
   top: -100%;
   left: 1rem;
   z-index: 200;
   padding: 0.75rem 1.25rem;
-  background: var(--primary);
+  background: var(--primary-solid);
   color: var(--white);
   font-weight: 600;
   border-radius: var(--radius);
@@ -56,11 +77,23 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
-  background: linear-gradient(180deg, var(--backdrop-from) 0%, var(--backdrop-to) 100%);
-  background-attachment: fixed;
+  background: var(--backdrop-to);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* The viewport-locked backdrop used to be `background-attachment: fixed` on
+   <body>, which makes mobile browsers repaint the whole gradient on every
+   scroll frame. A fixed layer behind the content gets composited instead, so
+   scrolling costs nothing and the look is unchanged. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, var(--backdrop-from) 0%, var(--backdrop-to) 100%);
+  pointer-events: none;
 }
 
 #root {
@@ -81,12 +114,12 @@ h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
 h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
 
 a {
-  color: var(--primary);
+  color: var(--primary-text);
   text-decoration: none;
   transition: color 0.2s, opacity 0.2s;
 }
 a:hover {
-  color: var(--secondary);
+  color: var(--secondary-text);
 }
 
 button {
@@ -104,6 +137,28 @@ button:focus-visible {
 
 section {
   padding: clamp(3rem, 8vw, 5rem) 0;
+}
+
+/**
+ * The page is pre-rendered in full, so the browser had to lay out every section
+ * — pricing table, FAQ, the lot — before it could paint the hero. That showed up
+ * as ~1.5 s of LCP "render delay" on mobile.
+ *
+ * `content-visibility: auto` lets it skip layout and paint for anything still
+ * offscreen. `contain-intrinsic-size: auto <h>` supplies a placeholder height
+ * until a section has been rendered once, then remembers the real one — without
+ * it the scroll height would jump around, trading render delay for layout shift.
+ *
+ * Only the footer opts in. Every <section> is a nav anchor target, and a
+ * skipped section reports its placeholder height rather than its real one — so
+ * clicking "Contact" before the page has been scrolled once lands hundreds of
+ * pixels off. Skipping *all* of them also confuses automated contrast checkers,
+ * which read two collapsed sections' children as overlapping. The footer is the
+ * one subtree that is neither an anchor target nor ever above the fold.
+ */
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
 }
 
 .container {

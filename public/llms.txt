@@ -1,22 +1,31 @@
 # Ozzy's Equipment Hire
 
-> Melbourne-based VMS sign hire, LED trailer sign hire and LED screen trailer hire across Victoria, Australia.
+> Melbourne-based hire company supplying VMS signs, LED trailer signs and LED screen trailers across Victoria, Australia. Delivery, setup and programming are included; day rates start at $60 per day ex GST on longer contracts.
+
+The whole business lives on one page — the links below are section anchors on that page, not separate documents. Enquiries are handled by phone (0469 316 068), email or the quote form; there is no online checkout and no account system.
 
 ## Services
-- VMS sign hire for traffic management, roadworks and site safety
-- LED trailer sign hire Melbourne and trailer LED sign hire for events and campaigns
-- LED screen trailer, LED trailer screen hire, mobile LED screen trailer hire Melbourne and mobile trailer LED screen hire Melbourne
 
-## Service area
-Melbourne CBD, Greater Melbourne suburbs, Geelong, Ballarat, Bendigo, Gippsland and regional Victoria.
-
-## Contact
-- Website: https://www.ozzysequipmenthire.com.au
-- Email: ozzysequipmenthire@gmail.com
-- Quote form: https://www.ozzysequipmenthire.com.au/#contact
+- [VMS sign hire](https://www.ozzysequipmenthire.com.au/#services): Variable message sign trailers for traffic management, roadworks and construction site safety. Programmed to your schedule.
+- [LED trailer sign hire Melbourne](https://www.ozzysequipmenthire.com.au/#services): Towable LED trailer signs for festivals, sport, retail activations and roadside campaigns. Also called trailer LED sign hire.
+- [LED screen trailer hire](https://www.ozzysequipmenthire.com.au/#services): Mobile LED screen trailers for events, outdoor advertising and public messaging. Also called LED trailer screen hire or mobile trailer LED screen hire.
 
 ## Key pages
-- Services: https://www.ozzysequipmenthire.com.au/#services
-- Service areas: https://www.ozzysequipmenthire.com.au/#areas
-- Pricing: https://www.ozzysequipmenthire.com.au/#pricing
-- FAQ: https://www.ozzysequipmenthire.com.au/#faq
+
+- [Home](https://www.ozzysequipmenthire.com.au/): Overview of every hire service, with the enquiry path.
+- [Service areas](https://www.ozzysequipmenthire.com.au/#areas): Suburbs and regions covered for delivery.
+- [Hire guide](https://www.ozzysequipmenthire.com.au/#hire-guide): Which trailer suits which job — VMS vs LED sign vs LED screen.
+- [Pricing](https://www.ozzysequipmenthire.com.au/#pricing): Day-rate calculator; rates scale with hire length.
+- [FAQ](https://www.ozzysequipmenthire.com.au/#faq): Answers on cost, coverage, delivery and equipment types.
+- [About](https://www.ozzysequipmenthire.com.au/#about): Who runs the business and how it operates.
+- [Contact](https://www.ozzysequipmenthire.com.au/#contact): Phone 0469 316 068, email ozzysequipmenthire@gmail.com, or the quote form — send dates, site location and which unit you need.
+
+## Service area
+
+- [Melbourne and Victoria coverage](https://www.ozzysequipmenthire.com.au/#areas): Melbourne CBD, Southbank and Docklands, Richmond, South Yarra, Footscray, Dandenong, Frankston and the Mornington Peninsula, plus Geelong, Ballarat, Bendigo, Gippsland and regional Victoria.
+
+## Optional
+
+- [Sitemap](https://www.ozzysequipmenthire.com.au/sitemap.xml): Canonical URL list in XML.
+- [Phone](tel:+61469316068): 0469 316 068 — fastest way to reach a human.
+- [Email](mailto:ozzysequipmenthire@gmail.com): ozzysequipmenthire@gmail.com

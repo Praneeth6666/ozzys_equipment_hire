@@ -1,4 +1,21 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
+Allow: /
+
+# Assistant crawlers — same access as everyone else.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.ozzysequipmenthire.com.au/sitemap.xml

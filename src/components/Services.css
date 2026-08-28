@@ -45,7 +45,7 @@
 .service-icon {
   width: 48px;
   height: 48px;
-  color: var(--primary);
+  color: var(--primary-text);
   margin-bottom: 1rem;
 }
 .service-icon svg {

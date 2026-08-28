@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Contact.css';
-import { QUOTE_STORAGE_KEY } from './Pricing';
+import { QUOTE_STORAGE_KEY, QUOTE_EVENT } from './Pricing';
 
 const FORMSPREE_ID = typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_FORMSPREE_ID : '';
 
@@ -10,7 +10,9 @@ export default function Contact() {
   const [phone, setPhone] = useState(''); // added
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+  const messageRef = useRef(null);
 
+  // Arriving at /#contact after a reload — e.g. a quote written just before nav.
   useEffect(() => {
     try {
       const saved = sessionStorage.getItem(QUOTE_STORAGE_KEY);
@@ -18,7 +20,25 @@ export default function Contact() {
         setMessage(saved);
         sessionStorage.removeItem(QUOTE_STORAGE_KEY);
       }
-    } catch (_) {}
+    } catch {}
+  }, []);
+
+  // "Request this quote" in the pricing calculator, same page load. The mount
+  // effect above has already run by now, so the calculator fires this instead.
+  useEffect(() => {
+    function handleQuoteRequest(e) {
+      let text = typeof e.detail === 'string' ? e.detail : '';
+      try {
+        text = text || sessionStorage.getItem(QUOTE_STORAGE_KEY) || '';
+        sessionStorage.removeItem(QUOTE_STORAGE_KEY);
+      } catch {}
+      if (text) setMessage(text);
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      // Put the cursor in the pre-filled field so it's clearly editable.
+      messageRef.current?.focus({ preventScroll: true });
+    }
+    window.addEventListener(QUOTE_EVENT, handleQuoteRequest);
+    return () => window.removeEventListener(QUOTE_EVENT, handleQuoteRequest);
   }, []);
 
   async function handleSubmit(e) {
@@ -58,6 +78,9 @@ export default function Contact() {
               provide a tailored quote for Melbourne and Victoria.
             </p>
             <div className="contact-details">
+              <a href="tel:+61469316068" className="contact-link">
+                0469 316 068
+              </a>
               <a
                 href="mailto:ozzysequipmenthire@gmail.com"
                 className="contact-link"
@@ -124,6 +147,7 @@ export default function Contact() {
             <label htmlFor="message">Message <span aria-label="required">*</span></label>
             <textarea
               id="message"
+              ref={messageRef}
               rows="4"
               placeholder="Event type, dates, location and any specific requirements..."
               value={message}

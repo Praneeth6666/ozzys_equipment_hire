@@ -1,7 +1,10 @@
 .hero {
   position: relative;
+  /* `svh` rather than `dvh`: dvh tracks the mobile URL bar, so every collapse
+     and re-expand resized the hero and shifted everything below it. svh is the
+     stable small-viewport unit and never changes mid-scroll. */
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding: 88px 0 clamp(4rem, 12vw, 6rem);
@@ -39,12 +42,21 @@
   overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  /* Reserve the box before the image arrives so it can't push the page down. */
+  aspect-ratio: 3 / 4;
+  /* Paints something in the right colour immediately instead of a white gap. */
+  background: var(--bg-card);
+}
+.hero-image-wrap picture {
+  display: block;
+  height: 100%;
 }
 /* Show at natural size, never scale up (keeps high-res sharp when you replace the file) */
 .hero-image {
   max-width: 100%;
   width: 100%;
-  height: auto;
+  height: 100%;
+  aspect-ratio: 3 / 4;
   display: block;
   object-fit: contain;
 }
@@ -66,7 +78,7 @@
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--primary-text);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 1rem;
@@ -80,7 +92,7 @@
   color: var(--text);
 }
 .hero-title-accent {
-  color: var(--primary);
+  color: var(--primary-text);
   display: block;
   margin-top: 0.25em;
 }
@@ -112,7 +124,7 @@
   transform: translateY(-2px);
 }
 .btn-primary {
-  background: var(--primary);
+  background: var(--primary-solid);
   color: var(--white);
 }
 .btn-primary:hover {
@@ -126,5 +138,5 @@
 }
 .btn-ghost:hover {
   border-color: var(--primary);
-  color: var(--primary);
+  color: var(--primary-text);
 }
