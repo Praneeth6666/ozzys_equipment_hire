@@ -26,6 +26,7 @@ import LedTrailerSignHireMelbourne, {
 import LedScreenTrailerHire, {
   FAQ as LED_SCREEN_FAQ,
 } from './pages/LedScreenTrailerHire';
+import PricingPage, { FAQ as PRICING_FAQ } from './pages/Pricing';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -265,6 +266,29 @@ export const ROUTES = [
           url: `${SITE_URL}/led-screen-trailer-hire/`,
         }),
         faqPage(LED_SCREEN_FAQ),
+      ],
+    },
+  },
+  {
+    path: '/pricing/',
+    Page: PricingPage,
+    seo: {
+      title: 'VMS & LED Trailer Hire Prices Melbourne | Rate Card',
+      description:
+        'VMS sign hire and LED trailer sign hire prices in Melbourne: from $45/day ex GST on a 12-month contract, or a flat $500 plus 8% insurance for one to six days. Live pricing calculator.',
+      h1: 'VMS and LED trailer hire prices',
+      breadcrumb: [
+        ['Home', '/'],
+        ['Pricing', '/pricing/'],
+      ],
+      jsonLd: [
+        hireProductLd({
+          name: 'VMS, LED Trailer Sign and LED Screen Trailer Hire',
+          description:
+            'One day-rate card for VMS boards, LED trailer signs and LED screen trailers in Melbourne and Victoria — $45 to $75 per day ex GST by term, or a flat $500 plus 8% insurance for one to six days.',
+          url: `${SITE_URL}/pricing/`,
+        }),
+        faqPage(PRICING_FAQ),
       ],
     },
   },

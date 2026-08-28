@@ -167,7 +167,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   links. Sitemap entry.
   Accept: renders, valid JSON-LD, build + lint clean.
 
-- [ ] **1.4 `/pricing/`.**
+- [x] **1.4 `/pricing/`.**
   Move the `Pricing` component + calculator to its own page + route. Add the full rate
   table and notes as crawlable HTML (not only the JS widget). Product/AggregateOffer +
   a "how much does it cost" FAQPage. Link to it from the 3 money pages and the nav.
@@ -279,3 +279,4 @@ _(append: task id — one-line result — commit sha)_
 - 1.1 — /vms-sign-hire/ page (~1,300 words, 7-Q FAQ, rate table, 'not for you' block); shared src/pages/service-page.css; Breadcrumb component; Service+Product+FAQPage JSON-LD; generate-seo.mjs now enumerates ROUTES for the sitemap; both pages hydrate clean, no console errors
 - 1.2 — /led-trailer-sign-hire-melbourne/ page (targets led trailer sign hire / ...melbourne / trailer led sign hire); full-colour vs amber table, per-area delivery table from SERVICE_AREAS, 7-Q FAQ, Service+Product+FAQPage JSON-LD (8/8 valid)
 - 1.3 — /led-screen-trailer-hire/ page opens the event-video cluster (led screen trailer / led trailer screen hire / mobile ...melbourne x2); screen-choosing guidance, setup/operation, 7-Q FAQ, Service+Product+FAQPage JSON-LD (8/8)
+- 1.4 — /pricing/ page: reuses the <Pricing> calculator component (already renders the full rate table as crawlable HTML), adds a 7-Q pricing FAQ, Product/AggregateOffer + FAQPage JSON-LD; linked from all 3 money pages
