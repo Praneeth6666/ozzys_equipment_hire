@@ -14,9 +14,11 @@ import { build } from 'vite';
 import { readFileSync, writeFileSync, rmSync, existsSync, unlinkSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildSitemap, buildLlmsTxt, lastModified } from './scripts/seo-lib.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = resolve(__dirname, 'dist');
+const PUBLIC = resolve(__dirname, 'public');
 const ROOT_MARKER = '<div id="root"></div>';
 const HEAD_MARKER = '<!--ssg:head-->';
 
@@ -81,6 +83,17 @@ async function prerender() {
   rmSync(resolve(DIST, 'server'), { recursive: true, force: true });
   const junk = resolve(DIST, '.DS_Store');
   if (existsSync(junk)) unlinkSync(junk);
+
+  // Crawler files, built from the real route list. Written to dist/ (deployed)
+  // and public/ (so the committed copy and the dev server stay accurate).
+  const lastmod = lastModified(['src', 'index.html'], __dirname);
+  const sitemap = buildSitemap(ROUTES, lastmod);
+  const llms = buildLlmsTxt(ROUTES);
+  for (const dir of [DIST, PUBLIC]) {
+    writeFileSync(resolve(dir, 'sitemap.xml'), sitemap);
+    writeFileSync(resolve(dir, 'llms.txt'), llms);
+  }
+  console.log(`[SSG] sitemap.xml (${ROUTES.length} URLs) + llms.txt written; lastmod ${lastmod}.`);
 
   console.log('[SSG] Done — every route pre-rendered, no blocking CSS.');
 }

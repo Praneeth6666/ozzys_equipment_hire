@@ -250,7 +250,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   from the global template (now per-page).
   Accept: `Organization` + `WebSite` valid; no duplicate `@id`; build + lint clean.
 
-- [ ] **3.4 Generate crawler files from ROUTES.**
+- [x] **3.4 Generate crawler files from ROUTES.**
   `scripts/generate-seo.mjs`: `sitemap.xml` from `ROUTES` (every path, `lastmod` from
   the last commit touching that page's sources, priority by depth). `robots.txt`
   unchanged bar the sitemap line. Rewrite `llms.txt` to the llmstxt.org shape with the
@@ -289,3 +289,4 @@ _(append: task id — one-line result — commit sha)_
 - 3.1 — src/nav.js shared NAV + AREA_LINKS; Header nav = real page links with aria-current on the active page (sub-pages match their section); logo scrolls-to-top only on home, navigates home elsewhere; Footer nav rebuilt from NAV + a regional-areas row; breadcrumbs already on every non-home page. All pages reachable, no console errors.
 - 3.2 — src/data/reviews.js (REVIEWS = [] + averageRating + how-to comment); <Reviews> renders null while empty; renderHead adds AggregateRating + review[] only when hasReviews && REVIEWS.length; <Reviews> on home + 3 money pages. Nothing visible/schema changes while empty.
 - 3.3 — index.html global graph is #business + #website + #organization (all referenced by @id from per-page graphs, all resolve); dropped #business hasOfferCatalog (now per-page Services) and trimmed knowsAbout from 8 verbatim phrases to 4 topics; noscript h1 -> 'Ozzy's Equipment Hire' with real internal links. No SearchAction (no site search). 7/7 JSON-LD on home.
+- 3.4 — scripts/seo-lib.mjs (buildSitemap/buildLlmsTxt/buildRobots/lastModified); prerender.js now writes sitemap.xml + llms.txt from the real ROUTES (fixes 4 bogus /service-areas/<guide-slug>/ URLs the regex produced, adds the 4 missing /guides/<slug>/ URLs -> 16 correct URLs); llms.txt rewritten to llmstxt.org multi-page shape; generate-seo.mjs trimmed to robots.txt.
