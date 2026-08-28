@@ -147,7 +147,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   add VMS board photos */}`.
   Accept: page renders at `/vms-sign-hire/`, valid JSON-LD, build + lint clean.
 
-- [ ] **1.2 `/led-trailer-sign-hire-melbourne/`.**
+- [x] **1.2 `/led-trailer-sign-hire-melbourne/`.**
   Page + route + schema. Targets the 3 sign-cluster "led/trailer … sign hire" phrases.
   Event + roadside-advertising framing (festivals, sport, retail activations, campaigns,
   council works). Include: full-colour vs amber, screen sizes, brightness, solar vs
@@ -277,3 +277,4 @@ _(append: task id — one-line result — commit sha)_
 - 0.2 — prerender.js loops ROUTES, inlines CSS once, writes dist/<path>/index.html; / output byte-identical (54.0 kB)
 - 0.3 — renderHead(path) in entry-server builds per-page title/desc/canonical/OG/JSON-LD; index.html now global-only with <!--ssg:head--> marker; dropped keywords meta + malformed breadcrumb + fabricated geo/postcode; 7 valid JSON-LD blocks on /
 - 1.1 — /vms-sign-hire/ page (~1,300 words, 7-Q FAQ, rate table, 'not for you' block); shared src/pages/service-page.css; Breadcrumb component; Service+Product+FAQPage JSON-LD; generate-seo.mjs now enumerates ROUTES for the sitemap; both pages hydrate clean, no console errors
+- 1.2 — /led-trailer-sign-hire-melbourne/ page (targets led trailer sign hire / ...melbourne / trailer led sign hire); full-colour vs amber table, per-area delivery table from SERVICE_AREAS, 7-Q FAQ, Service+Product+FAQPage JSON-LD (8/8 valid)

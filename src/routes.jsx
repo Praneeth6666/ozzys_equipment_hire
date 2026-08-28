@@ -20,6 +20,9 @@
 
 import Home from './pages/Home';
 import VmsSignHire, { FAQ as VMS_FAQ } from './pages/VmsSignHire';
+import LedTrailerSignHireMelbourne, {
+  FAQ as LED_SIGN_FAQ,
+} from './pages/LedTrailerSignHireMelbourne';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -199,6 +202,36 @@ export const ROUTES = [
           url: `${SITE_URL}/vms-sign-hire/`,
         }),
         faqPage(VMS_FAQ),
+      ],
+    },
+  },
+  {
+    path: '/led-trailer-sign-hire-melbourne/',
+    Page: LedTrailerSignHireMelbourne,
+    seo: {
+      title: 'LED Trailer Sign Hire Melbourne | Trailer LED Signs',
+      description:
+        'LED trailer sign hire Melbourne from $45/day ex GST. Full-colour trailer LED signs for festivals, sport, retail and campaigns — towed in, positioned and collected across Victoria.',
+      h1: 'LED trailer sign hire Melbourne',
+      breadcrumb: [
+        ['Home', '/'],
+        ['LED Trailer Sign Hire Melbourne', '/led-trailer-sign-hire-melbourne/'],
+      ],
+      jsonLd: [
+        serviceLd({
+          name: 'LED Trailer Sign Hire Melbourne',
+          serviceType: 'LED trailer sign hire',
+          description:
+            'Full-colour LED trailer sign hire and trailer LED sign hire across Greater Melbourne and regional Victoria for events, sport, retail activations, property campaigns and council works. Delivery, placement and content support included.',
+          url: `${SITE_URL}/led-trailer-sign-hire-melbourne/`,
+        }),
+        hireProductLd({
+          name: 'LED Trailer Sign Hire',
+          description:
+            'Full-colour LED trailer sign hire in Melbourne and Victoria — trailer-mounted, solar assisted, artwork loaded and updated remotely.',
+          url: `${SITE_URL}/led-trailer-sign-hire-melbourne/`,
+        }),
+        faqPage(LED_SIGN_FAQ),
       ],
     },
   },
