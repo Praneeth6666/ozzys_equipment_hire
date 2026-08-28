@@ -54,6 +54,10 @@
 .nav-link:hover {
   color: var(--primary-text);
 }
+.nav-link[aria-current='page'] {
+  color: var(--text);
+  font-weight: 600;
+}
 
 .menu-toggle {
   display: none;

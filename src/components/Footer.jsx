@@ -1,3 +1,4 @@
+import { NAV, AREA_LINKS } from '../nav';
 import './Footer.css';
 
 // Baked in at build time. Reading the clock here would make the prerendered
@@ -11,13 +12,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <a
-            href="https://www.ozzysequipmenthire.com.au"
-            className="footer-logo"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Ozzy's Equipment Hire"
-          >
+          <a href="/" className="footer-logo" aria-label="Ozzy's Equipment Hire — home">
             <picture>
               <source
                 type="image/webp"
@@ -47,14 +42,14 @@ export default function Footer() {
           </p>
         </div>
         <nav className="footer-nav" aria-label="Footer navigation">
-          <a href="#services">Services</a>
-          <a href="#areas">Areas</a>
-          <a href="#hire-guide">Guide</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a href="https://www.ozzysequipmenthire.com.au" target="_blank" rel="noopener noreferrer">Website</a>
+          {NAV.map(({ href, label }) => (
+            <a key={href} href={href}>{label}</a>
+          ))}
+        </nav>
+        <nav className="footer-nav footer-nav--areas" aria-label="Service areas">
+          {AREA_LINKS.map(({ href, label }) => (
+            <a key={href} href={href}>{label}</a>
+          ))}
         </nav>
         <div className="footer-bottom">
           <p>&copy; {year} Ozzy's Equipment Hire. All rights reserved.</p>

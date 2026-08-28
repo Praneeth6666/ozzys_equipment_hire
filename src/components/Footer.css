@@ -66,6 +66,15 @@
 .footer-nav a:hover {
   color: var(--primary-text);
 }
+.footer-nav--areas {
+  margin-top: 0.5rem;
+  gap: 0.6rem 1.2rem;
+}
+.footer-nav--areas a {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
 
 .footer-bottom {
   width: 100%;

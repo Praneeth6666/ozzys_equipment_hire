@@ -11,7 +11,7 @@ export default function App({ path = '/' }) {
   const { Page } = routeFor(path);
   return (
     <>
-      <Header />
+      <Header path={path} />
       <Page />
       <Footer />
     </>

@@ -228,7 +228,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
 
 ### Group 3 — glue + technical
 
-- [ ] **3.1 Navigation + breadcrumbs + internal linking.**
+- [x] **3.1 Navigation + breadcrumbs + internal linking.**
   Header: grouped nav to every page (a "Hire" group with the 3 services + pricing, plus
   Areas, Guides, Contact). Footer: full sitemap-style link list. Add a `<Breadcrumb>`
   component driven by each route's `breadcrumb`, shown on every non-home page. Do a
@@ -286,3 +286,4 @@ _(append: task id — one-line result — commit sha)_
 - 2.3 — /guides/ hub listing the 4 guides; GUIDES array exported for cross-linking; 12 URLs in sitemap
 - 2.4 — /guides/vms-sign-hire-cost/ (answer-first, full rate table, what-moves-the-total, worked example, 4-Q FAQ); GuideLayout component + guideRoute() factory (ogType article -> Article JSON-LD); 13 URLs
 - 2.5/2.6/2.7 — three guides: VMS vs LED sign vs screen (decision table + per-type sections), LED screen trailer sizing (crowd/distance guide + 3-Q FAQ), Victorian traffic-management sign rules (responsibilities, permits, AS 4852, 3-Q FAQ). All Article + FAQPage JSON-LD. 16 URLs. Group 2 complete.
+- 3.1 — src/nav.js shared NAV + AREA_LINKS; Header nav = real page links with aria-current on the active page (sub-pages match their section); logo scrolls-to-top only on home, navigates home elsewhere; Footer nav rebuilt from NAV + a regional-areas row; breadcrumbs already on every non-home page. All pages reachable, no console errors.

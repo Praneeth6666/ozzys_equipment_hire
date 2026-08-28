@@ -1,28 +1,29 @@
 import { useState } from 'react';
+import { NAV } from '../nav';
 import './Header.css';
 
-const NAV_LINKS = [
-  { href: '#services', label: 'Services' },
-  { href: '#areas', label: 'Areas' },
-  { href: '#hire-guide', label: 'Guide' },
-  { href: '#pricing', label: 'Pricing' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#about', label: 'About' },
-  { href: '#contact', label: 'Contact' },
-];
-
-export default function Header() {
+export default function Header({ path = '/' }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const onHome = path === '/';
 
   function handleLogoClick(e) {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // On the home page the logo just scrolls up; elsewhere it navigates home.
+    if (onHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function isActive(href) {
+    if (!href.startsWith('/')) return false;
+    if (href === '/') return onHome;
+    return path === href || path.startsWith(href);
   }
 
   return (
     <header className="header">
       <div className="header-inner container">
-        <a href="/" onClick={handleLogoClick} className="logo">
+        <a href="/" onClick={handleLogoClick} className="logo" aria-label="Ozzy's Equipment Hire — home">
           <picture>
             <source
               type="image/webp"
@@ -41,12 +42,13 @@ export default function Header() {
             />
           </picture>
         </a>
-        <nav className={`nav ${menuOpen ? 'nav-open' : ''}`}>
-          {NAV_LINKS.map(({ href, label }) => (
+        <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Primary">
+          {NAV.map(({ href, label }) => (
             <a
               key={href}
               href={href}
               className="nav-link"
+              aria-current={isActive(href) ? 'page' : undefined}
               onClick={() => setMenuOpen(false)}
             >
               {label}
