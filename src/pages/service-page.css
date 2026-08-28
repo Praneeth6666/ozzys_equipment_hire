@@ -46,11 +46,27 @@
   color: var(--text-muted);
   margin: 0 0 1.1rem;
 }
-.sp-prose a {
-  color: var(--primary-text);
-}
 .sp-prose strong {
   color: var(--text);
+}
+
+/* Inline links in body text must be distinguishable by more than colour
+   (WCAG "Use of Color"). Underline every link that sits inside running prose. */
+.sp-hero .sp-lead a,
+.sp-prose a,
+.sp-rates a,
+.sp-faq dd a,
+.sp-notfor a {
+  color: var(--primary-text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.sp-hero .sp-lead a:hover,
+.sp-prose a:hover,
+.sp-rates a:hover,
+.sp-faq dd a:hover,
+.sp-notfor a:hover {
+  color: var(--secondary-text);
 }
 
 /* spec / comparison table */

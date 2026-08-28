@@ -103,6 +103,14 @@
   margin: 0 0 2.5rem;
   line-height: 1.75;
 }
+.hero-desc a {
+  color: var(--primary-text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.hero-desc a:hover {
+  color: var(--secondary-text);
+}
 
 .hero-actions {
   display: flex;

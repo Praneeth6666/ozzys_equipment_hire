@@ -25,14 +25,55 @@ npm run build
 
 This runs three steps:
 
-1. `npm run seo` — regenerates `public/sitemap.xml`, `robots.txt` and `llms.txt`
-   from `scripts/generate-seo.mjs`. Edit that script, not the output files.
+1. `npm run seo` — writes the static `public/robots.txt`.
 2. `vite build` — the client bundle.
-3. `node prerender.js` — renders the React tree to static HTML, inlines the CSS
-   into `<head>`, and drops the render-blocking stylesheet `<link>`.
+3. `node prerender.js` — for every route, renders the page to static HTML,
+   inlines the CSS into `<head>` (dropping the render-blocking `<link>`), and
+   writes `dist/<path>/index.html`. It then generates `sitemap.xml` and
+   `llms.txt` from the real route list (see `scripts/seo-lib.mjs`) into both
+   `dist/` and `public/`.
 
-Output is in `dist/`. It is fully pre-rendered: the HTML contains the complete
-page, and the JS bundle only hydrates it.
+Output is in `dist/`. Every page is fully pre-rendered — the HTML contains the
+complete page and the JS bundle only hydrates it.
+
+## Pages and routing
+
+The site is multi-page. There is no router library: each route is prerendered to
+its own `index.html`, and on load the client hydrates whichever page matches
+`window.location.pathname`. Navigation between pages is a normal full page load.
+
+`src/routes.jsx` is the **single source of truth**. Each entry is
+`{ path, Page, seo }`:
+
+- `path` — the URL, e.g. `/vms-sign-hire/` (leading and trailing slash).
+- `Page` — the component in `src/pages/` that renders the page body (its own
+  `<main>`; `Header`, `Footer` and the breadcrumb are added by the shell).
+- `seo` — `{ title, description, h1, ogType?, breadcrumb, jsonLd, hasReviews? }`.
+  `renderHead()` in `src/entry-server.jsx` turns this into the per-page
+  `<title>`, meta, canonical, OG tags and JSON-LD (`WebPage`/`Article`,
+  `BreadcrumbList`, plus whatever objects the route lists in `jsonLd`).
+
+### Adding a page
+
+1. Create `src/pages/MyPage.jsx` (or `src/pages/<group>/MyPage.jsx`). Follow an
+   existing one — `src/pages/VmsSignHire.jsx` for a service page,
+   `src/pages/guides/GuideLayout.jsx` for a guide, `src/pages/areas/AreaLayout.jsx`
+   for a location page. Export a `FAQ` array from the module if the page has an
+   FAQ, so the visible FAQ and the `FAQPage` schema come from one place.
+2. Add a route to `ROUTES` in `src/routes.jsx` with its `seo`. Helpers
+   `serviceLd()`, `hireProductLd()`, `faqPage()`, `guideRoute()`, `areaRoute()`
+   cover the common shapes.
+3. Add it to `src/nav.js` if it belongs in the header/footer nav.
+
+That's it — `prerender.js` emits the HTML, the sitemap and `llms.txt` pick it
+up, and `App.jsx` hydrates it. Nothing else references pages by name.
+
+### Content rules
+
+Customer-facing copy follows the rules in `SEO-BUILD-PLAN.md` (answer-first, real
+numbers only, no invented ABN / address / reviews, no exclamation marks or
+emojis). Unknown business facts are left as `{/* TODO(owner): ... */}` markers,
+which React strips from the output.
 
 ## Images
 
@@ -75,14 +116,30 @@ system font doesn't move the layout. If you change either font family, the
 `size-adjust` / `ascent-override` / `descent-override` values need recomputing
 from the new font's metrics.
 
-## Sections
+## Site map
 
-- **Hero** – Headline and primary CTA
-- **Services** – Mobile LED trailers, VMS boards, solar screens, custom units, outdoor signage, shop-front monitors
-- **About** – Company summary and differentiators
-- **Contact** – Enquiry form and contact details
+| Path | Purpose |
+| --- | --- |
+| `/` | Overview hub — links out to every service page |
+| `/vms-sign-hire/` | Cluster A keyword: `vms sign hire` |
+| `/led-trailer-sign-hire-melbourne/` | Cluster A: `led trailer sign hire` (+ melbourne, + `trailer led sign hire`) |
+| `/led-screen-trailer-hire/` | Cluster B: `led screen trailer`, `led trailer screen hire`, `mobile … melbourne` |
+| `/pricing/` | Rate card + calculator |
+| `/service-areas/` + `/service-areas/{melbourne,geelong,ballarat,bendigo,gippsland}/` | Location pages |
+| `/guides/` + 4 guide articles | Supporting content |
 
-Contact details (email and website) are set in `Contact.jsx` and `Footer.jsx`.
+The two keyword clusters are separate pages on purpose: Google ranks roadside
+message signs and event LED video screens as different products. See
+`SEO-COMPETITOR-ANALYSIS` and `SEO-BUILD-PLAN.md`.
+
+Contact details (phone, email) are set in `Contact.jsx` and `Footer.jsx`.
+
+### Reviews
+
+`src/data/reviews.js` is intentionally empty. Add real, permitted customer
+reviews there and the `<Reviews>` section and `AggregateRating` schema light up
+automatically on the home and service pages. Never pre-fill it with invented
+ratings.
 
 ### Contact form
 

@@ -258,7 +258,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   a markdown link list).
   Accept: sitemap lists all routes; `xmllint --noout` passes; build + lint clean.
 
-- [ ] **3.5 Final QA.**
+- [x] **3.5 Final QA.**
   `npm run build` + `npm run lint` clean. Serve `dist/` and run Lighthouse on `/`,
   `/vms-sign-hire/`, `/led-screen-trailer-hire/`: performance ≥ 95, SEO 100,
   accessibility 100, best-practices 100 — fix any regression. Check each page hydrates
@@ -290,3 +290,6 @@ _(append: task id — one-line result — commit sha)_
 - 3.2 — src/data/reviews.js (REVIEWS = [] + averageRating + how-to comment); <Reviews> renders null while empty; renderHead adds AggregateRating + review[] only when hasReviews && REVIEWS.length; <Reviews> on home + 3 money pages. Nothing visible/schema changes while empty.
 - 3.3 — index.html global graph is #business + #website + #organization (all referenced by @id from per-page graphs, all resolve); dropped #business hasOfferCatalog (now per-page Services) and trimmed knowsAbout from 8 verbatim phrases to 4 topics; noscript h1 -> 'Ozzy's Equipment Hire' with real internal links. No SearchAction (no site search). 7/7 JSON-LD on home.
 - 3.4 — scripts/seo-lib.mjs (buildSitemap/buildLlmsTxt/buildRobots/lastModified); prerender.js now writes sitemap.xml + llms.txt from the real ROUTES (fixes 4 bogus /service-areas/<guide-slug>/ URLs the regex produced, adds the 4 missing /guides/<slug>/ URLs -> 16 correct URLs); llms.txt rewritten to llmstxt.org multi-page shape; generate-seo.mjs trimmed to robots.txt.
+- 3.5 — Lighthouse (gzip server): perf 98-99, SEO 100, a11y 100, best-practices 100 on home + service + guide + area pages. Fixed link-in-text-block (underlined inline prose links across service pages + hero). All 16 pages: 200, one <main> h1, valid JSON-LD, no console errors, internal links resolve. README updated with the multi-page architecture + 'adding a page'.
+
+**BUILD COMPLETE — 20/20 tasks. 21 commits on seo/multi-page-rebuild.**
