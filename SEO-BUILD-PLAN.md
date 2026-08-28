@@ -107,7 +107,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
 
 ### Group 0 — routing infrastructure (do first; unlocks the rest)
 
-- [ ] **0.1 Route manifest + path-aware render.**
+- [x] **0.1 Route manifest + path-aware render.**
   Add `src/routes.jsx` exporting `ROUTES` with a single entry for `/` pointing at a new
   `src/pages/Home.jsx` (move the current `App` body — Hero…Contact — into it).
   `App.jsx` → `App({ path })` looks up the route, renders `<Header/>` + page + `<Footer/>`
@@ -272,4 +272,5 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
 
 _(append: task id — one-line result — commit sha)_
 
-- 0.0 — plan created — (this commit)
+- 0.0 — plan created
+- 0.1 — routes.jsx manifest + App({path}) + pages/Home.jsx; render(path); main passes location.pathname; eslint override for routing layer

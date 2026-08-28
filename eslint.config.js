@@ -35,6 +35,13 @@ export default defineConfig([
     },
   },
 
+  // The routing layer legitimately exports data + helpers alongside pages;
+  // it's not part of the HMR component graph.
+  {
+    files: ['src/routes.jsx', 'src/entry-server.jsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
+
   // Build tooling — runs in Node.
   {
     files: ['*.js', 'scripts/**/*.mjs'],
