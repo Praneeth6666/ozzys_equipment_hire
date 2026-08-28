@@ -58,6 +58,17 @@ async function prerender() {
 
   const { render, renderHead, ROUTES } = await import(resolve(DIST, 'server/entry-server.js'));
 
+  // Guard: every route needs a lazy loader in src/client-routes.js, or the page
+  // would prerender fine but never hydrate.
+  const clientSrc = readFileSync(resolve(__dirname, 'src/client-routes.js'), 'utf-8');
+  const clientPaths = new Set(
+    [...clientSrc.matchAll(/'(\/[^']*)':\s*\(\)\s*=>/g)].map((m) => m[1]),
+  );
+  const missing = ROUTES.map((r) => r.path).filter((p) => !clientPaths.has(p));
+  if (missing.length) {
+    throw new Error(`[SSG] src/client-routes.js has no loader for: ${missing.join(', ')}`);
+  }
+
   const indexPath = resolve(DIST, 'index.html');
   let template = readFileSync(indexPath, 'utf-8');
   for (const marker of [ROOT_MARKER, HEAD_MARKER]) {

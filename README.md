@@ -60,13 +60,17 @@ its own `index.html`, and on load the client hydrates whichever page matches
    `src/pages/guides/GuideLayout.jsx` for a guide, `src/pages/areas/AreaLayout.jsx`
    for a location page. Export a `FAQ` array from the module if the page has an
    FAQ, so the visible FAQ and the `FAQPage` schema come from one place.
-2. Add a route to `ROUTES` in `src/routes.jsx` with its `seo`. Helpers
-   `serviceLd()`, `hireProductLd()`, `faqPage()`, `guideRoute()`, `areaRoute()`
-   cover the common shapes.
-3. Add it to `src/nav.js` if it belongs in the header/footer nav.
+2. Add a route to `ROUTES` in `src/routes.jsx` with its `seo` (this is the
+   server/prerender manifest — static imports, all pages). Helpers `serviceLd()`,
+   `hireProductLd()`, `faqPage()`, `guideRoute()`, `areaRoute()` cover the common
+   shapes.
+3. Add a matching `'<path>': () => import('./pages/MyPage.jsx')` line to
+   `src/client-routes.js` (the browser only downloads the chunk for the page
+   being viewed). `prerender.js` fails the build if a route has no loader here.
+4. Add it to `src/nav.js` if it belongs in the header/footer nav.
 
 That's it — `prerender.js` emits the HTML, the sitemap and `llms.txt` pick it
-up, and `App.jsx` hydrates it. Nothing else references pages by name.
+up, `entry-server.jsx` renders it and `main.jsx` hydrates it.
 
 ### Content rules
 

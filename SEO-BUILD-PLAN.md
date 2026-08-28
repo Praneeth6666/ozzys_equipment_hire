@@ -291,7 +291,7 @@ owner fills it.
   up automatically; P8 adds its images to the image sitemap.
   Accept: page renders, images lazy-load, JSON-LD valid, build + lint clean.
 
-- [ ] **P2 Per-route code-splitting.**
+- [x] **P2 Per-route code-splitting.**
   The client bundle currently ships every page component (routes.jsx statically
   imports all 16). Split so each route loads only its own page chunk: give the
   client a route→`() => import()` map (`src/client-routes.js`), and have
@@ -398,3 +398,4 @@ _(append: task id — one-line result — commit sha)_
 
 **PHASE 1 COMPLETE — 20/20 tasks. Phase 2 (P1–P9) queued below the task list.**
 - P1 — /gallery/ page: responsive grid from src/data/gallery.js (seeded with the 1 real trailer photo + TODO(owner) for fleet shots), <picture> avif/webp/jpg + lazy + dimensions, grouped by category, ImageGallery/ImageObject JSON-LD (galleryLd helper). In nav (nav.js), linked from home Services + all 3 service pages' related lists. 17 sitemap URLs. Hydrates clean.
+- P2 — src/client-routes.js (path -> () => import() map); main.jsx loads only the matched page chunk then mounts <Header/><Page/><Footer/> itself; routes.jsx/App.jsx now server-only. Entry chunk 107 KB -> 8.3 KB; one chunk per page + shared Contact/Breadcrumb/Reviews/AreaLayout/GuideLayout chunks. prerender.js guards that every ROUTE has a loader. Lighthouse perf 98 (/) / 99 (service), TBT 0, hydration clean (menu + calculator verified). README updated.
