@@ -242,7 +242,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   `<Reviews>` on home + the 3 money pages.
   Accept: nothing visible changes while empty; no `AggregateRating` in output; build + lint clean.
 
-- [ ] **3.3 Global JSON-LD graph.**
+- [x] **3.3 Global JSON-LD graph.**
   In `index.html` keep only `Organization` (+ `logo` ImageObject, `sameAs`,
   `contactPoint` with the phone) and `WebSite` (+ `potentialAction` SearchAction
   pointing at a `/?s=` or omitted if no search). Ensure `@id` references line up across
@@ -288,3 +288,4 @@ _(append: task id — one-line result — commit sha)_
 - 2.5/2.6/2.7 — three guides: VMS vs LED sign vs screen (decision table + per-type sections), LED screen trailer sizing (crowd/distance guide + 3-Q FAQ), Victorian traffic-management sign rules (responsibilities, permits, AS 4852, 3-Q FAQ). All Article + FAQPage JSON-LD. 16 URLs. Group 2 complete.
 - 3.1 — src/nav.js shared NAV + AREA_LINKS; Header nav = real page links with aria-current on the active page (sub-pages match their section); logo scrolls-to-top only on home, navigates home elsewhere; Footer nav rebuilt from NAV + a regional-areas row; breadcrumbs already on every non-home page. All pages reachable, no console errors.
 - 3.2 — src/data/reviews.js (REVIEWS = [] + averageRating + how-to comment); <Reviews> renders null while empty; renderHead adds AggregateRating + review[] only when hasReviews && REVIEWS.length; <Reviews> on home + 3 money pages. Nothing visible/schema changes while empty.
+- 3.3 — index.html global graph is #business + #website + #organization (all referenced by @id from per-page graphs, all resolve); dropped #business hasOfferCatalog (now per-page Services) and trimmed knowsAbout from 8 verbatim phrases to 4 topics; noscript h1 -> 'Ozzy's Equipment Hire' with real internal links. No SearchAction (no site search). 7/7 JSON-LD on home.
