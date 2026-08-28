@@ -4,18 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>VMS Sign Hire | LED Trailer Sign Hire Melbourne</title>
-    <meta name="description" content="VMS sign hire and LED trailer sign hire Melbourne. Hire LED screen trailers, trailer LED signs and mobile LED screen trailers with delivery and setup. Get a quote from Ozzy's Equipment Hire." />
-    <meta name="keywords" content="vms sign hire, led trailer sign hire, led trailer sign hire melbourne, trailer led sign hire, led screen trailer, led trailer screen hire, mobile led screen trailer hire melbourne, mobile trailer led screen hire melbourne" />
-    <link rel="canonical" href="https://www.ozzysequipmenthire.com.au/" />
-    <link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.ozzysequipmenthire.com.au/" />
+    <!-- Per-page <title>, description, canonical, hreflang, OG/Twitter titles,
+         page-level JSON-LD and (home only) the hero preload are injected here at
+         build time by prerender.js — see renderHead() in src/entry-server.jsx. -->
+    <!--ssg:head-->
 
-    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ozzy's Equipment Hire" />
-    <meta property="og:title" content="VMS Sign Hire | LED Trailer Sign Hire Melbourne" />
-    <meta property="og:description" content="VMS sign hire, LED trailer sign hire and LED screen trailer hire across Melbourne and Victoria. Delivery, setup and expert support." />
-    <meta property="og:url" content="https://www.ozzysequipmenthire.com.au/" />
     <meta property="og:image" content="https://www.ozzysequipmenthire.com.au/img/og-image.jpg" />
     <meta property="og:image:secure_url" content="https://www.ozzysequipmenthire.com.au/img/og-image.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -25,8 +19,6 @@
     <meta property="og:locale" content="en_AU" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="VMS Sign Hire | LED Trailer Sign Hire Melbourne" />
-    <meta name="twitter:description" content="VMS sign hire, LED trailer sign hire and LED screen trailer hire in Melbourne and Victoria. Get a quote from Ozzy's Equipment Hire." />
     <meta name="twitter:image" content="https://www.ozzysequipmenthire.com.au/img/og-image.jpg" />
     <meta name="twitter:image:alt" content="Ozzy's Equipment Hire — VMS sign hire and LED trailer sign hire in Melbourne" />
 
@@ -36,11 +28,12 @@
     <meta name="geo.region" content="AU-VIC" />
     <meta name="geo.placename" content="Melbourne" />
 
-    <!-- Matches manifest.webmanifest's theme_color; Lighthouse flags a mismatch. -->
+    <!-- Matches manifest.webmanifest's theme_color. -->
     <meta name="theme-color" content="#0F1832" />
     <meta name="application-name" content="Ozzy's Equipment Hire" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -49,39 +42,17 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <!-- Fonts are same-origin now (see src/fonts.css); no third-party handshake
+    <!-- Fonts are same-origin (see src/fonts.css); no third-party handshake
          stands between the HTML and first paint. -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-var.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/syne-latin-var.woff2" crossorigin />
-
-    <!-- LCP image. Split by media so mobile preloads exactly what <picture> picks. -->
-    <link
-      rel="preload"
-      as="image"
-      type="image/avif"
-      media="(max-width: 900px)"
-      href="/img/hero-trailer-600.avif"
-      imagesrcset="/img/hero-trailer-360.avif 360w, /img/hero-trailer-480.avif 480w, /img/hero-trailer-600.avif 600w"
-      imagesizes="calc(100vw - 4rem)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      type="image/avif"
-      media="(min-width: 901px)"
-      href="/img/hero-trailer-768.avif"
-      imagesrcset="/img/hero-trailer-600.avif 600w, /img/hero-trailer-768.avif 768w"
-      imagesizes="(max-width: 1280px) 45vw, 600px"
-      fetchpriority="high"
-    />
 
     <!-- Only touched once the quote form is submitted. -->
     <link rel="dns-prefetch" href="https://formspree.io" />
 
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- LocalBusiness + Equipment Rental -->
+    <!-- Site-wide entities. Per-page graphs reference these by @id. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -100,13 +71,7 @@
         "@type": "PostalAddress",
         "addressLocality": "Melbourne",
         "addressRegion": "VIC",
-        "postalCode": "3000",
         "addressCountry": "AU"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -37.8136,
-        "longitude": 144.9631
       },
       "areaServed": [
         { "@type": "City", "name": "Melbourne" },
@@ -123,44 +88,12 @@
         "mobile LED screen trailer hire Melbourne",
         "mobile trailer LED screen hire Melbourne"
       ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "VMS and LED trailer sign hire",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "VMS Sign Hire",
-              "description": "VMS sign hire for traffic management, roadworks and site safety across Melbourne and Victoria."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "LED Trailer Sign Hire",
-              "description": "LED trailer sign hire Melbourne for events, campaigns and outdoor messaging."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "LED Screen Trailer Hire",
-              "description": "LED screen trailer and mobile LED screen trailer hire Melbourne with delivery and setup."
-            }
-          }
-        ]
-      },
       "sameAs": [
         "https://www.facebook.com/ozzysequipmenthire",
         "https://www.instagram.com/ozzysequipmenthire"
       ]
     }
     </script>
-
-    <!-- WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -173,42 +106,6 @@
       "publisher": { "@id": "https://www.ozzysequipmenthire.com.au/#business" }
     }
     </script>
-
-    <!-- WebPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "@id": "https://www.ozzysequipmenthire.com.au/#webpage",
-      "url": "https://www.ozzysequipmenthire.com.au/",
-      "name": "VMS Sign Hire | LED Trailer Sign Hire Melbourne",
-      "description": "VMS sign hire, LED trailer sign hire Melbourne, trailer LED sign hire and LED screen trailer hire with delivery and setup.",
-      "isPartOf": { "@id": "https://www.ozzysequipmenthire.com.au/#website" },
-      "about": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
-      "mainEntity": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
-      "keywords": [
-        "VMS sign hire",
-        "LED trailer sign hire",
-        "LED trailer sign hire Melbourne",
-        "trailer LED sign hire",
-        "LED screen trailer",
-        "LED trailer screen hire",
-        "mobile LED screen trailer hire Melbourne",
-        "mobile trailer LED screen hire Melbourne"
-      ],
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "url": "https://www.ozzysequipmenthire.com.au/img/hero-trailer-768.jpg",
-        "width": 768,
-        "height": 1024,
-        "caption": "LED screen trailer and VMS sign hire in Melbourne"
-      },
-      "breadcrumb": { "@id": "https://www.ozzysequipmenthire.com.au/#breadcrumb" },
-      "inLanguage": "en-AU"
-    }
-    </script>
-
-    <!-- Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -237,159 +134,6 @@
         "areaServed": "AU",
         "availableLanguage": "English"
       }
-    }
-    </script>
-
-    <!-- Service schemas -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Service",
-          "name": "VMS Sign Hire",
-          "description": "VMS sign hire for traffic management, construction and road safety across Melbourne and Victoria.",
-          "provider": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
-          "areaServed": ["Melbourne", "Victoria", "Australia"],
-          "serviceType": "VMS sign hire"
-        },
-        {
-          "@type": "Service",
-          "name": "LED Trailer Sign Hire Melbourne",
-          "description": "LED trailer sign hire Melbourne and trailer LED sign hire for events, sport, retail and campaigns.",
-          "provider": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
-          "areaServed": ["Melbourne", "Victoria", "Australia"],
-          "serviceType": "LED trailer sign hire"
-        },
-        {
-          "@type": "Service",
-          "name": "LED Screen Trailer Hire",
-          "description": "LED screen trailer, LED trailer screen hire and mobile LED screen trailer hire Melbourne.",
-          "provider": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
-          "areaServed": ["Melbourne", "Victoria", "Australia"],
-          "serviceType": "LED screen trailer hire"
-        }
-      ]
-    }
-    </script>
-
-    <!-- BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "@id": "https://www.ozzysequipmenthire.com.au/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.ozzysequipmenthire.com.au/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "VMS Sign Hire & LED Trailer Sign Hire",
-          "item": "https://www.ozzysequipmenthire.com.au/#services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Contact",
-          "item": "https://www.ozzysequipmenthire.com.au/#contact"
-        }
-      ]
-    }
-    </script>
-
-    <!-- Pricing offers -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "@id": "https://www.ozzysequipmenthire.com.au/#product",
-      "name": "LED Trailer Sign Hire",
-      "description": "VMS sign hire, LED trailer sign hire and LED screen trailer hire in Melbourne and Victoria.",
-      "image": "https://www.ozzysequipmenthire.com.au/img/hero-trailer-768.jpg",
-      "brand": { "@type": "Brand", "name": "Ozzy's Equipment Hire" },
-      "category": "Equipment Rental",
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "AUD",
-        "lowPrice": "60",
-        "highPrice": "95",
-        "offerCount": "5",
-        "availability": "https://schema.org/InStock",
-        "seller": { "@id": "https://www.ozzysequipmenthire.com.au/#business" },
-        "url": "https://www.ozzysequipmenthire.com.au/#pricing",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "priceCurrency": "AUD",
-          "minPrice": "60",
-          "maxPrice": "95",
-          "unitCode": "DAY",
-          "unitText": "per day (ex GST)",
-          "valueAddedTaxIncluded": false
-        }
-      }
-    }
-    </script>
-
-    <!-- FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do you offer VMS sign hire in Melbourne?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Ozzy's Equipment Hire provides VMS sign hire across Melbourne and Victoria. Our variable message sign trailers are used for roadworks, traffic management, construction sites and events, with delivery, setup and programming support."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I get LED trailer sign hire in Melbourne?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We specialise in LED trailer sign hire Melbourne. Whether you need a trailer LED sign hire for a festival, retail activation or roadside campaign, we deliver and set up high-visibility LED trailer signs across Greater Melbourne and regional Victoria."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is an LED screen trailer and can I hire one?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "An LED screen trailer is a towable mobile LED display — also called LED trailer screen hire. We hire LED screen trailers for events, advertising and public messaging. Ask us about LED trailer screen hire for short- or long-term use."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you provide mobile LED screen trailer hire Melbourne?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. We offer mobile LED screen trailer hire Melbourne and mobile trailer LED screen hire Melbourne, including delivery and setup. Our units are weather-ready and suitable for events, sport, construction messaging and outdoor campaigns."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does VMS sign hire or LED trailer sign hire cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Rates depend on hire length, delivery and setup. Day rates start from $60 per day (ex GST) on longer contracts, with short-term and weekly options available. Use our pricing calculator or contact us for a tailored quote for VMS sign hire, LED trailer sign hire or LED screen trailer hire."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which areas do you service for VMS sign hire and LED trailer screen hire?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We service Melbourne CBD, inner and outer suburbs, Geelong, Ballarat, Bendigo, Gippsland and wider Victoria. Tell us your site or event location when you enquire and we will confirm delivery for VMS sign hire, LED trailer sign hire and mobile LED screen trailer hire."
-          }
-        }
-      ]
     }
     </script>
   </head>

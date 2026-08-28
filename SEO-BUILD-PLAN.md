@@ -122,7 +122,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   still inlined. With only `/` in ROUTES the output matches 0.1.
   Accept: `dist/index.html` unchanged in substance; build + lint clean.
 
-- [ ] **0.3 Per-page `<head>` builder.**
+- [x] **0.3 Per-page `<head>` builder.**
   Add `renderHead(path)` to `entry-server.jsx`: returns title, meta description,
   canonical, OG/Twitter, hreflang, and the route's `jsonLd` as `<script type="application/ld+json">`
   blocks, from the route `seo` + shared constants. `prerender.js` injects it.
@@ -275,3 +275,4 @@ _(append: task id — one-line result — commit sha)_
 - 0.0 — plan created
 - 0.1 — routes.jsx manifest + App({path}) + pages/Home.jsx; render(path); main passes location.pathname; eslint override for routing layer
 - 0.2 — prerender.js loops ROUTES, inlines CSS once, writes dist/<path>/index.html; / output byte-identical (54.0 kB)
+- 0.3 — renderHead(path) in entry-server builds per-page title/desc/canonical/OG/JSON-LD; index.html now global-only with <!--ssg:head--> marker; dropped keywords meta + malformed breadcrumb + fabricated geo/postcode; 7 valid JSON-LD blocks on /

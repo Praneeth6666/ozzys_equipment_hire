@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = resolve(__dirname, 'dist');
 const ROOT_MARKER = '<div id="root"></div>';
+const HEAD_MARKER = '<!--ssg:head-->';
 
 /** Inline the emitted stylesheet and remove its render-blocking <link>. Once. */
 function inlineCss(html) {
@@ -53,19 +54,23 @@ async function prerender() {
     logLevel: 'warn',
   });
 
-  const { render, ROUTES } = await import(resolve(DIST, 'server/entry-server.js'));
+  const { render, renderHead, ROUTES } = await import(resolve(DIST, 'server/entry-server.js'));
 
   const indexPath = resolve(DIST, 'index.html');
   let template = readFileSync(indexPath, 'utf-8');
-  if (!template.includes(ROOT_MARKER)) {
-    throw new Error(`[SSG] Could not find ${ROOT_MARKER} in dist/index.html`);
+  for (const marker of [ROOT_MARKER, HEAD_MARKER]) {
+    if (!template.includes(marker)) {
+      throw new Error(`[SSG] Could not find ${marker} in dist/index.html`);
+    }
   }
   template = inlineCss(template);
 
   console.log(`[SSG] Rendering ${ROUTES.length} route(s)…`);
   for (const route of ROUTES) {
     const appHtml = render(route.path);
-    const html = template.replace(ROOT_MARKER, `<div id="root">${appHtml}</div>`);
+    const html = template
+      .replace(HEAD_MARKER, () => renderHead(route.path))
+      .replace(ROOT_MARKER, () => `<div id="root">${appHtml}</div>`);
     const out = outFileFor(route.path);
     mkdirSync(dirname(out), { recursive: true });
     writeFileSync(out, html);
