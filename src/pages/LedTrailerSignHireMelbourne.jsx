@@ -1,5 +1,6 @@
 import './service-page.css';
 import Breadcrumb from '../components/Breadcrumb';
+import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
 import { SERVICE_AREAS } from '../data/seo';
 
@@ -248,6 +249,8 @@ export default function LedTrailerSignHireMelbourne() {
           </ul>
         </div>
       </section>
+
+      <Reviews />
 
       <Contact />
     </main>

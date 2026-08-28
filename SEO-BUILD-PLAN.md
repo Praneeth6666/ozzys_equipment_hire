@@ -235,7 +235,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   pass so each money page and guide has 2–4 contextual in-body links.
   Accept: every page reachable from the nav; breadcrumbs render; build + lint clean.
 
-- [ ] **3.2 Reviews scaffold (no fake reviews).**
+- [x] **3.2 Reviews scaffold (no fake reviews).**
   `src/data/reviews.js` exporting `REVIEWS = []` with a header comment on how to add
   one. `<Reviews>` component renders nothing when empty. `renderHead` adds
   `AggregateRating` to the business JSON-LD **only when `REVIEWS.length > 0`**. Place
@@ -287,3 +287,4 @@ _(append: task id — one-line result — commit sha)_
 - 2.4 — /guides/vms-sign-hire-cost/ (answer-first, full rate table, what-moves-the-total, worked example, 4-Q FAQ); GuideLayout component + guideRoute() factory (ogType article -> Article JSON-LD); 13 URLs
 - 2.5/2.6/2.7 — three guides: VMS vs LED sign vs screen (decision table + per-type sections), LED screen trailer sizing (crowd/distance guide + 3-Q FAQ), Victorian traffic-management sign rules (responsibilities, permits, AS 4852, 3-Q FAQ). All Article + FAQPage JSON-LD. 16 URLs. Group 2 complete.
 - 3.1 — src/nav.js shared NAV + AREA_LINKS; Header nav = real page links with aria-current on the active page (sub-pages match their section); logo scrolls-to-top only on home, navigates home elsewhere; Footer nav rebuilt from NAV + a regional-areas row; breadcrumbs already on every non-home page. All pages reachable, no console errors.
+- 3.2 — src/data/reviews.js (REVIEWS = [] + averageRating + how-to comment); <Reviews> renders null while empty; renderHead adds AggregateRating + review[] only when hasReviews && REVIEWS.length; <Reviews> on home + 3 money pages. Nothing visible/schema changes while empty.

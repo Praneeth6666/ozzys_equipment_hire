@@ -4,6 +4,7 @@ import Areas from '../components/Areas';
 import About from '../components/About';
 import Pricing from '../components/Pricing';
 import FAQ from '../components/FAQ';
+import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Areas />
       <About />
       <Pricing />
+      <Reviews />
       <FAQ />
       <Contact />
     </main>

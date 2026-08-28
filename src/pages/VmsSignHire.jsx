@@ -1,5 +1,6 @@
 import './service-page.css';
 import Breadcrumb from '../components/Breadcrumb';
+import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
 
 const CRUMBS = [
@@ -264,6 +265,8 @@ export default function VmsSignHire() {
           </ul>
         </div>
       </section>
+
+      <Reviews />
 
       <Contact />
     </main>

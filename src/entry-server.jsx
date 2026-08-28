@@ -2,6 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { StrictMode } from 'react';
 import App from './App.jsx';
 import { ROUTES, SITE_URL, routeFor } from './routes';
+import { REVIEWS, averageRating } from './data/reviews';
 
 export { ROUTES };
 
@@ -101,6 +102,29 @@ export function renderHead(path = '/') {
   const graph = [webPageLd(route, url)];
   if (s.breadcrumb && s.breadcrumb.length > 1) graph.push(breadcrumbLd(s.breadcrumb, url));
   for (const obj of s.jsonLd || []) graph.push(obj);
+
+  // Star rating, only on pages that visibly show the reviews, and only once
+  // there are real reviews (see src/data/reviews.js).
+  if (s.hasReviews && REVIEWS.length > 0) {
+    graph.push({
+      '@context': 'https://schema.org',
+      '@id': `${SITE_URL}/#business`,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: averageRating(),
+        reviewCount: REVIEWS.length,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      review: REVIEWS.map((r) => ({
+        '@type': 'Review',
+        author: { '@type': 'Person', name: r.author },
+        datePublished: r.date,
+        reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+        reviewBody: r.text,
+      })),
+    });
+  }
 
   for (const obj of graph) {
     tags.push(`<script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n    </script>`);

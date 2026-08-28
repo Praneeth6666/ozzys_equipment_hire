@@ -251,6 +251,7 @@ export const ROUTES = [
         caption: 'LED screen trailer and VMS sign hire in Melbourne',
       },
       breadcrumb: [['Home', '/']],
+      hasReviews: true,
       jsonLd: [HOME_SERVICES, HOME_PRODUCT, faqPage(FAQ_ITEMS)],
     },
   },
@@ -266,6 +267,7 @@ export const ROUTES = [
         ['Home', '/'],
         ['VMS Sign Hire', '/vms-sign-hire/'],
       ],
+      hasReviews: true,
       jsonLd: [
         serviceLd({
           name: 'VMS Sign Hire',
@@ -296,6 +298,7 @@ export const ROUTES = [
         ['Home', '/'],
         ['LED Trailer Sign Hire Melbourne', '/led-trailer-sign-hire-melbourne/'],
       ],
+      hasReviews: true,
       jsonLd: [
         serviceLd({
           name: 'LED Trailer Sign Hire Melbourne',
@@ -326,6 +329,7 @@ export const ROUTES = [
         ['Home', '/'],
         ['LED Screen Trailer Hire', '/led-screen-trailer-hire/'],
       ],
+      hasReviews: true,
       jsonLd: [
         serviceLd({
           name: 'LED Screen Trailer Hire',
