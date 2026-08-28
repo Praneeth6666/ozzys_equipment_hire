@@ -33,6 +33,7 @@ import AreaGeelong from './pages/areas/Geelong';
 import AreaBallarat from './pages/areas/Ballarat';
 import AreaBendigo from './pages/areas/Bendigo';
 import AreaGippsland from './pages/areas/Gippsland';
+import GuidesHub from './pages/Guides';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -408,6 +409,21 @@ export const ROUTES = [
     description:
       'VMS board, LED trailer sign and LED screen trailer hire delivered across Gippsland — Latrobe Valley, South and East Gippsland — from Melbourne. From $45/day ex GST.',
   }),
+  {
+    path: '/guides/',
+    Page: GuidesHub,
+    seo: {
+      title: 'Hire Guides | VMS, LED Trailer Sign & Screen Hire',
+      description:
+        'Practical guides to VMS board, LED trailer sign and LED screen trailer hire in Victoria: what it costs, which trailer to choose, screen sizing, and the sign rules.',
+      h1: 'Hire guides',
+      breadcrumb: [
+        ['Home', '/'],
+        ['Guides', '/guides/'],
+      ],
+      jsonLd: [],
+    },
+  },
 ];
 
 /** Normalise a request path and return its route (falling back to home). */

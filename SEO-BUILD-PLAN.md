@@ -196,7 +196,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   Melbourne, links back to the 3 money pages. One commit. Sitemap entries.
   Accept: 4 pages render, JSON-LD valid, build + lint clean.
 
-- [ ] **2.3 `/guides/` hub.**
+- [x] **2.3 `/guides/` hub.**
   Hub page + route listing the 4 guides with summaries. Sitemap entry.
   Accept: renders, build + lint clean.
 
@@ -283,3 +283,4 @@ _(append: task id — one-line result — commit sha)_
 - 1.5 — home reworked: IntentContent (8 keyword-stuffed cards) deleted; Hero rewritten as a value prop linking to the 3 service pages; Services cards are now links; home h1 'Signs and screens on trailers, delivered and set up'; home 54.1->50.8 kB; hydrates clean. Group 1 complete.
 - 2.1 — /service-areas/ hub (5 areas) + /service-areas/melbourne/ (~500 words, 6-region suburb table, LocalBusiness-scoped Service JSON-LD with areaServed); areaServiceLd() helper; sitemap auto-picks nested paths (7 URLs)
 - 2.2 — /service-areas/{geelong,ballarat,bendigo,gippsland}/ via shared AreaLayout + per-page local prose (~450 words each, distinct); areaRoute() route factory; generate-seo.mjs now catches slug-built paths (sitemap = 11 URLs)
+- 2.3 — /guides/ hub listing the 4 guides; GUIDES array exported for cross-linking; 12 URLs in sitemap
