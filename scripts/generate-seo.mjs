@@ -22,8 +22,19 @@ const PUBLIC = resolve(ROOT, 'public');
 
 const SITE = 'https://www.ozzysequipmenthire.com.au';
 
-/** Sources that determine the content of the single page. */
+/** Sources that determine site content. */
 const PAGE_SOURCES = ['index.html', 'src'];
+
+/**
+ * Route paths, read straight out of the manifest so the sitemap can't drift
+ * from what actually builds. A tiny regex beats wiring a JSX bundler into this
+ * Node script.
+ */
+function routePaths() {
+  const src = readFileSync(resolve(ROOT, 'src/routes.jsx'), 'utf-8');
+  const paths = [...src.matchAll(/path:\s*'([^']+)'/g)].map((m) => m[1]);
+  return [...new Set(paths)];
+}
 
 function lastModified(paths) {
   try {
@@ -49,28 +60,34 @@ function lastModified(paths) {
  * on-page nav instead.
  */
 function buildSitemap(lastmod) {
-  const images = [
-    {
-      loc: `${SITE}/img/hero-trailer-768.jpg`,
-      title: 'LED screen trailer hire Melbourne',
-      caption:
-        'Mobile LED screen trailer used for VMS sign hire and LED trailer sign hire in Melbourne.',
-    },
-    {
-      loc: `${SITE}/img/og-image.jpg`,
-      title: "Ozzy's Equipment Hire — VMS sign hire Melbourne",
-      caption: 'VMS sign hire, LED trailer sign hire and LED screen trailer hire across Victoria.',
-    },
-  ];
+  const homeImages = `    <image:image>
+      <image:loc>${SITE}/img/hero-trailer-768.jpg</image:loc>
+      <image:title>LED screen trailer hire Melbourne</image:title>
+      <image:caption>Mobile LED screen trailer used for VMS sign hire and LED trailer sign hire in Melbourne.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>${SITE}/img/og-image.jpg</image:loc>
+      <image:title>Ozzy&apos;s Equipment Hire — VMS sign hire Melbourne</image:title>
+      <image:caption>VMS sign hire, LED trailer sign hire and LED screen trailer hire across Victoria.</image:caption>
+    </image:image>`;
 
-  const imageXml = images
-    .map(
-      (img) => `    <image:image>
-      <image:loc>${img.loc}</image:loc>
-      <image:title>${escapeXml(img.title)}</image:title>
-      <image:caption>${escapeXml(img.caption)}</image:caption>
-    </image:image>`,
-    )
+  const urls = routePaths()
+    .map((p) => {
+      const loc = `${SITE}${p}`;
+      const depth = p === '/' ? 0 : p.replace(/^\/|\/$/g, '').split('/').length;
+      const priority = p === '/' ? '1.0' : (Math.max(0.4, 0.9 - depth * 0.1)).toFixed(1);
+      const changefreq = depth <= 1 ? 'weekly' : 'monthly';
+      const extra = p === '/' ? `\n${homeImages}` : '';
+      return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="${loc}" />${
+        p === '/' ? `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${loc}" />` : ''
+      }${extra}
+  </url>`;
+    })
     .join('\n');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -78,21 +95,9 @@ function buildSitemap(lastmod) {
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>${SITE}/</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en-au" href="${SITE}/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}/" />
-${imageXml}
-  </url>
+${urls}
 </urlset>
 `;
-}
-
-function escapeXml(s) {
-  return s.replace(/[<>&'"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[c]));
 }
 
 /* ------------------------------------------------------------------- robots */

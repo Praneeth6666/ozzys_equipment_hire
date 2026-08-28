@@ -19,22 +19,69 @@
  */
 
 import Home from './pages/Home';
+import VmsSignHire, { FAQ as VMS_FAQ } from './pages/VmsSignHire';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
 
 const BUSINESS = { '@id': `${SITE_URL}/#business` };
 
-/** FAQPage object from the shared FAQ copy. */
+/** FAQPage object. Accepts {question,answer} or the page-local {q,a} shape. */
 function faqPage(items) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: items.map((f) => ({
       '@type': 'Question',
-      name: f.question,
-      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      name: f.question ?? f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer ?? f.a },
     })),
+  };
+}
+
+/** Service object for a dedicated hire page. */
+function serviceLd({ name, serviceType, description, url }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name,
+    serviceType,
+    description,
+    provider: BUSINESS,
+    areaServed: ['Melbourne', 'Victoria', 'Australia'],
+    url,
+  };
+}
+
+/** Product + AggregateOffer for a hire page, priced on the shared day-rate card. */
+function hireProductLd({ name, description, url, image }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    description,
+    image: image || `${SITE_URL}/img/hero-trailer-768.jpg`,
+    brand: { '@type': 'Brand', name: "Ozzy's Equipment Hire" },
+    category: 'Equipment Rental',
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'AUD',
+      lowPrice: '45',
+      highPrice: '75',
+      offerCount: '6',
+      availability: 'https://schema.org/InStock',
+      seller: BUSINESS,
+      url,
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        priceCurrency: 'AUD',
+        minPrice: '45',
+        maxPrice: '75',
+        unitCode: 'DAY',
+        unitText: 'per day (ex GST)',
+        valueAddedTaxIncluded: false,
+      },
+    },
   };
 }
 
@@ -123,6 +170,36 @@ export const ROUTES = [
       },
       breadcrumb: [['Home', '/']],
       jsonLd: [HOME_SERVICES, HOME_PRODUCT, faqPage(FAQ_ITEMS)],
+    },
+  },
+  {
+    path: '/vms-sign-hire/',
+    Page: VmsSignHire,
+    seo: {
+      title: 'VMS Sign Hire Melbourne | Variable Message Signs',
+      description:
+        'VMS sign hire in Melbourne from $45/day ex GST. Trailer-mounted variable message signs for roadworks, traffic management and events — delivered, placed and programmed across Victoria.',
+      h1: 'VMS sign hire in Melbourne',
+      breadcrumb: [
+        ['Home', '/'],
+        ['VMS Sign Hire', '/vms-sign-hire/'],
+      ],
+      jsonLd: [
+        serviceLd({
+          name: 'VMS Sign Hire',
+          serviceType: 'VMS sign hire',
+          description:
+            'Trailer-mounted variable message sign hire for roadworks, traffic management, construction sites and events across Melbourne and Victoria. Delivery, placement and message programming included.',
+          url: `${SITE_URL}/vms-sign-hire/`,
+        }),
+        hireProductLd({
+          name: 'VMS Sign Hire',
+          description:
+            'Variable message sign (VMS board) hire in Melbourne and Victoria — amber and full-colour, solar assisted, remotely programmable.',
+          url: `${SITE_URL}/vms-sign-hire/`,
+        }),
+        faqPage(VMS_FAQ),
+      ],
     },
   },
 ];

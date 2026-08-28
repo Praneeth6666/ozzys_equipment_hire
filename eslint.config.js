@@ -35,10 +35,11 @@ export default defineConfig([
     },
   },
 
-  // The routing layer legitimately exports data + helpers alongside pages;
-  // it's not part of the HMR component graph.
+  // The routing layer and page modules legitimately export data (FAQ arrays,
+  // route tables) alongside their component; they are entry points, not
+  // fast-refresh leaf components.
   {
-    files: ['src/routes.jsx', 'src/entry-server.jsx'],
+    files: ['src/routes.jsx', 'src/entry-server.jsx', 'src/pages/**/*.jsx'],
     rules: { 'react-refresh/only-export-components': 'off' },
   },
 

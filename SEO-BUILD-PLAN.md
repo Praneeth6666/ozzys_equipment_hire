@@ -134,7 +134,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
 
 ### Group 1 — money pages
 
-- [ ] **1.1 `/vms-sign-hire/`.**
+- [x] **1.1 `/vms-sign-hire/`.**
   New `src/pages/VmsSignHire.jsx` + route + `seo` (Service + Product/AggregateOffer +
   FAQPage + BreadcrumbList JSON-LD). ~1,300–1,700 words, genuinely distinct from the
   other pages. Cover: what a VMS board is, Class A/B/C and sizes, common uses
@@ -276,3 +276,4 @@ _(append: task id — one-line result — commit sha)_
 - 0.1 — routes.jsx manifest + App({path}) + pages/Home.jsx; render(path); main passes location.pathname; eslint override for routing layer
 - 0.2 — prerender.js loops ROUTES, inlines CSS once, writes dist/<path>/index.html; / output byte-identical (54.0 kB)
 - 0.3 — renderHead(path) in entry-server builds per-page title/desc/canonical/OG/JSON-LD; index.html now global-only with <!--ssg:head--> marker; dropped keywords meta + malformed breadcrumb + fabricated geo/postcode; 7 valid JSON-LD blocks on /
+- 1.1 — /vms-sign-hire/ page (~1,300 words, 7-Q FAQ, rate table, 'not for you' block); shared src/pages/service-page.css; Breadcrumb component; Service+Product+FAQPage JSON-LD; generate-seo.mjs now enumerates ROUTES for the sitemap; both pages hydrate clean, no console errors
