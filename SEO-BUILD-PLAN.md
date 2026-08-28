@@ -1,0 +1,275 @@
+# SEO multi-page rebuild — build plan
+
+Durable checklist for turning the single-page site into the multi-page structure the
+competitor analysis calls for. **Any session (a person, or the resume cron) continues
+by doing the next `[ ]` task.** State lives here, in git — not in a scheduler.
+
+- Branch: `seo/multi-page-rebuild`
+- Analysis this implements: "Eight Keywords, Two Clusters"
+  (https://claude.ai/code/artifact/d9e0eb46-5d5a-4364-a309-2fe3e8bd9ef8)
+- Rule: **one task per run.** Do the next `[ ]`, run `npm run build` **and** `npm run lint`
+  (both must pass), mark it `[x]` with a one-line note + commit sha, `git commit`
+  (local, on this branch — do **not** push). Then stop.
+- If a task can't be made to pass, revert its changes, leave it `[ ]`, and add a
+  `> blocked:` note explaining why.
+
+---
+
+## Why this work
+
+The 8 target keywords are two products Google ranks separately (roadside message/VMS
+signs vs event LED video screens). One URL can't win both. Every ranking competitor
+runs a multi-page hub; the current site is one `index.html` targeting all 8 terms with
+the same copy reworded — a quality risk in itself. This rebuild gives each cluster its
+own dedicated, genuinely distinct page plus the local + supporting pages the
+competitors lack.
+
+---
+
+## Architecture (target)
+
+Minimal in-house routing + multi-target prerender. **No React Router.** Full page
+loads between routes; each page hydrates itself.
+
+```
+src/routes.jsx        ROUTES: [{ path, Page, seo }]  — the single source of truth
+src/pages/*.jsx       one component per page; renders <main> content only
+src/App.jsx           App({ path }) -> <Header/> <Page/> <Contact/> <Footer/>
+src/entry-server.jsx  render(path) -> { appHtml };  renderHead(path) -> <head> inner HTML
+src/main.jsx          hydrateRoot(root, <App path={location.pathname} />)
+prerender.js          for each ROUTE: write dist/<path>/index.html with per-page
+                      <head> (title, description, canonical, OG, JSON-LD) + prerendered body
+index.html            global <head> only: charset, viewport, fonts preload, favicon,
+                      manifest, theme-color, module script, global JSON-LD
+                      (Organization, WebSite+SearchAction)
+scripts/generate-seo.mjs   builds sitemap.xml / robots.txt / llms.txt from ROUTES
+```
+
+Per-page `seo` object shape:
+```js
+{
+  title: '…',                 // <=60 chars, exact target phrase near the front
+  description: '…',            // 140–160 chars
+  h1: '…',                     // exact target phrase, distinct from <title>
+  path: '/vms-sign-hire/',
+  breadcrumb: [['Home','/'], ['VMS Sign Hire','/vms-sign-hire/']],
+  jsonLd: [ /* Service, Product/Offer, FAQPage, BreadcrumbList objects */ ],
+}
+```
+
+Every page: target phrase in URL slug + `<title>` + `<h1>` + first paragraph.
+Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD,
+2–4 contextual internal links to sibling pages / guides, a link to `/pricing/`.
+
+---
+
+## Content rules (from CLAUDE.md — non-negotiable)
+
+- Never use: "unlock", "leverage", "seamless", "world-class", "in today's fast-paced
+  world". No exclamation marks. No emojis.
+- Start with the answer, then context.
+- Use the real numbers below, never rounded, never invented.
+- Say plainly when NOT to hire us (one honest "not for you if…" line per money page).
+- Do not invent: ABN, street/depot address, owner name, years trading, job counts,
+  review count or rating, insurer. Where a page wants one, leave
+  `{/* TODO(owner): confirm X */}` and omit it from visible copy + schema.
+- Re-read your draft and delete anything that reads as AI-written boilerplate.
+
+### Canonical numbers
+
+| Contract length | Per day (ex GST) | Approx. monthly (30 days, ex GST) |
+|---|---|---|
+| 12 months | $45 | $1,350 |
+| 6 months  | $50 | $1,500 |
+| 3 months  | $60 | $1,800 |
+| 1 month   | $70 | $2,100 |
+| Under 1 month | $75 | $2,250 |
+| 1–6 days  | flat $500 + 8% insurance | — |
+
+- Insurance: 8% of total hire price. Client supplies a 15A power connection.
+- Delivery, setup & installation: one-off $350 for hires under 3 months; self-pickup
+  available.
+- Phone 0469 316 068 · ozzysequipmenthire@gmail.com
+- Service area: Greater Melbourne + Geelong, Ballarat, Bendigo, Gippsland, regional
+  Victoria. Suburb list is in `src/data/seo.js` (`SERVICE_AREAS`).
+
+### Keyword → page map
+
+| Page | Primary phrase(s) |
+|---|---|
+| `/vms-sign-hire/` | vms sign hire (140) |
+| `/led-trailer-sign-hire-melbourne/` | led trailer sign hire (110) · led trailer sign hire melbourne (50) · trailer led sign hire (40) |
+| `/led-screen-trailer-hire/` | led screen trailer (40) · led trailer screen hire (30) · mobile led screen trailer hire melbourne (30) · mobile trailer led screen hire melbourne (20) |
+
+---
+
+## Tasks
+
+### Group 0 — routing infrastructure (do first; unlocks the rest)
+
+- [ ] **0.1 Route manifest + path-aware render.**
+  Add `src/routes.jsx` exporting `ROUTES` with a single entry for `/` pointing at a new
+  `src/pages/Home.jsx` (move the current `App` body — Hero…Contact — into it).
+  `App.jsx` → `App({ path })` looks up the route, renders `<Header/>` + page + `<Footer/>`
+  (Contact stays inside Home for now). `entry-server.jsx` → `render(path='/')`.
+  `main.jsx` → pass `window.location.pathname`.
+  Accept: `npm run build` output is home, still fully pre-rendered, hydrates with no
+  console error; `npm run lint` clean.
+
+- [ ] **0.2 Multi-target prerender.**
+  Rewrite `prerender.js` to import `{ ROUTES }` and loop: for each route write
+  `dist/<path>/index.html` (`/` → `dist/index.html`), body from `render(path)`, CSS
+  still inlined. With only `/` in ROUTES the output matches 0.1.
+  Accept: `dist/index.html` unchanged in substance; build + lint clean.
+
+- [ ] **0.3 Per-page `<head>` builder.**
+  Add `renderHead(path)` to `entry-server.jsx`: returns title, meta description,
+  canonical, OG/Twitter, hreflang, and the route's `jsonLd` as `<script type="application/ld+json">`
+  blocks, from the route `seo` + shared constants. `prerender.js` injects it.
+  Strip the per-page tags (title, description, canonical, OG, page-level JSON-LD:
+  WebPage/Service/Breadcrumb/Product/FAQPage, hero image preload) out of `index.html`;
+  leave global ones (Organization, WebSite). Move the hero `<link rel=preload as=image>`
+  into `renderHead('/')`.
+  Accept: home `<head>` is equivalent to before (diff the JSON-LD); build + lint clean.
+
+### Group 1 — money pages
+
+- [ ] **1.1 `/vms-sign-hire/`.**
+  New `src/pages/VmsSignHire.jsx` + route + `seo` (Service + Product/AggregateOffer +
+  FAQPage + BreadcrumbList JSON-LD). ~1,300–1,700 words, genuinely distinct from the
+  other pages. Cover: what a VMS board is, Class A/B/C and sizes, common uses
+  (roadworks, traffic management, road closures, events, site safety), programming /
+  remote message updates, AS 4852 relevance, delivery + setup + the 15A power note,
+  a rendered rate summary linking to `/pricing/`, a 5–7 question FAQ, one honest
+  "not the right hire if…" line, 2–3 internal links (led-trailer-sign page, pricing,
+  the cost guide once it exists). Add the page to `scripts/generate-seo.mjs` ROUTES /
+  sitemap. Real photos: reference `/img/hero-trailer-*` for now + `{/* TODO(owner):
+  add VMS board photos */}`.
+  Accept: page renders at `/vms-sign-hire/`, valid JSON-LD, build + lint clean.
+
+- [ ] **1.2 `/led-trailer-sign-hire-melbourne/`.**
+  Page + route + schema. Targets the 3 sign-cluster "led/trailer … sign hire" phrases.
+  Event + roadside-advertising framing (festivals, sport, retail activations, campaigns,
+  council works). Include: full-colour vs amber, screen sizes, brightness, solar vs
+  mains, delivery across the suburb list (pull from `SERVICE_AREAS`), turnaround,
+  content/artwork support, rate summary + `/pricing/` link, 5–7 Q FAQ, "not for you
+  if…", internal links (VMS page, LED screen page, areas, guides). Sitemap entry.
+  Accept: renders, valid JSON-LD, build + lint clean.
+
+- [ ] **1.3 `/led-screen-trailer-hire/`.**
+  Page + route + schema. The event-video-screen cluster (new territory). Cover: what a
+  mobile LED screen trailer is vs a message sign, pixel pitch (Pic the real fleet
+  values if known, else describe the range) and what it means for viewing distance,
+  screen area in m², daylight brightness / nits, onboard power + audio, hydraulic lift
+  if applicable {/* TODO(owner): confirm fleet specs */}, setup time, delivery radius,
+  event use-cases (festivals, sport, outdoor cinema, brand activations, community
+  events), rate summary + `/pricing/` link, 5–7 Q FAQ, "not for you if…", internal
+  links. Sitemap entry.
+  Accept: renders, valid JSON-LD, build + lint clean.
+
+- [ ] **1.4 `/pricing/`.**
+  Move the `Pricing` component + calculator to its own page + route. Add the full rate
+  table and notes as crawlable HTML (not only the JS widget). Product/AggregateOffer +
+  a "how much does it cost" FAQPage. Link to it from the 3 money pages and the nav.
+  Home keeps only a short "from $45/day ex GST" teaser linking here.
+  Accept: calculator works on `/pricing/`, rates present in static HTML, build + lint clean.
+
+- [ ] **1.5 Rework home `/`.**
+  Trim `Home.jsx` to: Hero (copy distinct from the service pages), 3-card Services
+  overview linking to the 3 money pages, short About, a Service-areas teaser linking to
+  `/service-areas/`, Contact. **Remove `IntentContent`** (its comparison value moves to
+  a guide). Rewrite the home `seo` (title/description/H1/JSON-LD) so it's a brand +
+  overview page, not a keyword-stuffed one.
+  Accept: home no longer repeats the 8 phrases verbatim; build + lint clean.
+
+### Group 2 — local + supporting pages
+
+- [ ] **2.1 `/service-areas/` hub + `/service-areas/melbourne/`.**
+  Hub lists all areas + links each service page. Melbourne page: ~500 words, named
+  suburbs from `SERVICE_AREAS`, delivery/turnaround, LocalBusiness + Service JSON-LD
+  with `areaServed`. Sitemap entries.
+  Accept: both render, valid JSON-LD, build + lint clean.
+
+- [ ] **2.2 Regional location pages.**
+  `/service-areas/geelong/`, `/ballarat/`, `/bendigo/`, `/gippsland/` — ~350–500 words
+  each, genuinely localised (not find/replace), lead times honest about travel from
+  Melbourne, links back to the 3 money pages. One commit. Sitemap entries.
+  Accept: 4 pages render, JSON-LD valid, build + lint clean.
+
+- [ ] **2.3 `/guides/` hub.**
+  Hub page + route listing the 4 guides with summaries. Sitemap entry.
+  Accept: renders, build + lint clean.
+
+- [ ] **2.4 `/guides/vms-sign-hire-cost/`.**
+  Answer-first ("VMS sign hire in Melbourne starts at $45/day ex GST on a 12-month
+  contract; short hires of 1–6 days are a flat $500 plus 8% insurance."), then the full
+  rate table, what drives price (term, delivery, insurance, power), Article + FAQPage
+  JSON-LD. Internal links to `/vms-sign-hire/` and `/pricing/`.
+  Accept: renders, valid JSON-LD, build + lint clean.
+
+- [ ] **2.5 `/guides/vms-vs-led-trailer-sign/`.**
+  The comparison that replaces `IntentContent`: when to use a VMS message board vs a
+  full-colour LED trailer sign vs an LED screen trailer, by job type. Article JSON-LD.
+  Links to all 3 money pages.
+  Accept: renders, build + lint clean.
+
+- [ ] **2.6 `/guides/led-screen-trailer-sizes/`.**
+  Screen area, pixel pitch and viewing distance explained for event buyers; a sizing
+  table; how to pick for a crowd size / venue. Article JSON-LD. Links to
+  `/led-screen-trailer-hire/`.
+  Accept: renders, build + lint clean.
+
+- [ ] **2.7 `/guides/traffic-management-sign-rules-victoria/`.**
+  Plain-English overview: where VMS boards may be placed, AS 4852 / VicRoads context,
+  who is responsible for approvals, what the hire company does vs the traffic
+  management plan. No legal advice; link to the authorities. Article JSON-LD. Links to
+  `/vms-sign-hire/`.
+  Accept: renders, build + lint clean.
+
+### Group 3 — glue + technical
+
+- [ ] **3.1 Navigation + breadcrumbs + internal linking.**
+  Header: grouped nav to every page (a "Hire" group with the 3 services + pricing, plus
+  Areas, Guides, Contact). Footer: full sitemap-style link list. Add a `<Breadcrumb>`
+  component driven by each route's `breadcrumb`, shown on every non-home page. Do a
+  pass so each money page and guide has 2–4 contextual in-body links.
+  Accept: every page reachable from the nav; breadcrumbs render; build + lint clean.
+
+- [ ] **3.2 Reviews scaffold (no fake reviews).**
+  `src/data/reviews.js` exporting `REVIEWS = []` with a header comment on how to add
+  one. `<Reviews>` component renders nothing when empty. `renderHead` adds
+  `AggregateRating` to the business JSON-LD **only when `REVIEWS.length > 0`**. Place
+  `<Reviews>` on home + the 3 money pages.
+  Accept: nothing visible changes while empty; no `AggregateRating` in output; build + lint clean.
+
+- [ ] **3.3 Global JSON-LD graph.**
+  In `index.html` keep only `Organization` (+ `logo` ImageObject, `sameAs`,
+  `contactPoint` with the phone) and `WebSite` (+ `potentialAction` SearchAction
+  pointing at a `/?s=` or omitted if no search). Ensure `@id` references line up across
+  per-page graphs. Remove the old single-page `Product` / `BreadcrumbList` / `FAQPage`
+  from the global template (now per-page).
+  Accept: `Organization` + `WebSite` valid; no duplicate `@id`; build + lint clean.
+
+- [ ] **3.4 Generate crawler files from ROUTES.**
+  `scripts/generate-seo.mjs`: `sitemap.xml` from `ROUTES` (every path, `lastmod` from
+  the last commit touching that page's sources, priority by depth). `robots.txt`
+  unchanged bar the sitemap line. Rewrite `llms.txt` to the llmstxt.org shape with the
+  new page list (H2 sections: Services, Guides, Service areas, Pricing, Contact — each
+  a markdown link list).
+  Accept: sitemap lists all routes; `xmllint --noout` passes; build + lint clean.
+
+- [ ] **3.5 Final QA.**
+  `npm run build` + `npm run lint` clean. Serve `dist/` and run Lighthouse on `/`,
+  `/vms-sign-hire/`, `/led-screen-trailer-hire/`: performance ≥ 95, SEO 100,
+  accessibility 100, best-practices 100 — fix any regression. Check each page hydrates
+  with no console error and internal links resolve. Update `README.md` with the
+  multi-page architecture and "how to add a page" (add to `ROUTES`, that's it).
+  Accept: scores met, README updated, build + lint clean.
+
+---
+
+## Log
+
+_(append: task id — one-line result — commit sha)_
+
+- 0.0 — plan created — (this commit)
