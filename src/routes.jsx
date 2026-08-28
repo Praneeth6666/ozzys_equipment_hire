@@ -35,6 +35,7 @@ import AreaBendigo from './pages/areas/Bendigo';
 import AreaGippsland from './pages/areas/Gippsland';
 import GuidesHub from './pages/Guides';
 import GalleryPage from './pages/Gallery';
+import NotFound from './pages/NotFound';
 import { GALLERY } from './data/gallery';
 import VmsSignHireCost, { FAQ as COST_FAQ } from './pages/guides/VmsSignHireCost';
 import VmsVsLedTrailerSign from './pages/guides/VmsVsLedTrailerSign';
@@ -522,12 +523,41 @@ export const ROUTES = [
       'How VMS boards are governed on Victorian roads: the traffic management plan, road-authority permits, AS 4852, and what the hire company handles versus the customer.',
     faq: RULES_FAQ,
   }),
+  {
+    // Most static hosts serve dist/404.html for any unmatched path.
+    path: '/404.html',
+    Page: NotFound,
+    seo: {
+      title: 'Page not found | Ozzy’s Equipment Hire',
+      description:
+        'That page could not be found. Browse VMS sign hire, LED trailer sign hire and LED screen trailer hire in Melbourne, or get in touch.',
+      h1: 'That page isn’t here',
+      noindex: true,
+      breadcrumb: [['Home', '/']],
+      jsonLd: [],
+    },
+  },
 ];
 
-/** Normalise a request path and return its route (falling back to home). */
+/**
+ * Normalise a request path: strip a trailing slash, then add one back unless the
+ * last segment has a file extension (e.g. `/404.html`). Kept in sync with the
+ * same helper in src/client-routes.js.
+ */
+export function normPath(path) {
+  if (!path || path === '/') return '/';
+  const p = path.replace(/\/+$/, '');
+  return /\.[a-z0-9]+$/i.test(p) ? p : `${p}/`;
+}
+
+/** Return the route for a path, falling back to the 404 route, then home. */
 export function routeFor(path) {
-  const norm = path && path.length > 1 ? path.replace(/\/+$/, '') + '/' : '/';
-  return ROUTES.find((r) => r.path === norm) || ROUTES[0];
+  const norm = normPath(path);
+  return (
+    ROUTES.find((r) => r.path === norm) ||
+    ROUTES.find((r) => r.path === '/404.html') ||
+    ROUTES[0]
+  );
 }
 
 export { faqPage };

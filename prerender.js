@@ -38,10 +38,16 @@ function inlineCss(html) {
   return html.replace(linkTag, `<style>${css}</style>`);
 }
 
-/** dist location for a route path. '/' -> dist/index.html, '/a/b/' -> dist/a/b/index.html */
+/**
+ * dist location for a route path.
+ *   '/'          -> dist/index.html
+ *   '/a/b/'      -> dist/a/b/index.html
+ *   '/404.html'  -> dist/404.html   (a file hosts serve for unmatched paths)
+ */
 function outFileFor(routePath) {
   if (routePath === '/') return resolve(DIST, 'index.html');
   const clean = routePath.replace(/^\/+|\/+$/g, '');
+  if (/\.html?$/i.test(clean)) return resolve(DIST, clean);
   return resolve(DIST, clean, 'index.html');
 }
 
@@ -104,7 +110,8 @@ async function prerender() {
     writeFileSync(resolve(dir, 'sitemap.xml'), sitemap);
     writeFileSync(resolve(dir, 'llms.txt'), llms);
   }
-  console.log(`[SSG] sitemap.xml (${ROUTES.length} URLs) + llms.txt written; lastmod ${lastmod}.`);
+  const indexable = ROUTES.filter((r) => !r.seo || !r.seo.noindex).length;
+  console.log(`[SSG] sitemap.xml (${indexable} URLs) + llms.txt written; lastmod ${lastmod}.`);
 
   console.log('[SSG] Done — every route pre-rendered, no blocking CSS.');
 }

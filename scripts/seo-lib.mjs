@@ -38,6 +38,7 @@ export function buildSitemap(routes, lastmod) {
     </image:image>`;
 
   const urls = routes
+    .filter((r) => !r.seo || !r.seo.noindex)
     .map((r) => {
       const p = r.path;
       const loc = `${SITE}${p}`;

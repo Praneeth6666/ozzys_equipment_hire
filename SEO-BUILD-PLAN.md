@@ -303,7 +303,7 @@ owner fills it.
   console error and no visible flash; Lighthouse perf on `/` and a service page
   ≥ 98 on a gzip server; build + lint clean.
 
-- [ ] **P3 404 page.**
+- [x] **P3 404 page.**
   `src/pages/NotFound.jsx` + a `'/404.html'` route (most static hosts serve
   `404.html` for unknown paths). Brief copy, links to the 3 services + home +
   contact. `App.jsx` `routeFor()` already falls back to home for unknown client
@@ -399,3 +399,4 @@ _(append: task id — one-line result — commit sha)_
 **PHASE 1 COMPLETE — 20/20 tasks. Phase 2 (P1–P9) queued below the task list.**
 - P1 — /gallery/ page: responsive grid from src/data/gallery.js (seeded with the 1 real trailer photo + TODO(owner) for fleet shots), <picture> avif/webp/jpg + lazy + dimensions, grouped by category, ImageGallery/ImageObject JSON-LD (galleryLd helper). In nav (nav.js), linked from home Services + all 3 service pages' related lists. 17 sitemap URLs. Hydrates clean.
 - P2 — src/client-routes.js (path -> () => import() map); main.jsx loads only the matched page chunk then mounts <Header/><Page/><Footer/> itself; routes.jsx/App.jsx now server-only. Entry chunk 107 KB -> 8.3 KB; one chunk per page + shared Contact/Breadcrumb/Reviews/AreaLayout/GuideLayout chunks. prerender.js guards that every ROUTE has a loader. Lighthouse perf 98 (/) / 99 (service), TBT 0, hydration clean (menu + calculator verified). README updated.
+- P3 — src/pages/NotFound.jsx + a /404.html route (prerender writes it as dist/404.html, not a dir). seo.noindex flag: renderHead now emits per-page robots/googlebot/bingbot (index by default, noindex+follow when set), and the 3 static robots metas were removed from index.html so there's no duplication. Sitemap filters noindex routes (still 17). normPath() shared shape in routes.jsx + client-routes.js so /404.html and unknown paths resolve to NotFound on both server and client. /404.html hydrates with no console errors.

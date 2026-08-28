@@ -28,10 +28,17 @@ const LOADERS = {
   '/guides/led-screen-trailer-sizes/': () => import('./pages/guides/LedScreenTrailerSizes.jsx'),
   '/guides/traffic-management-sign-rules-victoria/': () =>
     import('./pages/guides/TrafficManagementSignRulesVictoria.jsx'),
+  '/404.html': () => import('./pages/NotFound.jsx'),
 };
 
-/** Normalise a path the same way routeFor() does, then return its loader. */
+/** Same normalisation as normPath() in src/routes.jsx (kept in sync by hand). */
+function norm(path) {
+  if (!path || path === '/') return '/';
+  const p = path.replace(/\/+$/, '');
+  return /\.[a-z0-9]+$/i.test(p) ? p : `${p}/`;
+}
+
+/** Loader for a path — unknown paths fall back to the 404 page. */
 export function clientRouteFor(path) {
-  const norm = path && path.length > 1 ? path.replace(/\/+$/, '') + '/' : '/';
-  return LOADERS[norm] || LOADERS['/'];
+  return LOADERS[norm(path)] || LOADERS['/404.html'];
 }

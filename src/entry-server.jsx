@@ -82,9 +82,17 @@ export function renderHead(path = '/') {
   const url = SITE_URL + route.path;
   const ogType = s.ogType || 'website';
 
+  const robots = s.noindex
+    ? 'noindex, follow'
+    : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+  const crawler = s.noindex ? 'noindex, follow' : 'index, follow';
+
   const tags = [
     `<title>${esc(s.title)}</title>`,
     `<meta name="description" content="${esc(s.description)}" />`,
+    `<meta name="robots" content="${robots}" />`,
+    `<meta name="googlebot" content="${crawler}" />`,
+    `<meta name="bingbot" content="${crawler}" />`,
     `<link rel="canonical" href="${url}" />`,
     `<link rel="alternate" hreflang="en-au" href="${url}" />`,
   ];
