@@ -23,6 +23,9 @@ import VmsSignHire, { FAQ as VMS_FAQ } from './pages/VmsSignHire';
 import LedTrailerSignHireMelbourne, {
   FAQ as LED_SIGN_FAQ,
 } from './pages/LedTrailerSignHireMelbourne';
+import LedScreenTrailerHire, {
+  FAQ as LED_SCREEN_FAQ,
+} from './pages/LedScreenTrailerHire';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -232,6 +235,36 @@ export const ROUTES = [
           url: `${SITE_URL}/led-trailer-sign-hire-melbourne/`,
         }),
         faqPage(LED_SIGN_FAQ),
+      ],
+    },
+  },
+  {
+    path: '/led-screen-trailer-hire/',
+    Page: LedScreenTrailerHire,
+    seo: {
+      title: 'LED Screen Trailer Hire Melbourne | Mobile LED Screens',
+      description:
+        'LED screen trailer hire in Melbourne for festivals, sport and outdoor events. Mobile LED screen trailer hire with onboard sound and power — delivered, set up and operated across Victoria.',
+      h1: 'LED screen trailer hire',
+      breadcrumb: [
+        ['Home', '/'],
+        ['LED Screen Trailer Hire', '/led-screen-trailer-hire/'],
+      ],
+      jsonLd: [
+        serviceLd({
+          name: 'LED Screen Trailer Hire',
+          serviceType: 'LED screen trailer hire',
+          description:
+            'Mobile LED screen trailer hire for festivals, sport, outdoor cinema and brand activations across Greater Melbourne and regional Victoria. Trailer-mounted LED video wall with onboard sound and power; delivery, setup and operation included.',
+          url: `${SITE_URL}/led-screen-trailer-hire/`,
+        }),
+        hireProductLd({
+          name: 'LED Screen Trailer Hire',
+          description:
+            'Mobile LED screen trailer hire in Melbourne and Victoria — a trailer-mounted LED video wall for events, with onboard PA and generator.',
+          url: `${SITE_URL}/led-screen-trailer-hire/`,
+        }),
+        faqPage(LED_SCREEN_FAQ),
       ],
     },
   },

@@ -156,7 +156,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   if…", internal links (VMS page, LED screen page, areas, guides). Sitemap entry.
   Accept: renders, valid JSON-LD, build + lint clean.
 
-- [ ] **1.3 `/led-screen-trailer-hire/`.**
+- [x] **1.3 `/led-screen-trailer-hire/`.**
   Page + route + schema. The event-video-screen cluster (new territory). Cover: what a
   mobile LED screen trailer is vs a message sign, pixel pitch (Pic the real fleet
   values if known, else describe the range) and what it means for viewing distance,
@@ -278,3 +278,4 @@ _(append: task id — one-line result — commit sha)_
 - 0.3 — renderHead(path) in entry-server builds per-page title/desc/canonical/OG/JSON-LD; index.html now global-only with <!--ssg:head--> marker; dropped keywords meta + malformed breadcrumb + fabricated geo/postcode; 7 valid JSON-LD blocks on /
 - 1.1 — /vms-sign-hire/ page (~1,300 words, 7-Q FAQ, rate table, 'not for you' block); shared src/pages/service-page.css; Breadcrumb component; Service+Product+FAQPage JSON-LD; generate-seo.mjs now enumerates ROUTES for the sitemap; both pages hydrate clean, no console errors
 - 1.2 — /led-trailer-sign-hire-melbourne/ page (targets led trailer sign hire / ...melbourne / trailer led sign hire); full-colour vs amber table, per-area delivery table from SERVICE_AREAS, 7-Q FAQ, Service+Product+FAQPage JSON-LD (8/8 valid)
+- 1.3 — /led-screen-trailer-hire/ page opens the event-video cluster (led screen trailer / led trailer screen hire / mobile ...melbourne x2); screen-choosing guidance, setup/operation, 7-Q FAQ, Service+Product+FAQPage JSON-LD (8/8)
