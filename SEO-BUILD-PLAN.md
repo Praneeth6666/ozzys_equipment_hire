@@ -268,6 +268,110 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
 
 ---
 
+## Phase 2 — depth and refinement
+
+Phase 1 built the structure. Phase 2 is the code-side follow-up work: the on-page
+things that still move the needle and don't need the owner. Anything that needs a
+real business fact (fleet specs, ABN, address, reviews, GA4 id, a real video/photo
+file) stays a `{/* TODO(owner): … */}` marker — these tasks build the *slot*, the
+owner fills it.
+
+**Phase 2 tasks are independent** — do them in any order, one per run, same rules
+(build + lint must pass, one commit each, mark `[x]` + Log line, do not push).
+
+- [ ] **P1 `/gallery/` page.**
+  New `src/pages/Gallery.jsx` + route. A responsive grid built from a
+  `src/data/gallery.js` array of `{ src, alt, caption, category }`. Seed it with
+  the existing `/img/hero-trailer-*` renders under a `{/* TODO(owner): replace
+  with real fleet photos — VMS boards, LED trailer signs and LED screen trailers
+  on Melbourne job sites; descriptive alt + caption per photo */}` note. Each
+  image: `loading="lazy"`, `<picture>` with avif/webp, width/height set.
+  `ImageGallery` / `ImageObject` JSON-LD from the same array. Link from the nav
+  (add to `src/nav.js`), the home page and the 3 service pages. Sitemap picks it
+  up automatically; P8 adds its images to the image sitemap.
+  Accept: page renders, images lazy-load, JSON-LD valid, build + lint clean.
+
+- [ ] **P2 Per-route code-splitting.**
+  The client bundle currently ships every page component (routes.jsx statically
+  imports all 16). Split so each route loads only its own page chunk: give the
+  client a route→`() => import()` map (`src/client-routes.js`), and have
+  `main.jsx` `await` the matched page module, then build the shell
+  (`<Header/><Page/><Footer/>`) itself instead of importing `App`/`routes.jsx`.
+  `entry-server.jsx` keeps using `routes.jsx` (SSR, sync). Hydration must stay
+  synchronous — load the chunk before `hydrateRoot`, no Suspense fallback.
+  Accept: `dist/assets/` has a chunk per page; each page still hydrates with no
+  console error and no visible flash; Lighthouse perf on `/` and a service page
+  ≥ 98 on a gzip server; build + lint clean.
+
+- [ ] **P3 404 page.**
+  `src/pages/NotFound.jsx` + a `'/404.html'` route (most static hosts serve
+  `404.html` for unknown paths). Brief copy, links to the 3 services + home +
+  contact. `App.jsx` `routeFor()` already falls back to home for unknown client
+  paths — leave that, the 404 is for the host. `noindex` via renderHead (add a
+  `seo.noindex` flag that emits `<meta name="robots" content="noindex">`).
+  Accept: `dist/404.html` exists, renders, is noindex; build + lint clean.
+
+- [ ] **P4 Internal-linking depth.**
+  Add a small `src/components/RelatedLinks.jsx` (title + list of
+  `[href, label, sub]`). Put a "Related guides" block on each of the 3 service
+  pages (link the relevant guides), and a "Related services" block on each of the
+  4 guides that doesn't already link all three. Add area→guide links on the
+  regional pages (e.g. Ballarat → the cost guide). No page should be more than
+  two clicks from any other.
+  Accept: every service page links ≥ 2 guides and vice versa; build + lint clean.
+
+- [ ] **P5 FAQ expansion for People-Also-Ask.**
+  Add 3–4 more questions to each of the 3 service pages' `FAQ` arrays, drawn from
+  the likely-PAA lists in the SEO SERP recon (e.g. VMS: "What is a variable
+  message sign?", "How are VMS messages updated?", "What is the difference
+  between a Class A, B and C VMS board?"; LED screen: "How bright are mobile LED
+  screens?", "Do you need a permit for a mobile LED billboard?"). Answers must be
+  factual and specific — no fluff, no invented specs. They flow into FAQPage
+  JSON-LD automatically.
+  Accept: each service page has ≥ 10 FAQ items; FAQPage JSON-LD count matches the
+  visible `<dt>` count; build + lint clean.
+
+- [ ] **P6 Video scaffold (no fake video).**
+  `src/data/videos.js` exporting `VIDEOS = {}` keyed by page path, each
+  `{ url, thumbnail, name, description, uploadDate }` — empty. A `<Video>`
+  component renders a `<video>` (or a linked thumbnail) when its key is set,
+  nothing otherwise. `renderHead` emits `VideoObject` JSON-LD only when the
+  route's path has an entry. Place `<Video>` on `/led-screen-trailer-hire/` and
+  `/gallery/`. Header comment explaining how to add a real clip (setup timelapse,
+  fleet walkthrough).
+  Accept: nothing renders / no VideoObject while empty; build + lint clean.
+
+- [ ] **P7 Three more guides.**
+  `guideRoute()` + `GuideLayout`, same standard as the existing four. Suggested:
+  `/guides/writing-a-vms-message/` (message design, frame count, recognised
+  phrasing, legibility), `/guides/hiring-an-led-screen-for-a-festival/`
+  (checklist: site, power, content, crew, lead time),
+  `/guides/solar-vs-mains-power-for-a-long-hire/` (when solar is enough, when to
+  plan a 15A connection). Add all three to the `/guides/` hub `GUIDES` array.
+  Article JSON-LD; internal links to the relevant service page.
+  Accept: 3 pages render, Article JSON-LD valid, hub lists them, build + lint clean.
+
+- [ ] **P8 Image sitemap + per-page lastmod.**
+  `scripts/seo-lib.mjs`: extend `buildSitemap` so each route can carry
+  `seo.images: [{ loc, title, caption }]` that become `<image:image>` entries,
+  and add per-URL `lastmod` from the last commit that touched that page's source
+  file (fall back to the global date). Populate `seo.images` for the home, the 3
+  service pages and `/gallery/` from `gallery.js` / the hero renders.
+  Accept: sitemap has image entries on ≥ 4 URLs, per-page lastmod varies,
+  `xmllint --noout` passes; build + lint clean.
+
+- [ ] **P9 Analytics + Search Console slots (owner fills the IDs).**
+  Add to `index.html` a commented, ready-to-fill Google Search Console
+  verification `<meta>` and a GA4 snippet gated on an env var
+  (`VITE_GA4_ID`) so it only loads when set — no tracking by default, no
+  hard-coded IDs. Document both in `README.md` along with: submit `sitemap.xml`
+  in Search Console and Bing Webmaster Tools after deploy; request indexing on
+  the money pages; the old single-page cache needs to be recrawled.
+  Accept: no analytics loads without the env var; README section added; build +
+  lint clean.
+
+---
+
 ## Log
 
 _(append: task id — one-line result — commit sha)_
@@ -292,4 +396,4 @@ _(append: task id — one-line result — commit sha)_
 - 3.4 — scripts/seo-lib.mjs (buildSitemap/buildLlmsTxt/buildRobots/lastModified); prerender.js now writes sitemap.xml + llms.txt from the real ROUTES (fixes 4 bogus /service-areas/<guide-slug>/ URLs the regex produced, adds the 4 missing /guides/<slug>/ URLs -> 16 correct URLs); llms.txt rewritten to llmstxt.org multi-page shape; generate-seo.mjs trimmed to robots.txt.
 - 3.5 — Lighthouse (gzip server): perf 98-99, SEO 100, a11y 100, best-practices 100 on home + service + guide + area pages. Fixed link-in-text-block (underlined inline prose links across service pages + hero). All 16 pages: 200, one <main> h1, valid JSON-LD, no console errors, internal links resolve. README updated with the multi-page architecture + 'adding a page'.
 
-**BUILD COMPLETE — 20/20 tasks. 21 commits on seo/multi-page-rebuild.**
+**PHASE 1 COMPLETE — 20/20 tasks. Phase 2 (P1–P9) queued below the task list.**
