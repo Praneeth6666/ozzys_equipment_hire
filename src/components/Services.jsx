@@ -33,18 +33,19 @@ export default function Services() {
     <section id="services" className="services" aria-labelledby="services-heading">
       <div className="container">
         <div className="services-header">
-          <h2 id="services-heading">VMS sign hire &amp; LED trailer sign hire</h2>
+          <h2 id="services-heading">Three trailers, one hire company</h2>
           <p className="services-sub">
-            VMS sign hire, LED trailer sign hire and LED screen trailer hire — delivered across Melbourne and
-            Victoria with setup and support.
+            We run message boards, advertising signs and event screens across Greater Melbourne and
+            regional Victoria. Pick the one that matches your job.
           </p>
         </div>
         <div className="services-grid">
-          {HIRE_SERVICES.map(({ id, title, desc }) => (
+          {HIRE_SERVICES.map(({ id, title, href, desc }) => (
             <article key={id} className="service-card">
               <div className="service-icon">{ICONS[id]}</div>
-              <h3>{title}</h3>
+              <h3><a href={href}>{title}</a></h3>
               <p>{desc}</p>
+              <a href={href} className="service-more">See {title.toLowerCase()}</a>
             </article>
           ))}
         </div>

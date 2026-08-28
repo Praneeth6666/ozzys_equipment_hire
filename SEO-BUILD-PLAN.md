@@ -174,7 +174,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   Home keeps only a short "from $45/day ex GST" teaser linking here.
   Accept: calculator works on `/pricing/`, rates present in static HTML, build + lint clean.
 
-- [ ] **1.5 Rework home `/`.**
+- [x] **1.5 Rework home `/`.**
   Trim `Home.jsx` to: Hero (copy distinct from the service pages), 3-card Services
   overview linking to the 3 money pages, short About, a Service-areas teaser linking to
   `/service-areas/`, Contact. **Remove `IntentContent`** (its comparison value moves to
@@ -280,3 +280,4 @@ _(append: task id — one-line result — commit sha)_
 - 1.2 — /led-trailer-sign-hire-melbourne/ page (targets led trailer sign hire / ...melbourne / trailer led sign hire); full-colour vs amber table, per-area delivery table from SERVICE_AREAS, 7-Q FAQ, Service+Product+FAQPage JSON-LD (8/8 valid)
 - 1.3 — /led-screen-trailer-hire/ page opens the event-video cluster (led screen trailer / led trailer screen hire / mobile ...melbourne x2); screen-choosing guidance, setup/operation, 7-Q FAQ, Service+Product+FAQPage JSON-LD (8/8)
 - 1.4 — /pricing/ page: reuses the <Pricing> calculator component (already renders the full rate table as crawlable HTML), adds a 7-Q pricing FAQ, Product/AggregateOffer + FAQPage JSON-LD; linked from all 3 money pages
+- 1.5 — home reworked: IntentContent (8 keyword-stuffed cards) deleted; Hero rewritten as a value prop linking to the 3 service pages; Services cards are now links; home h1 'Signs and screens on trailers, delivered and set up'; home 54.1->50.8 kB; hydrates clean. Group 1 complete.

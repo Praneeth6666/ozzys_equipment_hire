@@ -19,22 +19,25 @@ export default function Hero() {
       <div className="hero-bg" aria-hidden />
       <div className="container hero-inner">
         <div className="hero-content">
-          <p className="hero-badge">VMS sign hire · LED trailer sign hire · Melbourne &amp; Victoria</p>
+          <p className="hero-badge">Melbourne &amp; regional Victoria</p>
           <h1 className="hero-title">
-            VMS sign hire &amp; LED trailer sign hire
-            <span className="hero-title-accent"> Melbourne</span>
+            Signs and screens on trailers,
+            <span className="hero-title-accent"> delivered and set up</span>
           </h1>
           <p className="hero-desc">
-            Hire VMS signs, LED trailer signs and LED screen trailers for events, roadworks and campaigns.
-            Trailer LED sign hire and mobile LED screen trailer hire Melbourne with delivery, setup and
-            flexible rates.
+            Ozzy&rsquo;s Equipment Hire runs three things: <a href="/vms-sign-hire/">VMS message
+            boards</a> for roadworks and traffic, <a href="/led-trailer-sign-hire-melbourne/">LED
+            trailer signs</a> for events and advertising, and{' '}
+            <a href="/led-screen-trailer-hire/">LED screen trailers</a> for festivals and outdoor
+            cinema. We deliver across Melbourne and Victoria, place it, program it, and collect it
+            when you&rsquo;re done. From $45 a day ex GST.
           </p>
           <div className="hero-actions">
-            <a href="#pricing" className="btn btn-primary">
+            <a href="#contact" className="btn btn-primary">
               Get a quote
             </a>
-            <a href="#services" className="btn btn-ghost">
-              Find out more
+            <a href="/pricing/" className="btn btn-ghost">
+              See rates
             </a>
           </div>
         </div>

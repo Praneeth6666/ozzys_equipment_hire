@@ -167,8 +167,8 @@ export const ROUTES = [
     seo: {
       title: 'VMS Sign Hire | LED Trailer Sign Hire Melbourne',
       description:
-        'VMS sign hire and LED trailer sign hire Melbourne. Hire LED screen trailers, trailer LED signs and mobile LED screen trailers with delivery and setup. Get a quote from Ozzy’s Equipment Hire.',
-      h1: 'VMS sign hire & LED trailer sign hire Melbourne',
+        'Ozzy’s Equipment Hire: VMS sign hire, LED trailer sign hire and LED screen trailer hire across Melbourne and Victoria. Delivered, placed and programmed. Day rates from $45 ex GST.',
+      h1: 'Signs and screens on trailers, delivered and set up',
       primaryImage: {
         url: `${SITE_URL}/img/hero-trailer-768.jpg`,
         width: 768,

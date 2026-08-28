@@ -63,17 +63,20 @@ export const HIRE_SERVICES = [
   {
     id: 'vms',
     title: 'VMS Sign Hire',
-    desc: 'Variable message sign (VMS) hire for traffic management, roadworks and site safety. VMS sign hire with delivery, programming support and flexible terms across Melbourne and Victoria.',
+    href: '/vms-sign-hire/',
+    desc: 'Amber variable message signs for roadworks, traffic management and site safety. We deliver, place and program the board.',
   },
   {
     id: 'led',
     title: 'LED Trailer Sign Hire',
-    desc: 'LED trailer sign hire Melbourne for festivals, sport, retail and campaigns. Trailer LED sign hire with bright, weather-ready displays and expert setup.',
+    href: '/led-trailer-sign-hire-melbourne/',
+    desc: 'Full-colour trailer signs for festivals, sport, retail and property campaigns. Your artwork, loaded and updated remotely.',
   },
   {
     id: 'screen',
     title: 'LED Screen Trailer Hire',
-    desc: 'LED screen trailer and LED trailer screen hire for events and outdoor messaging. Mobile LED screen trailer hire Melbourne with delivery and on-site support.',
+    href: '/led-screen-trailer-hire/',
+    desc: 'Mobile LED video screens for events and outdoor cinema, with onboard sound and power. Delivered, set up and operated.',
   },
 ];
 
