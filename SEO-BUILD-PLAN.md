@@ -200,7 +200,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   Hub page + route listing the 4 guides with summaries. Sitemap entry.
   Accept: renders, build + lint clean.
 
-- [ ] **2.4 `/guides/vms-sign-hire-cost/`.**
+- [x] **2.4 `/guides/vms-sign-hire-cost/`.**
   Answer-first ("VMS sign hire in Melbourne starts at $45/day ex GST on a 12-month
   contract; short hires of 1–6 days are a flat $500 plus 8% insurance."), then the full
   rate table, what drives price (term, delivery, insurance, power), Article + FAQPage
@@ -284,3 +284,4 @@ _(append: task id — one-line result — commit sha)_
 - 2.1 — /service-areas/ hub (5 areas) + /service-areas/melbourne/ (~500 words, 6-region suburb table, LocalBusiness-scoped Service JSON-LD with areaServed); areaServiceLd() helper; sitemap auto-picks nested paths (7 URLs)
 - 2.2 — /service-areas/{geelong,ballarat,bendigo,gippsland}/ via shared AreaLayout + per-page local prose (~450 words each, distinct); areaRoute() route factory; generate-seo.mjs now catches slug-built paths (sitemap = 11 URLs)
 - 2.3 — /guides/ hub listing the 4 guides; GUIDES array exported for cross-linking; 12 URLs in sitemap
+- 2.4 — /guides/vms-sign-hire-cost/ (answer-first, full rate table, what-moves-the-total, worked example, 4-Q FAQ); GuideLayout component + guideRoute() factory (ogType article -> Article JSON-LD); 13 URLs

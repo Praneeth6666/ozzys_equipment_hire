@@ -34,6 +34,7 @@ import AreaBallarat from './pages/areas/Ballarat';
 import AreaBendigo from './pages/areas/Bendigo';
 import AreaGippsland from './pages/areas/Gippsland';
 import GuidesHub from './pages/Guides';
+import VmsSignHireCost, { FAQ as COST_FAQ } from './pages/guides/VmsSignHireCost';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -76,6 +77,27 @@ function areaServiceLd({ areaName, areaType = 'City', url, description }) {
     url,
     areaServed: { '@type': areaType, name: areaName },
   });
+}
+
+/** Build a /guides/<slug>/ article route. */
+function guideRoute(Page, { slug, h1, title, description, faq }) {
+  const path = `/guides/${slug}/`;
+  return {
+    path,
+    Page,
+    seo: {
+      title,
+      description,
+      h1,
+      ogType: 'article',
+      breadcrumb: [
+        ['Home', '/'],
+        ['Guides', '/guides/'],
+        [h1, path],
+      ],
+      jsonLd: faq && faq.length ? [faqPage(faq)] : [],
+    },
+  };
 }
 
 /** Build a regional location route — same shape for every area. */
@@ -424,6 +446,14 @@ export const ROUTES = [
       jsonLd: [],
     },
   },
+  guideRoute(VmsSignHireCost, {
+    slug: 'vms-sign-hire-cost',
+    h1: 'How much does VMS sign hire cost?',
+    title: 'How Much Does VMS Sign Hire Cost? | Melbourne Rates',
+    description:
+      'VMS sign hire in Melbourne runs from $45/day ex GST on a 12-month contract to $75/day under a month, or a flat $500 plus 8% insurance for one to six days. Full rate card and a worked example.',
+    faq: COST_FAQ,
+  }),
 ];
 
 /** Normalise a request path and return its route (falling back to home). */
