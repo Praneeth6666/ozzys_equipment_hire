@@ -184,7 +184,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
 
 ### Group 2 — local + supporting pages
 
-- [ ] **2.1 `/service-areas/` hub + `/service-areas/melbourne/`.**
+- [x] **2.1 `/service-areas/` hub + `/service-areas/melbourne/`.**
   Hub lists all areas + links each service page. Melbourne page: ~500 words, named
   suburbs from `SERVICE_AREAS`, delivery/turnaround, LocalBusiness + Service JSON-LD
   with `areaServed`. Sitemap entries.
@@ -281,3 +281,4 @@ _(append: task id — one-line result — commit sha)_
 - 1.3 — /led-screen-trailer-hire/ page opens the event-video cluster (led screen trailer / led trailer screen hire / mobile ...melbourne x2); screen-choosing guidance, setup/operation, 7-Q FAQ, Service+Product+FAQPage JSON-LD (8/8)
 - 1.4 — /pricing/ page: reuses the <Pricing> calculator component (already renders the full rate table as crawlable HTML), adds a 7-Q pricing FAQ, Product/AggregateOffer + FAQPage JSON-LD; linked from all 3 money pages
 - 1.5 — home reworked: IntentContent (8 keyword-stuffed cards) deleted; Hero rewritten as a value prop linking to the 3 service pages; Services cards are now links; home h1 'Signs and screens on trailers, delivered and set up'; home 54.1->50.8 kB; hydrates clean. Group 1 complete.
+- 2.1 — /service-areas/ hub (5 areas) + /service-areas/melbourne/ (~500 words, 6-region suburb table, LocalBusiness-scoped Service JSON-LD with areaServed); areaServiceLd() helper; sitemap auto-picks nested paths (7 URLs)

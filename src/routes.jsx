@@ -27,6 +27,8 @@ import LedScreenTrailerHire, {
   FAQ as LED_SCREEN_FAQ,
 } from './pages/LedScreenTrailerHire';
 import PricingPage, { FAQ as PRICING_FAQ } from './pages/Pricing';
+import ServiceAreas from './pages/ServiceAreas';
+import AreaMelbourne from './pages/areas/Melbourne';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -47,7 +49,7 @@ function faqPage(items) {
 }
 
 /** Service object for a dedicated hire page. */
-function serviceLd({ name, serviceType, description, url }) {
+function serviceLd({ name, serviceType, description, url, areaServed }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -55,9 +57,20 @@ function serviceLd({ name, serviceType, description, url }) {
     serviceType,
     description,
     provider: BUSINESS,
-    areaServed: ['Melbourne', 'Victoria', 'Australia'],
+    areaServed: areaServed || ['Melbourne', 'Victoria', 'Australia'],
     url,
   };
+}
+
+/** Service scoped to one place, for a location page. */
+function areaServiceLd({ areaName, areaType = 'City', url, description }) {
+  return serviceLd({
+    name: `Sign and screen hire in ${areaName}`,
+    serviceType: 'VMS, LED trailer sign and LED screen trailer hire',
+    description,
+    url,
+    areaServed: { '@type': areaType, name: areaName },
+  });
 }
 
 /** Product + AggregateOffer for a hire page, priced on the shared day-rate card. */
@@ -289,6 +302,45 @@ export const ROUTES = [
           url: `${SITE_URL}/pricing/`,
         }),
         faqPage(PRICING_FAQ),
+      ],
+    },
+  },
+  {
+    path: '/service-areas/',
+    Page: ServiceAreas,
+    seo: {
+      title: 'Service Areas | Sign & Screen Hire Across Victoria',
+      description:
+        'Where Ozzy’s Equipment Hire delivers VMS boards, LED trailer signs and LED screen trailers: Greater Melbourne plus Geelong, Ballarat, Bendigo and Gippsland.',
+      h1: 'Service areas',
+      breadcrumb: [
+        ['Home', '/'],
+        ['Service areas', '/service-areas/'],
+      ],
+      jsonLd: [],
+    },
+  },
+  {
+    path: '/service-areas/melbourne/',
+    Page: AreaMelbourne,
+    seo: {
+      title: 'Sign & Screen Hire Melbourne | VMS, LED Trailer, Screens',
+      description:
+        'VMS board, LED trailer sign and LED screen trailer hire delivered across Greater Melbourne — inner suburbs to the northern, western and south-eastern growth corridors. From $45/day ex GST.',
+      h1: 'Sign and screen hire in Melbourne',
+      breadcrumb: [
+        ['Home', '/'],
+        ['Service areas', '/service-areas/'],
+        ['Melbourne', '/service-areas/melbourne/'],
+      ],
+      jsonLd: [
+        areaServiceLd({
+          areaName: 'Melbourne',
+          areaType: 'City',
+          url: `${SITE_URL}/service-areas/melbourne/`,
+          description:
+            'VMS sign hire, LED trailer sign hire and LED screen trailer hire delivered across Greater Melbourne, with placement, programming and collection.',
+        }),
       ],
     },
   },

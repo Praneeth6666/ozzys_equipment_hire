@@ -181,6 +181,37 @@
   margin-top: 0.2rem;
 }
 
+/* area hub cards */
+.sp-related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+.sp-area-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+}
+.sp-area-card h2 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+}
+.sp-area-card h2 a {
+  color: var(--text);
+}
+.sp-area-card h2 a:hover {
+  color: var(--primary-text);
+}
+.sp-area-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0 0 0.9rem;
+}
+
 /* breadcrumb */
 .sp-breadcrumb {
   padding-top: calc(88px + 1rem);
