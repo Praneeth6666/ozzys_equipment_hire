@@ -35,6 +35,13 @@ import AreaBendigo from './pages/areas/Bendigo';
 import AreaGippsland from './pages/areas/Gippsland';
 import GuidesHub from './pages/Guides';
 import VmsSignHireCost, { FAQ as COST_FAQ } from './pages/guides/VmsSignHireCost';
+import VmsVsLedTrailerSign from './pages/guides/VmsVsLedTrailerSign';
+import LedScreenTrailerSizes, {
+  FAQ as SIZES_FAQ,
+} from './pages/guides/LedScreenTrailerSizes';
+import TrafficManagementSignRulesVictoria, {
+  FAQ as RULES_FAQ,
+} from './pages/guides/TrafficManagementSignRulesVictoria';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -453,6 +460,29 @@ export const ROUTES = [
     description:
       'VMS sign hire in Melbourne runs from $45/day ex GST on a 12-month contract to $75/day under a month, or a flat $500 plus 8% insurance for one to six days. Full rate card and a worked example.',
     faq: COST_FAQ,
+  }),
+  guideRoute(VmsVsLedTrailerSign, {
+    slug: 'vms-vs-led-trailer-sign',
+    h1: 'VMS board vs LED trailer sign vs LED screen trailer',
+    title: 'VMS Board vs LED Trailer Sign vs LED Screen Trailer',
+    description:
+      'Three trailer-mounted displays, three jobs: amber VMS boards for traffic messaging, full-colour LED trailer signs for advertising, LED screen trailers for event video. How to choose.',
+  }),
+  guideRoute(LedScreenTrailerSizes, {
+    slug: 'led-screen-trailer-sizes',
+    h1: 'What size LED screen trailer do I need?',
+    title: 'What Size LED Screen Trailer Do I Need? | Sizing Guide',
+    description:
+      'Match an LED screen trailer to your event by viewing distance and crowd size. Pixel pitch and screen area explained, with a rough sizing guide and site checks.',
+    faq: SIZES_FAQ,
+  }),
+  guideRoute(TrafficManagementSignRulesVictoria, {
+    slug: 'traffic-management-sign-rules-victoria',
+    h1: 'Traffic management sign rules in Victoria',
+    title: 'Traffic Management Sign Rules in Victoria | VMS Hire',
+    description:
+      'How VMS boards are governed on Victorian roads: the traffic management plan, road-authority permits, AS 4852, and what the hire company handles versus the customer.',
+    faq: RULES_FAQ,
   }),
 ];
 

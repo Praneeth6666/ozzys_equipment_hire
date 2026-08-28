@@ -207,19 +207,19 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   JSON-LD. Internal links to `/vms-sign-hire/` and `/pricing/`.
   Accept: renders, valid JSON-LD, build + lint clean.
 
-- [ ] **2.5 `/guides/vms-vs-led-trailer-sign/`.**
+- [x] **2.5 `/guides/vms-vs-led-trailer-sign/`.**
   The comparison that replaces `IntentContent`: when to use a VMS message board vs a
   full-colour LED trailer sign vs an LED screen trailer, by job type. Article JSON-LD.
   Links to all 3 money pages.
   Accept: renders, build + lint clean.
 
-- [ ] **2.6 `/guides/led-screen-trailer-sizes/`.**
+- [x] **2.6 `/guides/led-screen-trailer-sizes/`.**
   Screen area, pixel pitch and viewing distance explained for event buyers; a sizing
   table; how to pick for a crowd size / venue. Article JSON-LD. Links to
   `/led-screen-trailer-hire/`.
   Accept: renders, build + lint clean.
 
-- [ ] **2.7 `/guides/traffic-management-sign-rules-victoria/`.**
+- [x] **2.7 `/guides/traffic-management-sign-rules-victoria/`.**
   Plain-English overview: where VMS boards may be placed, AS 4852 / VicRoads context,
   who is responsible for approvals, what the hire company does vs the traffic
   management plan. No legal advice; link to the authorities. Article JSON-LD. Links to
@@ -285,3 +285,4 @@ _(append: task id — one-line result — commit sha)_
 - 2.2 — /service-areas/{geelong,ballarat,bendigo,gippsland}/ via shared AreaLayout + per-page local prose (~450 words each, distinct); areaRoute() route factory; generate-seo.mjs now catches slug-built paths (sitemap = 11 URLs)
 - 2.3 — /guides/ hub listing the 4 guides; GUIDES array exported for cross-linking; 12 URLs in sitemap
 - 2.4 — /guides/vms-sign-hire-cost/ (answer-first, full rate table, what-moves-the-total, worked example, 4-Q FAQ); GuideLayout component + guideRoute() factory (ogType article -> Article JSON-LD); 13 URLs
+- 2.5/2.6/2.7 — three guides: VMS vs LED sign vs screen (decision table + per-type sections), LED screen trailer sizing (crowd/distance guide + 3-Q FAQ), Victorian traffic-management sign rules (responsibilities, permits, AS 4852, 3-Q FAQ). All Article + FAQPage JSON-LD. 16 URLs. Group 2 complete.
