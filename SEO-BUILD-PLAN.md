@@ -116,7 +116,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   Accept: `npm run build` output is home, still fully pre-rendered, hydrates with no
   console error; `npm run lint` clean.
 
-- [ ] **0.2 Multi-target prerender.**
+- [x] **0.2 Multi-target prerender.**
   Rewrite `prerender.js` to import `{ ROUTES }` and loop: for each route write
   `dist/<path>/index.html` (`/` → `dist/index.html`), body from `render(path)`, CSS
   still inlined. With only `/` in ROUTES the output matches 0.1.
@@ -274,3 +274,4 @@ _(append: task id — one-line result — commit sha)_
 
 - 0.0 — plan created
 - 0.1 — routes.jsx manifest + App({path}) + pages/Home.jsx; render(path); main passes location.pathname; eslint override for routing layer
+- 0.2 — prerender.js loops ROUTES, inlines CSS once, writes dist/<path>/index.html; / output byte-identical (54.0 kB)
