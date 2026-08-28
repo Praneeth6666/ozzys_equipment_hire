@@ -29,6 +29,10 @@ import LedScreenTrailerHire, {
 import PricingPage, { FAQ as PRICING_FAQ } from './pages/Pricing';
 import ServiceAreas from './pages/ServiceAreas';
 import AreaMelbourne from './pages/areas/Melbourne';
+import AreaGeelong from './pages/areas/Geelong';
+import AreaBallarat from './pages/areas/Ballarat';
+import AreaBendigo from './pages/areas/Bendigo';
+import AreaGippsland from './pages/areas/Gippsland';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -71,6 +75,34 @@ function areaServiceLd({ areaName, areaType = 'City', url, description }) {
     url,
     areaServed: { '@type': areaType, name: areaName },
   });
+}
+
+/** Build a regional location route — same shape for every area. */
+function areaRoute(Page, { name, slug, areaType, title, description }) {
+  const path = `/service-areas/${slug}/`;
+  return {
+    path,
+    Page,
+    seo: {
+      title,
+      description,
+      h1: `Sign and screen hire in ${name}`,
+      breadcrumb: [
+        ['Home', '/'],
+        ['Service areas', '/service-areas/'],
+        [name, path],
+      ],
+      jsonLd: [
+        areaServiceLd({
+          areaName: name,
+          areaType,
+          url: `${SITE_URL}${path}`,
+          description:
+            `VMS sign hire, LED trailer sign hire and LED screen trailer hire delivered to ${name} and the surrounding area, with placement, programming and collection.`,
+        }),
+      ],
+    },
+  };
 }
 
 /** Product + AggregateOffer for a hire page, priced on the shared day-rate card. */
@@ -344,6 +376,38 @@ export const ROUTES = [
       ],
     },
   },
+  areaRoute(AreaGeelong, {
+    name: 'Geelong',
+    slug: 'geelong',
+    areaType: 'City',
+    title: 'Sign & Screen Hire Geelong | VMS, LED Trailer, Screens',
+    description:
+      'VMS board, LED trailer sign and LED screen trailer hire delivered to Geelong, the Bellarine and the Surf Coast from Melbourne. Book two to three weeks ahead. From $45/day ex GST.',
+  }),
+  areaRoute(AreaBallarat, {
+    name: 'Ballarat',
+    slug: 'ballarat',
+    areaType: 'City',
+    title: 'Sign & Screen Hire Ballarat | VMS, LED Trailer, Screens',
+    description:
+      'VMS board, LED trailer sign and LED screen trailer hire delivered to Ballarat and the western goldfields from Melbourne. Regional lead time two to three weeks. From $45/day ex GST.',
+  }),
+  areaRoute(AreaBendigo, {
+    name: 'Bendigo',
+    slug: 'bendigo',
+    areaType: 'City',
+    title: 'Sign & Screen Hire Bendigo | VMS, LED Trailer, Screens',
+    description:
+      'VMS board, LED trailer sign and LED screen trailer hire delivered to Bendigo and central Victoria from Melbourne. Book two to three weeks ahead. From $45/day ex GST.',
+  }),
+  areaRoute(AreaGippsland, {
+    name: 'Gippsland',
+    slug: 'gippsland',
+    areaType: 'AdministrativeArea',
+    title: 'Sign & Screen Hire Gippsland | VMS, LED Trailer, Screens',
+    description:
+      'VMS board, LED trailer sign and LED screen trailer hire delivered across Gippsland — Latrobe Valley, South and East Gippsland — from Melbourne. From $45/day ex GST.',
+  }),
 ];
 
 /** Normalise a request path and return its route (falling back to home). */

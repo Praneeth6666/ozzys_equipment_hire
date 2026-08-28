@@ -63,4 +63,32 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/service-areas/melbourne/" />
   </url>
+  <url>
+    <loc>https://www.ozzysequipmenthire.com.au/service-areas/geelong/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/service-areas/geelong/" />
+  </url>
+  <url>
+    <loc>https://www.ozzysequipmenthire.com.au/service-areas/ballarat/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/service-areas/ballarat/" />
+  </url>
+  <url>
+    <loc>https://www.ozzysequipmenthire.com.au/service-areas/bendigo/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/service-areas/bendigo/" />
+  </url>
+  <url>
+    <loc>https://www.ozzysequipmenthire.com.au/service-areas/gippsland/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/service-areas/gippsland/" />
+  </url>
 </urlset>

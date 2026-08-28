@@ -33,6 +33,8 @@ const PAGE_SOURCES = ['index.html', 'src'];
 function routePaths() {
   const src = readFileSync(resolve(ROOT, 'src/routes.jsx'), 'utf-8');
   const paths = [...src.matchAll(/path:\s*'([^']+)'/g)].map((m) => m[1]);
+  // Regional area routes are built by areaRoute() from a slug, not a literal path.
+  for (const m of src.matchAll(/slug:\s*'([^']+)'/g)) paths.push(`/service-areas/${m[1]}/`);
   return [...new Set(paths)];
 }
 

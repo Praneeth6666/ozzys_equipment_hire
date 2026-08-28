@@ -190,7 +190,7 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
   with `areaServed`. Sitemap entries.
   Accept: both render, valid JSON-LD, build + lint clean.
 
-- [ ] **2.2 Regional location pages.**
+- [x] **2.2 Regional location pages.**
   `/service-areas/geelong/`, `/ballarat/`, `/bendigo/`, `/gippsland/` — ~350–500 words
   each, genuinely localised (not find/replace), lead times honest about travel from
   Melbourne, links back to the 3 money pages. One commit. Sitemap entries.
@@ -282,3 +282,4 @@ _(append: task id — one-line result — commit sha)_
 - 1.4 — /pricing/ page: reuses the <Pricing> calculator component (already renders the full rate table as crawlable HTML), adds a 7-Q pricing FAQ, Product/AggregateOffer + FAQPage JSON-LD; linked from all 3 money pages
 - 1.5 — home reworked: IntentContent (8 keyword-stuffed cards) deleted; Hero rewritten as a value prop linking to the 3 service pages; Services cards are now links; home h1 'Signs and screens on trailers, delivered and set up'; home 54.1->50.8 kB; hydrates clean. Group 1 complete.
 - 2.1 — /service-areas/ hub (5 areas) + /service-areas/melbourne/ (~500 words, 6-region suburb table, LocalBusiness-scoped Service JSON-LD with areaServed); areaServiceLd() helper; sitemap auto-picks nested paths (7 URLs)
+- 2.2 — /service-areas/{geelong,ballarat,bendigo,gippsland}/ via shared AreaLayout + per-page local prose (~450 words each, distinct); areaRoute() route factory; generate-seo.mjs now catches slug-built paths (sitemap = 11 URLs)
