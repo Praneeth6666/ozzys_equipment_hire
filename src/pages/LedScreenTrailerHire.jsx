@@ -228,6 +228,12 @@ export default function LedScreenTrailerHire() {
                 <span>Price your exact hire dates and delivery.</span>
               </a>
             </li>
+            <li>
+              <a href="/gallery/">
+                See the fleet
+                <span>Photos of the VMS boards, LED trailer signs and screen trailers.</span>
+              </a>
+            </li>
           </ul>
         </div>
       </section>

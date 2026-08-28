@@ -1,0 +1,35 @@
+.gallery-group {
+  margin-bottom: 2.5rem;
+}
+.gallery-group:last-child {
+  margin-bottom: 0;
+}
+.gallery-group > h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.gallery-figure {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+.gallery-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.gallery-figure figcaption {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}

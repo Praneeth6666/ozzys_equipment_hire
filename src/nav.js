@@ -5,6 +5,7 @@ export const NAV = [
   { href: '/led-screen-trailer-hire/', label: 'LED Screens' },
   { href: '/pricing/', label: 'Pricing' },
   { href: '/service-areas/', label: 'Service Areas' },
+  { href: '/gallery/', label: 'Gallery' },
   { href: '/guides/', label: 'Guides' },
   { href: '#contact', label: 'Contact' },
 ];

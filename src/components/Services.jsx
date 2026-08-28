@@ -36,7 +36,8 @@ export default function Services() {
           <h2 id="services-heading">Three trailers, one hire company</h2>
           <p className="services-sub">
             We run message boards, advertising signs and event screens across Greater Melbourne and
-            regional Victoria. Pick the one that matches your job.
+            regional Victoria. Pick the one that matches your job, or{' '}
+            <a href="/gallery/">see the fleet on the job</a>.
           </p>
         </div>
         <div className="services-grid">

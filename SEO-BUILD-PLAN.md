@@ -279,7 +279,7 @@ owner fills it.
 **Phase 2 tasks are independent** — do them in any order, one per run, same rules
 (build + lint must pass, one commit each, mark `[x]` + Log line, do not push).
 
-- [ ] **P1 `/gallery/` page.**
+- [x] **P1 `/gallery/` page.**
   New `src/pages/Gallery.jsx` + route. A responsive grid built from a
   `src/data/gallery.js` array of `{ src, alt, caption, category }`. Seed it with
   the existing `/img/hero-trailer-*` renders under a `{/* TODO(owner): replace
@@ -397,3 +397,4 @@ _(append: task id — one-line result — commit sha)_
 - 3.5 — Lighthouse (gzip server): perf 98-99, SEO 100, a11y 100, best-practices 100 on home + service + guide + area pages. Fixed link-in-text-block (underlined inline prose links across service pages + hero). All 16 pages: 200, one <main> h1, valid JSON-LD, no console errors, internal links resolve. README updated with the multi-page architecture + 'adding a page'.
 
 **PHASE 1 COMPLETE — 20/20 tasks. Phase 2 (P1–P9) queued below the task list.**
+- P1 — /gallery/ page: responsive grid from src/data/gallery.js (seeded with the 1 real trailer photo + TODO(owner) for fleet shots), <picture> avif/webp/jpg + lazy + dimensions, grouped by category, ImageGallery/ImageObject JSON-LD (galleryLd helper). In nav (nav.js), linked from home Services + all 3 service pages' related lists. 17 sitemap URLs. Hydrates clean.

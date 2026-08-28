@@ -34,6 +34,8 @@ import AreaBallarat from './pages/areas/Ballarat';
 import AreaBendigo from './pages/areas/Bendigo';
 import AreaGippsland from './pages/areas/Gippsland';
 import GuidesHub from './pages/Guides';
+import GalleryPage from './pages/Gallery';
+import { GALLERY } from './data/gallery';
 import VmsSignHireCost, { FAQ as COST_FAQ } from './pages/guides/VmsSignHireCost';
 import VmsVsLedTrailerSign from './pages/guides/VmsVsLedTrailerSign';
 import LedScreenTrailerSizes, {
@@ -132,6 +134,23 @@ function areaRoute(Page, { name, slug, areaType, title, description }) {
         }),
       ],
     },
+  };
+}
+
+/** ImageGallery + ImageObject list for the /gallery/ page. */
+function galleryLd(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    name: "Ozzy's Equipment Hire fleet gallery",
+    url: `${SITE_URL}/gallery/`,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    image: items.map((it) => ({
+      '@type': 'ImageObject',
+      contentUrl: `${SITE_URL}/img/${it.base}-${it.widths[it.widths.length - 1]}.jpg`,
+      caption: it.caption,
+      description: it.alt,
+    })),
   };
 }
 
@@ -442,6 +461,21 @@ export const ROUTES = [
     description:
       'VMS board, LED trailer sign and LED screen trailer hire delivered across Gippsland — Latrobe Valley, South and East Gippsland — from Melbourne. From $45/day ex GST.',
   }),
+  {
+    path: '/gallery/',
+    Page: GalleryPage,
+    seo: {
+      title: 'Fleet Gallery | VMS, LED Trailer Sign & Screen Hire',
+      description:
+        'Photos of Ozzy’s Equipment Hire VMS boards, LED trailer signs and LED screen trailers on job sites across Melbourne and Victoria.',
+      h1: 'Our fleet on the job',
+      breadcrumb: [
+        ['Home', '/'],
+        ['Gallery', '/gallery/'],
+      ],
+      jsonLd: [galleryLd(GALLERY)],
+    },
+  },
   {
     path: '/guides/',
     Page: GuidesHub,
