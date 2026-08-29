@@ -143,7 +143,32 @@ Contact details (phone, email) are set in `Contact.jsx` and `Footer.jsx`.
 `src/data/reviews.js` is intentionally empty. Add real, permitted customer
 reviews there and the `<Reviews>` section and `AggregateRating` schema light up
 automatically on the home and service pages. Never pre-fill it with invented
-ratings.
+ratings. `src/data/videos.js` works the same way for a fleet or set-up clip.
+
+## Analytics and Search Console
+
+Both are opt-in; nothing loads or is verified until you add the IDs.
+
+**Google Analytics 4** — add `VITE_GA4_ID=G-XXXXXXXXXX` to `.env` and rebuild.
+The gated snippet in `index.html` only runs when that value is set; with no id,
+no request is made to Google.
+
+**Search Console verification** — in `index.html`, uncomment the
+`google-site-verification` `<meta>` near the top of `<head>` and paste the token
+from the "HTML tag" method. Bing Webmaster Tools can import verification from
+Search Console, so it usually needs no separate tag.
+
+**After the first deploy:**
+
+1. In Google Search Console: submit `sitemap.xml` (Sitemaps → enter
+   `sitemap.xml`), then **URL Inspection → Request indexing** on the home page
+   and `/vms-sign-hire/`, `/led-trailer-sign-hire-melbourne/`,
+   `/led-screen-trailer-hire/`, `/pricing/`. The site previously served a single
+   keyword-stuffed page, so Google's cache needs a recrawl to pick up the new
+   URLs and content.
+2. In Bing Webmaster Tools: add the site and import the sitemap from Search
+   Console.
+3. Re-run the same steps whenever a batch of new pages ships.
 
 ### Contact form
 

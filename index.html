@@ -26,6 +26,12 @@
     <meta name="geo.region" content="AU-VIC" />
     <meta name="geo.placename" content="Melbourne" />
 
+    <!-- Google Search Console: paste the token from the "HTML tag" verification
+         method and uncomment. Bing Webmaster Tools can import verification from
+         Search Console, so it usually needs no separate tag.
+    <meta name="google-site-verification" content="PASTE_TOKEN_HERE" />
+    -->
+
     <!-- Matches manifest.webmanifest's theme_color. -->
     <meta name="theme-color" content="#0F1832" />
     <meta name="application-name" content="Ozzy's Equipment Hire" />
@@ -47,6 +53,24 @@
 
     <!-- Only touched once the quote form is submitted. -->
     <link rel="dns-prefetch" href="https://formspree.io" />
+
+    <!-- Google Analytics 4. Loads only when VITE_GA4_ID is set at build time
+         (e.g. VITE_GA4_ID=G-XXXXXXX in .env). With no id, nothing below runs
+         and no request to Google is made. -->
+    <script>
+      (function () {
+        var id = '%VITE_GA4_ID%';
+        if (!id || id.charAt(0) === '%') return;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', id);
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+      })();
+    </script>
 
     <script type="module" src="/src/main.jsx"></script>
 
