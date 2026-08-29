@@ -341,7 +341,7 @@ owner fills it.
   fleet walkthrough).
   Accept: nothing renders / no VideoObject while empty; build + lint clean.
 
-- [ ] **P7 Three more guides.**
+- [x] **P7 Three more guides.**
   `guideRoute()` + `GuideLayout`, same standard as the existing four. Suggested:
   `/guides/writing-a-vms-message/` (message design, frame count, recognised
   phrasing, legibility), `/guides/hiring-an-led-screen-for-a-festival/`
@@ -403,3 +403,4 @@ _(append: task id — one-line result — commit sha)_
 - P4 — src/components/RelatedLinks.jsx ({title, items:[[href,label,sub]]}, .sp-related styling). Each of the 3 service pages now has a 'Guides' block linking 3 relevant guides; each guide's related list expanded to link all 3 services; AreaLayout related list gained 2 guide links (covers all 5 area pages). Every service page <-> guide link is >=2 each way. Hydrates clean.
 - P5 — +4 questions on each of the 3 service pages (7 -> 11): VMS (what is a VMS / Class A,B,C / how messages update / advertising use), LED trailer sign (what is it / cost / what to display / one-day hire), LED screen (what is it / cost / permit / brightness). All factual, real numbers, no invented specs. Visible <dt> count == FAQPage JSON-LD Question count (11 each). Hydrates clean.
 - P6 — src/data/videos.js (VIDEOS = {} keyed by page path + videoFor() + how-to comment); src/components/Video.jsx renders a <video> only when its path has an entry, nothing otherwise; renderHead emits VideoObject only when VIDEOS[path] set. <Video> placed on /led-screen-trailer-hire/ and /gallery/. While empty: 0 rendered video sections, 0 VideoObject, both pages hydrate clean.
+- P7 — 3 new guides via guideRoute()+GuideLayout: /guides/writing-a-vms-message/ (one idea per frame, 3 lines, recognised wording, 2-3 frames, take text from the TMP), /guides/hiring-an-led-screen-for-a-festival/ (site/power/content/crew/timing checklist), /guides/solar-vs-mains-power-for-a-long-hire/ (~3 weeks threshold, 15A on site, day rate unchanged). Each Article+FAQPage JSON-LD (6/6), 3-Q FAQ, links to service pages. Hub GUIDES array updated. 20 sitemap URLs. Hydrates clean.

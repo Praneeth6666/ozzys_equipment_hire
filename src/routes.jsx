@@ -45,6 +45,15 @@ import LedScreenTrailerSizes, {
 import TrafficManagementSignRulesVictoria, {
   FAQ as RULES_FAQ,
 } from './pages/guides/TrafficManagementSignRulesVictoria';
+import WritingAVmsMessage, {
+  FAQ as WRITING_FAQ,
+} from './pages/guides/WritingAVmsMessage';
+import HiringAnLedScreenForAFestival, {
+  FAQ as FESTIVAL_FAQ,
+} from './pages/guides/HiringAnLedScreenForAFestival';
+import SolarVsMainsPowerForALongHire, {
+  FAQ as POWER_FAQ,
+} from './pages/guides/SolarVsMainsPowerForALongHire';
 import { FAQ_ITEMS } from './data/seo';
 
 export const SITE_URL = 'https://www.ozzysequipmenthire.com.au';
@@ -522,6 +531,30 @@ export const ROUTES = [
     description:
       'How VMS boards are governed on Victorian roads: the traffic management plan, road-authority permits, AS 4852, and what the hire company handles versus the customer.',
     faq: RULES_FAQ,
+  }),
+  guideRoute(WritingAVmsMessage, {
+    slug: 'writing-a-vms-message',
+    h1: 'Writing a VMS message that gets read',
+    title: 'Writing a VMS Message That Gets Read | Ozzy’s Hire',
+    description:
+      'A driver has to read a VMS board in one glance at speed. Keep frames to three short lines, use recognised wording, run two or three frames, and take the text from the traffic management plan.',
+    faq: WRITING_FAQ,
+  }),
+  guideRoute(HiringAnLedScreenForAFestival, {
+    slug: 'hiring-an-led-screen-for-a-festival',
+    h1: 'Hiring an LED screen for a festival: a checklist',
+    title: 'Hiring an LED Screen for a Festival: Checklist',
+    description:
+      'Book two to three weeks out, confirm a level site clear of overhead lines, choose generator or site power, prepare content as video files, and decide whether you need an operator.',
+    faq: FESTIVAL_FAQ,
+  }),
+  guideRoute(SolarVsMainsPowerForALongHire, {
+    slug: 'solar-vs-mains-power-for-a-long-hire',
+    h1: 'Solar or mains power for a long hire?',
+    title: 'Solar or Mains Power for a Long Sign Hire? | Ozzy’s Hire',
+    description:
+      'Short sign hires run on solar and battery. From about three weeks, or through overcast weather, plan for a 15A mains connection on site. The day rate does not change either way.',
+    faq: POWER_FAQ,
   }),
   {
     // Most static hosts serve dist/404.html for any unmatched path.

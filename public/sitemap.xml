@@ -133,4 +133,25 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/guides/traffic-management-sign-rules-victoria/" />
   </url>
+  <url>
+    <loc>https://www.ozzysequipmenthire.com.au/guides/writing-a-vms-message/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/guides/writing-a-vms-message/" />
+  </url>
+  <url>
+    <loc>https://www.ozzysequipmenthire.com.au/guides/hiring-an-led-screen-for-a-festival/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/guides/hiring-an-led-screen-for-a-festival/" />
+  </url>
+  <url>
+    <loc>https://www.ozzysequipmenthire.com.au/guides/solar-vs-mains-power-for-a-long-hire/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-au" href="https://www.ozzysequipmenthire.com.au/guides/solar-vs-mains-power-for-a-long-hire/" />
+  </url>
 </urlset>

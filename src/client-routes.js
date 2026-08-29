@@ -28,6 +28,11 @@ const LOADERS = {
   '/guides/led-screen-trailer-sizes/': () => import('./pages/guides/LedScreenTrailerSizes.jsx'),
   '/guides/traffic-management-sign-rules-victoria/': () =>
     import('./pages/guides/TrafficManagementSignRulesVictoria.jsx'),
+  '/guides/writing-a-vms-message/': () => import('./pages/guides/WritingAVmsMessage.jsx'),
+  '/guides/hiring-an-led-screen-for-a-festival/': () =>
+    import('./pages/guides/HiringAnLedScreenForAFestival.jsx'),
+  '/guides/solar-vs-mains-power-for-a-long-hire/': () =>
+    import('./pages/guides/SolarVsMainsPowerForALongHire.jsx'),
   '/404.html': () => import('./pages/NotFound.jsx'),
 };
 

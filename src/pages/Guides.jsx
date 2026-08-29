@@ -32,6 +32,24 @@ export const GUIDES = [
     blurb:
       'Where a VMS board can go, who approves it, how AS 4852 and the road authority fit in, and what the hire company handles versus the traffic management plan.',
   },
+  {
+    href: '/guides/writing-a-vms-message/',
+    title: 'Writing a VMS message that gets read',
+    blurb:
+      'One idea per frame, three short lines, recognised wording, two or three frames — and take the text from the traffic management plan.',
+  },
+  {
+    href: '/guides/hiring-an-led-screen-for-a-festival/',
+    title: 'Hiring an LED screen for a festival: a checklist',
+    blurb:
+      'Site, power, content, crew and lead time — what to lock in before an event so the screen is running when the gates open.',
+  },
+  {
+    href: '/guides/solar-vs-mains-power-for-a-long-hire/',
+    title: 'Solar or mains power for a long hire?',
+    blurb:
+      'When solar and battery are enough, and when to plan a 15A mains connection on site. The day rate is the same either way.',
+  },
 ];
 
 export default function Guides() {
