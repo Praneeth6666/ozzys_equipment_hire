@@ -101,6 +101,18 @@ export default function AreaLayout({ name, slug, lead, localities, body }) {
                 <span>Melbourne, Geelong, Ballarat, Bendigo and Gippsland.</span>
               </a>
             </li>
+            <li>
+              <a href="/guides/vms-sign-hire-cost/">
+                How much does hire cost?
+                <span>The rate card, delivery and what moves the total.</span>
+              </a>
+            </li>
+            <li>
+              <a href="/guides/vms-vs-led-trailer-sign/">
+                Which trailer do I need?
+                <span>VMS board vs LED trailer sign vs LED screen trailer.</span>
+              </a>
+            </li>
           </ul>
         </div>
       </section>

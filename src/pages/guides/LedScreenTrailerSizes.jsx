@@ -24,6 +24,8 @@ export default function LedScreenTrailerSizes() {
       faq={FAQ}
       related={[
         ['/led-screen-trailer-hire/', 'LED screen trailer hire', 'The full service page: setup, sound, power, delivery.'],
+        ['/led-trailer-sign-hire-melbourne/', 'LED trailer sign hire', 'For advertising and messages rather than video.'],
+        ['/guides/vms-vs-led-trailer-sign/', 'VMS vs LED sign vs screen trailer', 'Choosing between the three by job type.'],
         ['/pricing/', 'Pricing calculator', 'Price your event dates.'],
       ]}
     >

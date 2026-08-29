@@ -24,6 +24,8 @@ export default function TrafficManagementSignRulesVictoria() {
       faq={FAQ}
       related={[
         ['/vms-sign-hire/', 'VMS sign hire', 'Boards, sizes, programming, delivery and setup.'],
+        ['/led-trailer-sign-hire-melbourne/', 'LED trailer sign hire', 'Full-colour signs for events and campaigns.'],
+        ['/guides/vms-sign-hire-cost/', 'How much does VMS sign hire cost?', 'The rate card and a worked example.'],
         ['/service-areas/melbourne/', 'Melbourne service area', 'Where we deliver and how a hire runs.'],
       ]}
     >

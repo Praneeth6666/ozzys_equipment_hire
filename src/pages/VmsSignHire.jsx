@@ -1,7 +1,14 @@
 import './service-page.css';
 import Breadcrumb from '../components/Breadcrumb';
+import RelatedLinks from '../components/RelatedLinks';
 import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
+
+const GUIDES = [
+  ['/guides/vms-sign-hire-cost/', 'How much does VMS sign hire cost?', 'The full rate card and a worked example.'],
+  ['/guides/vms-vs-led-trailer-sign/', 'VMS board vs LED trailer sign vs LED screen trailer', 'Which trailer suits which job.'],
+  ['/guides/traffic-management-sign-rules-victoria/', 'Traffic management sign rules in Victoria', 'Permits, AS 4852, and who is responsible.'],
+];
 
 const CRUMBS = [
   ['Home', '/'],
@@ -271,6 +278,8 @@ export default function VmsSignHire() {
           </ul>
         </div>
       </section>
+
+      <RelatedLinks title="Guides" items={GUIDES} />
 
       <Reviews />
 

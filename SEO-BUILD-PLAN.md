@@ -311,7 +311,7 @@ owner fills it.
   `seo.noindex` flag that emits `<meta name="robots" content="noindex">`).
   Accept: `dist/404.html` exists, renders, is noindex; build + lint clean.
 
-- [ ] **P4 Internal-linking depth.**
+- [x] **P4 Internal-linking depth.**
   Add a small `src/components/RelatedLinks.jsx` (title + list of
   `[href, label, sub]`). Put a "Related guides" block on each of the 3 service
   pages (link the relevant guides), and a "Related services" block on each of the
@@ -400,3 +400,4 @@ _(append: task id — one-line result — commit sha)_
 - P1 — /gallery/ page: responsive grid from src/data/gallery.js (seeded with the 1 real trailer photo + TODO(owner) for fleet shots), <picture> avif/webp/jpg + lazy + dimensions, grouped by category, ImageGallery/ImageObject JSON-LD (galleryLd helper). In nav (nav.js), linked from home Services + all 3 service pages' related lists. 17 sitemap URLs. Hydrates clean.
 - P2 — src/client-routes.js (path -> () => import() map); main.jsx loads only the matched page chunk then mounts <Header/><Page/><Footer/> itself; routes.jsx/App.jsx now server-only. Entry chunk 107 KB -> 8.3 KB; one chunk per page + shared Contact/Breadcrumb/Reviews/AreaLayout/GuideLayout chunks. prerender.js guards that every ROUTE has a loader. Lighthouse perf 98 (/) / 99 (service), TBT 0, hydration clean (menu + calculator verified). README updated.
 - P3 — src/pages/NotFound.jsx + a /404.html route (prerender writes it as dist/404.html, not a dir). seo.noindex flag: renderHead now emits per-page robots/googlebot/bingbot (index by default, noindex+follow when set), and the 3 static robots metas were removed from index.html so there's no duplication. Sitemap filters noindex routes (still 17). normPath() shared shape in routes.jsx + client-routes.js so /404.html and unknown paths resolve to NotFound on both server and client. /404.html hydrates with no console errors.
+- P4 — src/components/RelatedLinks.jsx ({title, items:[[href,label,sub]]}, .sp-related styling). Each of the 3 service pages now has a 'Guides' block linking 3 relevant guides; each guide's related list expanded to link all 3 services; AreaLayout related list gained 2 guide links (covers all 5 area pages). Every service page <-> guide link is >=2 each way. Hydrates clean.

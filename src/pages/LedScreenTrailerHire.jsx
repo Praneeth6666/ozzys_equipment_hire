@@ -1,7 +1,14 @@
 import './service-page.css';
 import Breadcrumb from '../components/Breadcrumb';
+import RelatedLinks from '../components/RelatedLinks';
 import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
+
+const GUIDES = [
+  ['/guides/led-screen-trailer-sizes/', 'What size LED screen trailer do I need?', 'Sizing by viewing distance and crowd.'],
+  ['/guides/vms-vs-led-trailer-sign/', 'VMS board vs LED trailer sign vs LED screen trailer', 'Which trailer suits which job.'],
+  ['/guides/vms-sign-hire-cost/', 'How much does hire cost?', 'The rate card applies to screen trailers too.'],
+];
 
 const CRUMBS = [
   ['Home', '/'],
@@ -237,6 +244,8 @@ export default function LedScreenTrailerHire() {
           </ul>
         </div>
       </section>
+
+      <RelatedLinks title="Guides" items={GUIDES} />
 
       <Reviews />
 

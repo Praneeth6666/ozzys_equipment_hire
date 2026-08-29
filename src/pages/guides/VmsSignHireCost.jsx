@@ -28,6 +28,8 @@ export default function VmsSignHireCost() {
       faq={FAQ}
       related={[
         ['/vms-sign-hire/', 'VMS sign hire', 'The full service page: boards, sizes, programming, delivery.'],
+        ['/led-trailer-sign-hire-melbourne/', 'LED trailer sign hire', 'Same rate card, full-colour signs for events.'],
+        ['/led-screen-trailer-hire/', 'LED screen trailer hire', 'Same rate card, event video screens.'],
         ['/pricing/', 'Pricing calculator', 'Price your exact dates and see the insurance and delivery lines.'],
       ]}
     >
