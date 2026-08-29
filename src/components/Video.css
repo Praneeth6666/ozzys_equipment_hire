@@ -1,0 +1,26 @@
+.video-block {
+  border-top: 1px solid var(--border);
+}
+.video-block h2 {
+  max-width: 26ch;
+  margin-bottom: 1rem;
+}
+.video-figure {
+  margin: 0;
+  max-width: 900px;
+}
+.video-figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #000;
+}
+.video-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}

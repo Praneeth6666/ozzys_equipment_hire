@@ -2,6 +2,7 @@ import './service-page.css';
 import Breadcrumb from '../components/Breadcrumb';
 import RelatedLinks from '../components/RelatedLinks';
 import Reviews from '../components/Reviews';
+import Video from '../components/Video';
 import Contact from '../components/Contact';
 
 const GUIDES = [
@@ -260,6 +261,8 @@ export default function LedScreenTrailerHire() {
           </ul>
         </div>
       </section>
+
+      <Video path="/led-screen-trailer-hire/" />
 
       <RelatedLinks title="Guides" items={GUIDES} />
 

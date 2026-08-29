@@ -331,7 +331,7 @@ owner fills it.
   Accept: each service page has ≥ 10 FAQ items; FAQPage JSON-LD count matches the
   visible `<dt>` count; build + lint clean.
 
-- [ ] **P6 Video scaffold (no fake video).**
+- [x] **P6 Video scaffold (no fake video).**
   `src/data/videos.js` exporting `VIDEOS = {}` keyed by page path, each
   `{ url, thumbnail, name, description, uploadDate }` — empty. A `<Video>`
   component renders a `<video>` (or a linked thumbnail) when its key is set,
@@ -402,3 +402,4 @@ _(append: task id — one-line result — commit sha)_
 - P3 — src/pages/NotFound.jsx + a /404.html route (prerender writes it as dist/404.html, not a dir). seo.noindex flag: renderHead now emits per-page robots/googlebot/bingbot (index by default, noindex+follow when set), and the 3 static robots metas were removed from index.html so there's no duplication. Sitemap filters noindex routes (still 17). normPath() shared shape in routes.jsx + client-routes.js so /404.html and unknown paths resolve to NotFound on both server and client. /404.html hydrates with no console errors.
 - P4 — src/components/RelatedLinks.jsx ({title, items:[[href,label,sub]]}, .sp-related styling). Each of the 3 service pages now has a 'Guides' block linking 3 relevant guides; each guide's related list expanded to link all 3 services; AreaLayout related list gained 2 guide links (covers all 5 area pages). Every service page <-> guide link is >=2 each way. Hydrates clean.
 - P5 — +4 questions on each of the 3 service pages (7 -> 11): VMS (what is a VMS / Class A,B,C / how messages update / advertising use), LED trailer sign (what is it / cost / what to display / one-day hire), LED screen (what is it / cost / permit / brightness). All factual, real numbers, no invented specs. Visible <dt> count == FAQPage JSON-LD Question count (11 each). Hydrates clean.
+- P6 — src/data/videos.js (VIDEOS = {} keyed by page path + videoFor() + how-to comment); src/components/Video.jsx renders a <video> only when its path has an entry, nothing otherwise; renderHead emits VideoObject only when VIDEOS[path] set. <Video> placed on /led-screen-trailer-hire/ and /gallery/. While empty: 0 rendered video sections, 0 VideoObject, both pages hydrate clean.

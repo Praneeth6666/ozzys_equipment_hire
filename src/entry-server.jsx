@@ -3,6 +3,7 @@ import { StrictMode } from 'react';
 import App from './App.jsx';
 import { ROUTES, SITE_URL, routeFor } from './routes';
 import { REVIEWS, averageRating } from './data/reviews';
+import { VIDEOS } from './data/videos';
 
 export { ROUTES };
 
@@ -131,6 +132,21 @@ export function renderHead(path = '/') {
         reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
         reviewBody: r.text,
       })),
+    });
+  }
+
+  // VideoObject, only when this page has a real clip (see src/data/videos.js).
+  const video = VIDEOS[route.path];
+  if (video) {
+    graph.push({
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: video.name,
+      description: video.description,
+      thumbnailUrl: SITE_URL + video.thumbnail,
+      contentUrl: SITE_URL + video.url,
+      uploadDate: video.uploadDate,
+      ...(video.duration ? { duration: video.duration } : {}),
     });
   }
 

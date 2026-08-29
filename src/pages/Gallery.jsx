@@ -1,6 +1,7 @@
 import './service-page.css';
 import './gallery.css';
 import Breadcrumb from '../components/Breadcrumb';
+import Video from '../components/Video';
 import Contact from '../components/Contact';
 import { GALLERY, CATEGORIES } from '../data/gallery';
 
@@ -96,6 +97,8 @@ export default function Gallery() {
           </ul>
         </div>
       </section>
+
+      <Video path="/gallery/" />
 
       <Contact />
     </main>
