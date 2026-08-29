@@ -24,19 +24,15 @@ export function lastModified(paths, cwd) {
 
 const depthOf = (p) => (p === '/' ? 0 : p.replace(/^\/+|\/+$/g, '').split('/').length);
 
-export function buildSitemap(routes, lastmod) {
-  const homeImages = `
-    <image:image>
-      <image:loc>${SITE}/img/hero-trailer-768.jpg</image:loc>
-      <image:title>LED screen trailer hire Melbourne</image:title>
-      <image:caption>Mobile LED screen trailer used for VMS sign hire and LED trailer sign hire in Melbourne.</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>${SITE}/img/og-image.jpg</image:loc>
-      <image:title>Ozzy&apos;s Equipment Hire — VMS sign hire Melbourne</image:title>
-      <image:caption>VMS sign hire, LED trailer sign hire and LED screen trailer hire across Victoria.</image:caption>
-    </image:image>`;
+const xmlEsc = (s) =>
+  String(s).replace(/[<>&'"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[c]));
 
+/**
+ * @param routes           the ROUTES array
+ * @param cwd              repo root (for per-route `git log`)
+ * @param fallbackLastmod  date to use for routes with no `src`
+ */
+export function buildSitemap(routes, cwd, fallbackLastmod) {
   const urls = routes
     .filter((r) => !r.seo || !r.seo.noindex)
     .map((r) => {
@@ -45,9 +41,20 @@ export function buildSitemap(routes, lastmod) {
       const depth = depthOf(p);
       const priority = p === '/' ? '1.0' : Math.max(0.4, 0.9 - depth * 0.1).toFixed(1);
       const changefreq = depth <= 1 ? 'weekly' : 'monthly';
+      const lastmod = r.src ? lastModified([r.src], cwd) : fallbackLastmod;
       const xdefault =
         p === '/' ? `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${loc}" />` : '';
-      const images = p === '/' ? homeImages : '';
+      const images = ((r.seo && r.seo.images) || [])
+        .map(
+          (img) => `
+    <image:image>
+      <image:loc>${xmlEsc(img.loc)}</image:loc>
+      <image:title>${xmlEsc(img.title)}</image:title>${
+            img.caption ? `\n      <image:caption>${xmlEsc(img.caption)}</image:caption>` : ''
+          }
+    </image:image>`,
+        )
+        .join('');
       return `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>

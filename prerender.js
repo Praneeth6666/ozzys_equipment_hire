@@ -104,7 +104,7 @@ async function prerender() {
   // Crawler files, built from the real route list. Written to dist/ (deployed)
   // and public/ (so the committed copy and the dev server stay accurate).
   const lastmod = lastModified(['src', 'index.html'], __dirname);
-  const sitemap = buildSitemap(ROUTES, lastmod);
+  const sitemap = buildSitemap(ROUTES, __dirname, lastmod);
   const llms = buildLlmsTxt(ROUTES);
   for (const dir of [DIST, PUBLIC]) {
     writeFileSync(resolve(dir, 'sitemap.xml'), sitemap);

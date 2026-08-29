@@ -98,12 +98,13 @@ function areaServiceLd({ areaName, areaType = 'City', url, description }) {
   });
 }
 
-/** Build a /guides/<slug>/ article route. */
+/** Build a /guides/<slug>/ article route. `Page.name` gives the source file. */
 function guideRoute(Page, { slug, h1, title, description, faq }) {
   const path = `/guides/${slug}/`;
   return {
     path,
     Page,
+    src: `src/pages/guides/${Page.name}.jsx`,
     seo: {
       title,
       description,
@@ -125,6 +126,7 @@ function areaRoute(Page, { name, slug, areaType, title, description }) {
   return {
     path,
     Page,
+    src: `src/pages/areas/${Page.name}.jsx`,
     seo: {
       title,
       description,
@@ -262,12 +264,30 @@ const HOME_PRODUCT = {
   },
 };
 
+/* --------------------------------------------------------- sitemap images */
+
+// The hero trailer photo is the only real image the site ships with. Until the
+// gallery has real fleet photos (src/data/gallery.js), the service pages point
+// the image sitemap at it with a page-specific title.
+const heroImage = (title, caption) => ({
+  loc: `${SITE_URL}/img/hero-trailer-768.jpg`,
+  title,
+  caption,
+});
+
+const GALLERY_IMAGES = GALLERY.map((g) => ({
+  loc: `${SITE_URL}/img/${g.base}-${g.widths[g.widths.length - 1]}.jpg`,
+  title: g.alt,
+  caption: g.caption,
+}));
+
 /* -------------------------------------------------------------------- routes */
 
 export const ROUTES = [
   {
     path: '/',
     Page: Home,
+    src: 'src/pages/Home.jsx',
     seo: {
       title: 'VMS Sign Hire | LED Trailer Sign Hire Melbourne',
       description:
@@ -279,6 +299,18 @@ export const ROUTES = [
         height: 1024,
         caption: 'LED screen trailer and VMS sign hire in Melbourne',
       },
+      images: [
+        heroImage(
+          'LED screen trailer hire Melbourne',
+          'Mobile LED screen trailer used for VMS sign hire and LED trailer sign hire in Melbourne.',
+        ),
+        {
+          loc: `${SITE_URL}/img/og-image.jpg`,
+          title: "Ozzy's Equipment Hire — VMS sign hire Melbourne",
+          caption:
+            'VMS sign hire, LED trailer sign hire and LED screen trailer hire across Victoria.',
+        },
+      ],
       breadcrumb: [['Home', '/']],
       hasReviews: true,
       jsonLd: [HOME_SERVICES, HOME_PRODUCT, faqPage(FAQ_ITEMS)],
@@ -287,11 +319,13 @@ export const ROUTES = [
   {
     path: '/vms-sign-hire/',
     Page: VmsSignHire,
+    src: 'src/pages/VmsSignHire.jsx',
     seo: {
       title: 'VMS Sign Hire Melbourne | Variable Message Signs',
       description:
         'VMS sign hire in Melbourne from $45/day ex GST. Trailer-mounted variable message signs for roadworks, traffic management and events — delivered, placed and programmed across Victoria.',
       h1: 'VMS sign hire in Melbourne',
+      images: [heroImage('VMS sign hire in Melbourne', 'A variable message sign trailer on a Melbourne road-work site.')],
       breadcrumb: [
         ['Home', '/'],
         ['VMS Sign Hire', '/vms-sign-hire/'],
@@ -318,11 +352,13 @@ export const ROUTES = [
   {
     path: '/led-trailer-sign-hire-melbourne/',
     Page: LedTrailerSignHireMelbourne,
+    src: 'src/pages/LedTrailerSignHireMelbourne.jsx',
     seo: {
       title: 'LED Trailer Sign Hire Melbourne | Trailer LED Signs',
       description:
         'LED trailer sign hire Melbourne from $45/day ex GST. Full-colour trailer LED signs for festivals, sport, retail and campaigns — towed in, positioned and collected across Victoria.',
       h1: 'LED trailer sign hire Melbourne',
+      images: [heroImage('LED trailer sign hire Melbourne', 'A full-colour LED trailer sign positioned for an event in Melbourne.')],
       breadcrumb: [
         ['Home', '/'],
         ['LED Trailer Sign Hire Melbourne', '/led-trailer-sign-hire-melbourne/'],
@@ -349,11 +385,13 @@ export const ROUTES = [
   {
     path: '/led-screen-trailer-hire/',
     Page: LedScreenTrailerHire,
+    src: 'src/pages/LedScreenTrailerHire.jsx',
     seo: {
       title: 'LED Screen Trailer Hire Melbourne | Mobile LED Screens',
       description:
         'LED screen trailer hire in Melbourne for festivals, sport and outdoor events. Mobile LED screen trailer hire with onboard sound and power — delivered, set up and operated across Victoria.',
       h1: 'LED screen trailer hire',
+      images: [heroImage('LED screen trailer hire Melbourne', 'A mobile LED screen trailer raised and running at an outdoor event.')],
       breadcrumb: [
         ['Home', '/'],
         ['LED Screen Trailer Hire', '/led-screen-trailer-hire/'],
@@ -380,6 +418,7 @@ export const ROUTES = [
   {
     path: '/pricing/',
     Page: PricingPage,
+    src: 'src/pages/Pricing.jsx',
     seo: {
       title: 'VMS & LED Trailer Hire Prices Melbourne | Rate Card',
       description:
@@ -403,6 +442,7 @@ export const ROUTES = [
   {
     path: '/service-areas/',
     Page: ServiceAreas,
+    src: 'src/pages/ServiceAreas.jsx',
     seo: {
       title: 'Service Areas | Sign & Screen Hire Across Victoria',
       description:
@@ -418,6 +458,7 @@ export const ROUTES = [
   {
     path: '/service-areas/melbourne/',
     Page: AreaMelbourne,
+    src: 'src/pages/areas/Melbourne.jsx',
     seo: {
       title: 'Sign & Screen Hire Melbourne | VMS, LED Trailer, Screens',
       description:
@@ -474,11 +515,13 @@ export const ROUTES = [
   {
     path: '/gallery/',
     Page: GalleryPage,
+    src: 'src/pages/Gallery.jsx',
     seo: {
       title: 'Fleet Gallery | VMS, LED Trailer Sign & Screen Hire',
       description:
         'Photos of Ozzy’s Equipment Hire VMS boards, LED trailer signs and LED screen trailers on job sites across Melbourne and Victoria.',
       h1: 'Our fleet on the job',
+      images: GALLERY_IMAGES,
       breadcrumb: [
         ['Home', '/'],
         ['Gallery', '/gallery/'],
@@ -489,6 +532,7 @@ export const ROUTES = [
   {
     path: '/guides/',
     Page: GuidesHub,
+    src: 'src/pages/Guides.jsx',
     seo: {
       title: 'Hire Guides | VMS, LED Trailer Sign & Screen Hire',
       description:
@@ -560,6 +604,7 @@ export const ROUTES = [
     // Most static hosts serve dist/404.html for any unmatched path.
     path: '/404.html',
     Page: NotFound,
+    src: 'src/pages/NotFound.jsx',
     seo: {
       title: 'Page not found | Ozzy’s Equipment Hire',
       description:

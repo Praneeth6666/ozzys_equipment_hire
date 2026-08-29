@@ -351,7 +351,7 @@ owner fills it.
   Article JSON-LD; internal links to the relevant service page.
   Accept: 3 pages render, Article JSON-LD valid, hub lists them, build + lint clean.
 
-- [ ] **P8 Image sitemap + per-page lastmod.**
+- [x] **P8 Image sitemap + per-page lastmod.**
   `scripts/seo-lib.mjs`: extend `buildSitemap` so each route can carry
   `seo.images: [{ loc, title, caption }]` that become `<image:image>` entries,
   and add per-URL `lastmod` from the last commit that touched that page's source
@@ -404,3 +404,4 @@ _(append: task id — one-line result — commit sha)_
 - P5 — +4 questions on each of the 3 service pages (7 -> 11): VMS (what is a VMS / Class A,B,C / how messages update / advertising use), LED trailer sign (what is it / cost / what to display / one-day hire), LED screen (what is it / cost / permit / brightness). All factual, real numbers, no invented specs. Visible <dt> count == FAQPage JSON-LD Question count (11 each). Hydrates clean.
 - P6 — src/data/videos.js (VIDEOS = {} keyed by page path + videoFor() + how-to comment); src/components/Video.jsx renders a <video> only when its path has an entry, nothing otherwise; renderHead emits VideoObject only when VIDEOS[path] set. <Video> placed on /led-screen-trailer-hire/ and /gallery/. While empty: 0 rendered video sections, 0 VideoObject, both pages hydrate clean.
 - P7 — 3 new guides via guideRoute()+GuideLayout: /guides/writing-a-vms-message/ (one idea per frame, 3 lines, recognised wording, 2-3 frames, take text from the TMP), /guides/hiring-an-led-screen-for-a-festival/ (site/power/content/crew/timing checklist), /guides/solar-vs-mains-power-for-a-long-hire/ (~3 weeks threshold, 15A on site, day rate unchanged). Each Article+FAQPage JSON-LD (6/6), 3-Q FAQ, links to service pages. Hub GUIDES array updated. 20 sitemap URLs. Hydrates clean.
+- P8 — buildSitemap now takes (routes, cwd, fallbackLastmod): per-route <lastmod> from `git log` of route.src (factories derive src from Page.name; plain routes set it explicitly), and per-route seo.images -> <image:image> entries. Image entries on 5 URLs (home x2, 3 service + gallery x1); gallery images come from GALLERY. lastmod varies (home 08-28 vs pages touched today). xmllint passes.
