@@ -45,6 +45,22 @@ export const FAQ = [
     q: 'Do you hire screen trailers outside Melbourne?',
     a: 'Yes — Geelong, Ballarat, Bendigo, Gippsland and regional Victoria. Regional bookings want two to three weeks of notice and the delivery charge reflects the distance.',
   },
+  {
+    q: 'What is a mobile LED screen trailer?',
+    a: 'A mobile LED screen trailer is a large LED video wall built onto a road-registered trailer. It travels folded, then hydraulics raise and angle the screen once the trailer is parked and levelled. It plays full-motion video — a live camera feed, a replay reel, a film, a sponsor loop — and carries its own sound and power. It is also called an LED trailer screen or a mobile big screen.',
+  },
+  {
+    q: 'How much does it cost to hire an LED screen trailer?',
+    a: 'From $45 per day ex GST on a 12-month contract up to $75 per day for a hire under a month. Most event bookings fall in the one-to-six day band, which is a flat $500 plus 8% insurance, ex GST. Delivery and setup is a one-off $350 for hires under three months, and an event operator, if you want one, is quoted separately. See the pricing page for the full rate card.',
+  },
+  {
+    q: 'Do you need a permit for a mobile LED screen?',
+    a: 'On private land — an event site, a stadium precinct, a car park — you need the landholder’s agreement, not a road permit. On a public road or reserve you generally need approval from the local council, and the rules differ between councils. We deliver and position the trailer; the approval is yours or your event organiser’s to arrange.',
+  },
+  {
+    q: 'How bright is the screen, and does it work in daylight?',
+    a: 'The screens are built for outdoor daytime events and stay readable in direct sun; brightness steps down automatically in the evening so it is not glaring at night. A screen facing into low afternoon sun is a harder ask than a shaded or evening position, so tell us the orientation and time of day and we factor it in.',
+  },
 ];
 
 export default function LedScreenTrailerHire() {

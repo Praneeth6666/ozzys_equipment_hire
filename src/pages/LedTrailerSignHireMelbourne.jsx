@@ -46,6 +46,22 @@ export const FAQ = [
     q: 'Do I need a permit to put an advertising trailer on the street?',
     a: 'On private land — a shopping centre car park, a dealership forecourt, an event site — usually not, as long as the landholder agrees. On a public road or nature strip you generally need approval from the local council, and rules vary between councils. We can place the trailer where you tell us; the approval is yours to arrange.',
   },
+  {
+    q: 'What is an LED trailer sign?',
+    a: 'An LED trailer sign is a full-colour LED panel mounted on a road-registered trailer. It shows the same range of content a shopfront screen would — logos, brand colours, photos, short animations, a rolling set of messages — but you can place it wherever the audience is and move it between sites. It is also called a trailer LED sign or a mobile billboard.',
+  },
+  {
+    q: 'How much does LED trailer sign hire cost?',
+    a: 'From $45 per day ex GST on a 12-month contract, rising to $75 per day for a hire under a month. A hire of one to six days is a flat $500 plus 8% insurance, ex GST. Delivery, setup and installation is a one-off $350 for hires under three months. See the pricing page for the full rate card and a calculator.',
+  },
+  {
+    q: 'What can I display on it?',
+    a: 'Anything that reads clearly on an outdoor LED panel: a logo and headline, product images, event details, a rotating set of sponsor frames, or short looping animation. Send finished artwork and we load it, or send your logo and wording and we lay it out. Content can be changed remotely during the hire.',
+  },
+  {
+    q: 'Can I hire an LED trailer sign for a single day?',
+    a: 'Yes. Any hire of one to six days is charged at the flat rate of $500 plus 8% insurance, ex GST, whichever day or days you need.',
+  },
 ];
 
 export default function LedTrailerSignHireMelbourne() {

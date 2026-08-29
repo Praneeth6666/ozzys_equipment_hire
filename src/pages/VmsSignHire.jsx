@@ -45,6 +45,22 @@ export const FAQ = [
     q: 'What is the shortest hire?',
     a: 'One day. Hires of one to six days are a flat $500 plus 8% insurance, ex GST.',
   },
+  {
+    q: 'What is a variable message sign?',
+    a: 'A variable message sign, or VMS, is a trailer-mounted LED display that shows text and simple graphics to road users. It is powered by a battery bank topped up by solar panels, with a mains connection for longer hires. The wording is set by loading a message schedule, and it can be changed remotely during a hire.',
+  },
+  {
+    q: 'What is the difference between a Class A, B and C VMS board?',
+    a: 'Portable VMS boards come in standard sizes under Australian Standard AS 4852, with the larger boards often referred to as Size A and the smallest as Size C. Bigger boards carry taller characters and are read from further away, so they suit freeways and higher-speed roadworks; smaller boards suit urban streets, car parks and pedestrian areas. Your traffic management plan usually specifies the size required — tell us what it calls for and we supply a matching board.',
+  },
+  {
+    q: 'How are the messages updated?',
+    a: 'You send us the wording and the order you want it shown. We load the schedule before delivery and check it on site. Messages can run on a timer or step through a few frames. During the hire you can email a change and we update the board remotely, usually the same day, at no extra charge.',
+  },
+  {
+    q: 'Can a VMS board be used for advertising?',
+    a: 'A VMS board can show short promotional text, but it is a single-colour amber display built for traffic messaging. For a logo, brand colours or images, hire a full-colour LED trailer sign instead — it sits on the same style of trailer and we deliver and set it up the same way.',
+  },
 ];
 
 export default function VmsSignHire() {
