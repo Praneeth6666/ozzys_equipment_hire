@@ -430,3 +430,26 @@ _(append: task id — one-line result — commit sha)_
 - P9 — index.html: commented google-site-verification <meta> to fill; a GA4 bootstrap IIFE gated on %VITE_GA4_ID% (Vite HTML env subst) — inert when unset (guard on leading '%'), loads gtag when set (verified both). README 'Analytics and Search Console' section: VITE_GA4_ID, verification tag, and the post-deploy sitemap/indexing/recrawl steps. 0 GA requests + window.gtag undefined with no env var.
 
 **PHASE 2 COMPLETE — P1-P9. seo/phase-2 ready to review + merge.**
+
+---
+
+## Phase 3 — owner-supplied facts (branch: seo/fleet-specs)
+
+- F1 — Fleet specs + business details filled from owner input. New
+  src/data/fleet.js (FLEET_SPECS) drives a spec table on the VMS, LED sign
+  and LED screen pages. 15A -> standard 10A power point sitewide. LED
+  screen trailer content rescoped from a fictional "event video wall"
+  (onboard PA / generator / hydraulic lift / operator / outdoor cinema) to
+  the one real 2.4x1.6 m 4 mm P4 unit; guides VmsVsLedTrailerSign,
+  LedScreenTrailerSizes and HiringAnLedScreenForAFestival rewritten.
+  Brighton depot on the Melbourne area page + About; ABN 99 670 872 634 +
+  "since 2023" in About + footer; index.html #business schema gains
+  foundingDate 2023, ABN identifier, addressLocality Brighton, postcode
+  3186. lint + build clean. Commit 9c7605f.
+- F2 — Real fleet photos wired into /gallery/. 11 owner iPhone photos
+  (HEIC/JPEG) converted to web JPEGs in assets-src/gallery/ with EXIF
+  rotation baked in; optimize-images.mjs gains a gallery stage
+  (public/img/gallery/<name>-{400,700,1000}.{avif,webp,jpg}). gallery.js
+  rewritten with 11 real entries (10 led-sign, 1 led-screen video), real
+  alt + captions. LED sign + LED screen pages now use a real photo for
+  their image-sitemap entry. lint + build clean. Commit 5743458.
