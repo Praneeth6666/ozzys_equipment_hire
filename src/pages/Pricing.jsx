@@ -36,7 +36,7 @@ export const FAQ = [
   },
   {
     q: 'Do I need to supply power?',
-    a: 'For short hires, no — the trailer runs on solar and battery. For hires of about three weeks or more, or a run of overcast weather, plan for a 15A power connection on site that you provide.',
+    a: 'For short hires, no — the trailer runs on solar and battery. For hires of about three weeks or more, or a run of overcast weather, plan for a 10A power point on site that you provide.',
   },
 ];
 
@@ -95,7 +95,7 @@ export default function Pricing() {
             <li>
               <a href="/led-screen-trailer-hire/">
                 LED screen trailer hire
-                <span>Mobile LED video screens for festivals and outdoor events.</span>
+                <span>A mobile LED screen for advertising, events and sponsor content.</span>
               </a>
             </li>
           </ul>

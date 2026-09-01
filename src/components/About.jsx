@@ -16,9 +16,13 @@ export default function About() {
             finish. LED trailer screen hire and mobile trailer LED screen hire Melbourne give your message
             maximum visibility wherever your audience is.
           </p>
+          <p>
+            We have run this equipment since 2023, out of a depot in Brighton on Melbourne&apos;s bayside.
+            Ozzy&apos;s Equipment Hire — ABN 99 670 872 634.
+          </p>
           <ul className="about-list">
             <li>VMS sign hire, LED trailer sign hire &amp; LED screen trailer hire</li>
-            <li>Melbourne-based — serving Greater Melbourne &amp; all of Victoria</li>
+            <li>Brighton-based — serving Greater Melbourne &amp; all of Victoria</li>
             <li>Delivery, setup, content support &amp; flexible hire terms</li>
           </ul>
         </div>

@@ -53,6 +53,7 @@ export default function Footer() {
         </nav>
         <div className="footer-bottom">
           <p>&copy; {year} Ozzy's Equipment Hire. All rights reserved.</p>
+          <p className="footer-abn">Brighton, Victoria · ABN 99 670 872 634</p>
         </div>
       </div>
     </footer>

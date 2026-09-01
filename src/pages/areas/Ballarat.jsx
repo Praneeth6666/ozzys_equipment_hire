@@ -13,7 +13,7 @@ export default function Ballarat() {
       ]}
       body={[
         'The steady demand in Ballarat is roadworks and traffic management. VMS boards go out for works on the Western Highway and the Midland Highway, for council road maintenance across the city, and for winter road-condition messaging when fog and ice close or slow routes through the ranges. Event work picks up around Begonia Festival, the winter light events, and race days at the showgrounds and racecourse, where LED trailer signs and screen trailers handle wayfinding and sponsor content.',
-        'Winter is worth planning around. Overcast stretches mean a longer hire should assume a 15A mains connection on site rather than relying on solar. Tell us the hire length and we will let you know whether to arrange power.',
+        'Winter is worth planning around. Overcast stretches mean a longer hire should assume a 10A power point on site rather than relying on solar. Tell us the hire length and we will let you know whether to arrange power.',
         'Approvals for signs on a public road sit with the City of Ballarat or the state road authority, and you arrange them. We supply, deliver and place the trailer to match your traffic management plan or permit.',
       ]}
     />

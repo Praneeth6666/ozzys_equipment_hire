@@ -3,6 +3,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import RelatedLinks from '../components/RelatedLinks';
 import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
+import { FLEET_SPECS } from '../data/fleet';
 
 const GUIDES = [
   ['/guides/vms-sign-hire-cost/', 'How much does VMS sign hire cost?', 'The full rate card and a worked example.'],
@@ -39,7 +40,7 @@ export const FAQ = [
   },
   {
     q: 'What power does the board need?',
-    a: 'Solar and battery cover short hires. For hires of roughly three weeks or more, or a stretch of overcast weather, plan for a 15A power connection on site that you provide.',
+    a: 'Solar and battery cover short hires. For hires of roughly three weeks or more, or a stretch of overcast weather, plan for a 10A power point on site that you provide.',
   },
   {
     q: 'What is the shortest hire?',
@@ -51,7 +52,7 @@ export const FAQ = [
   },
   {
     q: 'What is the difference between a Class A, B and C VMS board?',
-    a: 'Portable VMS boards come in standard sizes under Australian Standard AS 4852, with the larger boards often referred to as Size A and the smallest as Size C. Bigger boards carry taller characters and are read from further away, so they suit freeways and higher-speed roadworks; smaller boards suit urban streets, car parks and pedestrian areas. Your traffic management plan usually specifies the size required — tell us what it calls for and we supply a matching board.',
+    a: 'Portable VMS boards come in standard sizes under Australian Standard AS 4852, with the larger boards often referred to as Size A and the smallest as Size C. Bigger boards carry taller characters and are read from further away, so they suit freeways and higher-speed roadworks; smaller boards suit urban streets, car parks and pedestrian areas. Your traffic management plan usually specifies the size required — tell us what it calls for and we will confirm whether our trailer meets it.',
   },
   {
     q: 'How are the messages updated?',
@@ -127,46 +128,36 @@ export default function VmsSignHire() {
       <section className="sp-section">
         <div className="container">
           <div className="sp-prose">
-            <h2>Board sizes and where they fit</h2>
+            <h2>The board</h2>
             <p>
-              Bigger boards carry taller characters, so they can be read from further away at higher
-              speeds. Smaller boards are easier to place on a footpath or in a car park. As a guide:
+              We run one trailer: a full-colour LED panel that can show plain amber-style text for
+              traffic messaging or full colour when a job needs it. It is towed in, positioned and
+              levelled on site.
             </p>
           </div>
           <div className="sp-table-wrap">
             <table className="sp-table">
               <thead>
                 <tr>
-                  <th>Board</th>
-                  <th>Typical use</th>
-                  <th>Reads clearly at</th>
+                  <th scope="col">Our trailer</th>
+                  <th scope="col">Detail</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Large</td>
-                  <td>Freeways, arterials, higher-speed roadworks, major event routes</td>
-                  <td>Longer approach distances at highway speeds</td>
-                </tr>
-                <tr>
-                  <td>Mid</td>
-                  <td>Suburban streets, council works, festival and stadium precincts</td>
-                  <td>Urban approach distances</td>
-                </tr>
-                <tr>
-                  <td>Compact</td>
-                  <td>Car parks, shared paths, tight CBD placements, pedestrian messaging</td>
-                  <td>Short range, low speed</td>
-                </tr>
+                {FLEET_SPECS.map(([label, value]) => (
+                  <tr key={label}>
+                    <td>{label}</td>
+                    <td>{value}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
           <div className="sp-prose">
             <p className="sp-rates-note">
-              {/* TODO(owner): replace with exact board models, character heights and screen
-                  dimensions once confirmed. */}
-              Tell us the road type, speed limit and how far back drivers need to read the message
-              and we will bring the right board.
+              Tell us the road type, the speed limit and how far back drivers need to read the
+              message. If your traffic management plan specifies a particular board class or
+              character height, let us know and we will confirm the trailer meets it.
             </p>
           </div>
         </div>
@@ -204,7 +195,7 @@ export default function VmsSignHire() {
           <p>
             The board runs on solar and battery for short hires. For hires of about three weeks or
             more, or through a run of overcast weather, plan for a{' '}
-            <strong>15A power connection on site</strong> that you provide. Delivery, setup and
+            <strong>10A power point on site</strong> that you provide. Delivery, setup and
             installation is a one-off $350 for hires under three months; self-pickup is available if
             you would rather tow it yourself.
           </p>
@@ -276,7 +267,7 @@ export default function VmsSignHire() {
             <li>
               <a href="/led-screen-trailer-hire/">
                 LED screen trailer hire
-                <span>Mobile LED video screens for festivals and outdoor events.</span>
+                <span>A mobile LED screen for advertising, events and sponsor content.</span>
               </a>
             </li>
             <li>

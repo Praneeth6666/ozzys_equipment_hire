@@ -25,12 +25,12 @@ export default function Hero() {
             <span className="hero-title-accent"> delivered and set up</span>
           </h1>
           <p className="hero-desc">
-            Ozzy&rsquo;s Equipment Hire runs three things: <a href="/vms-sign-hire/">VMS message
-            boards</a> for roadworks and traffic, <a href="/led-trailer-sign-hire-melbourne/">LED
-            trailer signs</a> for events and advertising, and{' '}
-            <a href="/led-screen-trailer-hire/">LED screen trailers</a> for festivals and outdoor
-            cinema. We deliver across Melbourne and Victoria, place it, program it, and collect it
-            when you&rsquo;re done. From $45 a day ex GST.
+            Ozzy&rsquo;s Equipment Hire runs a full-colour LED trailer for three jobs:{' '}
+            <a href="/vms-sign-hire/">VMS message boards</a> for roadworks and traffic,{' '}
+            <a href="/led-trailer-sign-hire-melbourne/">LED trailer signs</a> for events and
+            advertising, and <a href="/led-screen-trailer-hire/">LED screen trailer</a> hire for
+            moving content and sponsor loops. We deliver across Melbourne and Victoria, place it,
+            program it, and collect it when you&rsquo;re done. From $45 a day ex GST.
           </p>
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary">

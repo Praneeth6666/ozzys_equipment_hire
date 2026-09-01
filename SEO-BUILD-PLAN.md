@@ -86,12 +86,34 @@ Every money page: specs table, an FAQ rendered as HTML **and** `FAQPage` JSON-LD
 | Under 1 month | $75 | $2,250 |
 | 1–6 days  | flat $500 + 8% insurance | — |
 
-- Insurance: 8% of total hire price. Client supplies a 15A power connection.
+- Insurance: 8% of total hire price. For hires of ~3 weeks or more (or through
+  overcast weather) the client provides a standard **10A power point** on site;
+  shorter hires run on the trailer's solar + battery.
 - Delivery, setup & installation: one-off $350 for hires under 3 months; self-pickup
   available.
 - Phone 0469 316 068 · ozzysequipmenthire@gmail.com
 - Service area: Greater Melbourne + Geelong, Ballarat, Bendigo, Gippsland, regional
   Victoria. Suburb list is in `src/data/seo.js` (`SERVICE_AREAS`).
+
+### Fleet (owner-supplied, one trailer — `src/data/fleet.js`)
+
+- **One** road-registered LED trailer. Same unit is marketed as a VMS board, an LED
+  trailer sign, and an LED screen trailer — named for the job, not three products.
+- Display: full-colour LED, **2.4 m × 1.6 m** (~3.8 m²).
+- Pixel pitch: **4 mm** (~600 × 400 px — artwork target size).
+- Brightness: **7,500–8,000 nits**, auto-brightness sensor for daylight/night.
+- Content: text, images, simple animation, short video; updated remotely over **4G**.
+- Power: solar + battery for short hires; **10A** point on site for ~3 weeks+.
+- **No** onboard PA/sound, **no** generator, **no** hydraulic lift, **no** operator.
+  It is not a stage-magnification video wall — that is a bigger unit we do not run.
+
+### Business details (owner-supplied)
+
+- Depot / service suburb: **Brighton, VIC 3186** (bayside Melbourne).
+- ABN **99 670 872 634**.
+- Trading since **2023** (~3 years as of 2026).
+- In schema: `#business` gets `foundingDate: "2023"`, `identifier` PropertyValue
+  (propertyID "ABN"), `address.addressLocality: "Brighton"`, `postalCode: "3186"`.
 
 ### Keyword → page map
 

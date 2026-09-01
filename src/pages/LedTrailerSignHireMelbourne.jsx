@@ -4,6 +4,7 @@ import RelatedLinks from '../components/RelatedLinks';
 import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
 import { SERVICE_AREAS } from '../data/seo';
+import { FLEET_SPECS } from '../data/fleet';
 
 const GUIDES = [
   ['/guides/vms-vs-led-trailer-sign/', 'VMS board vs LED trailer sign vs LED screen trailer', 'Which trailer suits which job.'],
@@ -24,7 +25,7 @@ export const FAQ = [
   },
   {
     q: 'How bright is it, and does it work in daylight?',
-    a: 'The panels are built for outdoor daytime use and stay readable in direct sun. Brightness steps down automatically at dusk so the sign is not glaring at night.',
+    a: 'The screen runs at 7,500 to 8,000 nits, which stays readable in direct sun. An auto-brightness sensor scales it back through dusk and at night so it is not glaring.',
   },
   {
     q: 'Can you supply the artwork, or do I provide it?',
@@ -32,7 +33,7 @@ export const FAQ = [
   },
   {
     q: 'Is it solar powered?',
-    a: 'It runs on battery and solar for short hires. For hires of about three weeks or more, or through overcast weather, plan for a 15A power connection on site that you provide.',
+    a: 'It runs on battery and solar for short hires. For hires of about three weeks or more, or through overcast weather, plan for a 10A power point on site that you provide.',
   },
   {
     q: 'Which Melbourne suburbs do you deliver to?',
@@ -98,8 +99,8 @@ export default function LedTrailerSignHireMelbourne() {
           <p>
             People also call this trailer LED sign hire or a mobile billboard. It is the middle
             option between a <a href="/vms-sign-hire/">VMS board</a> (amber text, for traffic
-            messaging) and an <a href="/led-screen-trailer-hire/">LED screen trailer</a> (a large
-            video wall for event audiences).
+            messaging) and an <a href="/led-screen-trailer-hire/">LED screen trailer</a> (the same
+            trailer, run as a moving-content screen for events and campaigns).
           </p>
         </div>
       </section>
@@ -117,8 +118,9 @@ export default function LedTrailerSignHireMelbourne() {
           </ul>
           <p>
             If the content is mostly plain text for drivers — merge left, road closed, reduce speed —
-            a VMS board is cheaper and reads better at distance. If you need a big picture for a
-            seated or standing crowd, look at an LED screen trailer.
+            a VMS board reads well and costs less. If it is moving content — a sponsor loop,
+            animation, short video — the same trailer runs as an{' '}
+            <a href="/led-screen-trailer-hire/">LED screen trailer</a>.
           </p>
         </div>
       </section>
@@ -126,39 +128,35 @@ export default function LedTrailerSignHireMelbourne() {
       <section className="sp-section">
         <div className="container">
           <div className="sp-prose">
-            <h2>Full colour or amber</h2>
+            <h2>The screen</h2>
             <p>
-              Both sit on the same trailer. The choice is about the content, not the chassis.
+              One full-colour LED screen on a road-registered trailer. It runs branded content —
+              logos, photos, animation, short video — and can also show plain text when a job only
+              needs a message.
             </p>
           </div>
           <div className="sp-table-wrap">
             <table className="sp-table">
               <thead>
                 <tr>
-                  <th>Panel</th>
-                  <th>Best for</th>
-                  <th>Trade-off</th>
+                  <th scope="col">Our trailer</th>
+                  <th scope="col">Detail</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Full colour</td>
-                  <td>Advertising, events, anything with a logo, photo or brand colour</td>
-                  <td>Costs more; plain text is no more readable than amber</td>
-                </tr>
-                <tr>
-                  <td>Amber</td>
-                  <td>Traffic and works messaging, wayfinding, plain-text alerts</td>
-                  <td>No colour or imagery; not suitable for branding</td>
-                </tr>
+                {FLEET_SPECS.map(([label, value]) => (
+                  <tr key={label}>
+                    <td>{label}</td>
+                    <td>{value}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
           <div className="sp-prose">
             <p className="sp-rates-note">
-              {/* TODO(owner): add panel dimensions, pixel pitch and resolution per trailer. */}
-              Tell us the viewing distance and whether the content is branded, and we bring the right
-              panel.
+              Send your artwork sized to 600 by 400 pixels for a pixel-perfect result, or send the
+              logo and wording and we lay it out.
             </p>
           </div>
         </div>
@@ -225,7 +223,7 @@ export default function LedTrailerSignHireMelbourne() {
             <h3>When LED trailer sign hire isn&rsquo;t the right call</h3>
             <ul>
               <li>The message is plain text for drivers — a <a href="/vms-sign-hire/">VMS board</a> is cheaper and clearer.</li>
-              <li>You need a large video wall for a seated audience — hire an <a href="/led-screen-trailer-hire/">LED screen trailer</a>.</li>
+              <li>You need a large stage screen for a big seated audience — that is a bigger unit than we run.</li>
               <li>The site has no legal place to park and leave a trailer, and no landholder permission.</li>
               <li>It is a one-day job under the $500 minimum plus insurance.</li>
             </ul>
@@ -260,7 +258,7 @@ export default function LedTrailerSignHireMelbourne() {
             <li>
               <a href="/led-screen-trailer-hire/">
                 LED screen trailer hire
-                <span>Large mobile LED video screens for festivals and outdoor events.</span>
+                <span>A mobile LED screen for advertising, events and sponsor content.</span>
               </a>
             </li>
             <li>

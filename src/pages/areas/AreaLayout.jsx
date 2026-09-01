@@ -92,7 +92,7 @@ export default function AreaLayout({ name, slug, lead, localities, body }) {
             <li>
               <a href="/led-screen-trailer-hire/">
                 LED screen trailer hire
-                <span>Mobile video screens for festivals and outdoor cinema.</span>
+                <span>A mobile screen for advertising, event info and sponsor content.</span>
               </a>
             </li>
             <li>

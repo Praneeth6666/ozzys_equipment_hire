@@ -78,7 +78,11 @@ export default function Melbourne() {
             contact for remote changes. At the end of the hire we collect it.
           </p>
           <p>
-            {/* TODO(owner): add the depot suburb and a note on where trailers are stored/serviced. */}
+            The trailers are kept and serviced at our Brighton depot in Melbourne&rsquo;s bayside,
+            so delivery across the metro area is quick and collection is easy to schedule around
+            your bump-out.
+          </p>
+          <p>
             For CBD and inner-city placements, check ahead that there is somewhere legal to park and
             leave a trailer — a private forecourt or car park is straightforward; a public street or
             nature strip usually needs council approval that you arrange.
@@ -105,7 +109,7 @@ export default function Melbourne() {
             <li>
               <a href="/led-screen-trailer-hire/">
                 LED screen trailer hire
-                <span>Mobile video screens for festivals and outdoor cinema.</span>
+                <span>A mobile screen for advertising, event info and sponsor content.</span>
               </a>
             </li>
             <li>

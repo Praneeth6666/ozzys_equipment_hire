@@ -389,9 +389,9 @@ export const ROUTES = [
     seo: {
       title: 'LED Screen Trailer Hire Melbourne | Mobile LED Screens',
       description:
-        'LED screen trailer hire in Melbourne for festivals, sport and outdoor events. Mobile LED screen trailer hire with onboard sound and power — delivered, set up and operated across Victoria.',
+        'LED screen trailer hire in Melbourne for outdoor advertising, event information and sponsor content. A 2.4 by 1.6 m full-colour mobile LED screen, delivered and set up across Victoria.',
       h1: 'LED screen trailer hire',
-      images: [heroImage('LED screen trailer hire Melbourne', 'A mobile LED screen trailer raised and running at an outdoor event.')],
+      images: [heroImage('LED screen trailer hire Melbourne', 'A mobile LED screen trailer positioned and running at an outdoor event.')],
       breadcrumb: [
         ['Home', '/'],
         ['LED Screen Trailer Hire', '/led-screen-trailer-hire/'],
@@ -402,13 +402,13 @@ export const ROUTES = [
           name: 'LED Screen Trailer Hire',
           serviceType: 'LED screen trailer hire',
           description:
-            'Mobile LED screen trailer hire for festivals, sport, outdoor cinema and brand activations across Greater Melbourne and regional Victoria. Trailer-mounted LED video wall with onboard sound and power; delivery, setup and operation included.',
+            'Mobile LED screen trailer hire for outdoor advertising, festivals, sport and brand campaigns across Greater Melbourne and regional Victoria. A 2.4 by 1.6 m full-colour screen on a trailer; delivery and setup included.',
           url: `${SITE_URL}/led-screen-trailer-hire/`,
         }),
         hireProductLd({
           name: 'LED Screen Trailer Hire',
           description:
-            'Mobile LED screen trailer hire in Melbourne and Victoria — a trailer-mounted LED video wall for events, with onboard PA and generator.',
+            'Mobile LED screen trailer hire in Melbourne and Victoria — a 2.4 by 1.6 m full-colour LED screen on a trailer, updated over 4G.',
           url: `${SITE_URL}/led-screen-trailer-hire/`,
         }),
         faqPage(LED_SCREEN_FAQ),
@@ -558,14 +558,14 @@ export const ROUTES = [
     h1: 'VMS board vs LED trailer sign vs LED screen trailer',
     title: 'VMS Board vs LED Trailer Sign vs LED Screen Trailer',
     description:
-      'Three trailer-mounted displays, three jobs: amber VMS boards for traffic messaging, full-colour LED trailer signs for advertising, LED screen trailers for event video. How to choose.',
+      'Three jobs for one trailer: plain text as a VMS board for traffic, a fixed full-colour advert as an LED trailer sign, and moving content as an LED screen trailer. How to choose the right framing.',
   }),
   guideRoute(LedScreenTrailerSizes, {
     slug: 'led-screen-trailer-sizes',
     h1: 'What size LED screen trailer do I need?',
     title: 'What Size LED Screen Trailer Do I Need? | Sizing Guide',
     description:
-      'Match an LED screen trailer to your event by viewing distance and crowd size. Pixel pitch and screen area explained, with a rough sizing guide and site checks.',
+      'We run one screen trailer: a 2.4 by 1.6 metre full-colour screen at 4 mm pitch. What that size suits, how pixel pitch affects viewing distance, and when you need a bigger unit.',
     faq: SIZES_FAQ,
   }),
   guideRoute(TrafficManagementSignRulesVictoria, {
@@ -589,7 +589,7 @@ export const ROUTES = [
     h1: 'Hiring an LED screen for a festival: a checklist',
     title: 'Hiring an LED Screen for a Festival: Checklist',
     description:
-      'Book two to three weeks out, confirm a level site clear of overhead lines, choose generator or site power, prepare content as video files, and decide whether you need an operator.',
+      'Book two to three weeks out, confirm a level site clear of overhead lines with vehicle access, sort power for a longer hire, and have your content ready as image and video files.',
     faq: FESTIVAL_FAQ,
   }),
   guideRoute(SolarVsMainsPowerForALongHire, {
@@ -597,7 +597,7 @@ export const ROUTES = [
     h1: 'Solar or mains power for a long hire?',
     title: 'Solar or Mains Power for a Long Sign Hire? | Ozzy’s Hire',
     description:
-      'Short sign hires run on solar and battery. From about three weeks, or through overcast weather, plan for a 15A mains connection on site. The day rate does not change either way.',
+      'Short sign hires run on solar and battery. From about three weeks, or through overcast weather, plan for a 10A power point on site. The day rate does not change either way.',
     faq: POWER_FAQ,
   }),
   {

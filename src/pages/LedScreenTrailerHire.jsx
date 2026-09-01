@@ -4,11 +4,12 @@ import RelatedLinks from '../components/RelatedLinks';
 import Reviews from '../components/Reviews';
 import Video from '../components/Video';
 import Contact from '../components/Contact';
+import { FLEET_SPECS } from '../data/fleet';
 
 const GUIDES = [
-  ['/guides/led-screen-trailer-sizes/', 'What size LED screen trailer do I need?', 'Sizing by viewing distance and crowd.'],
+  ['/guides/led-screen-trailer-sizes/', 'What size is an LED screen trailer?', 'Ours is 2.4 by 1.6 m — what that suits and when you need bigger.'],
   ['/guides/vms-vs-led-trailer-sign/', 'VMS board vs LED trailer sign vs LED screen trailer', 'Which trailer suits which job.'],
-  ['/guides/vms-sign-hire-cost/', 'How much does hire cost?', 'The rate card applies to screen trailers too.'],
+  ['/guides/vms-sign-hire-cost/', 'How much does hire cost?', 'The rate card applies to the screen trailer too.'],
 ];
 
 const CRUMBS = [
@@ -20,47 +21,47 @@ const CRUMBS = [
 export const FAQ = [
   {
     q: 'What is the difference between an LED screen trailer and an LED trailer sign?',
-    a: 'An LED trailer sign is built to carry a message or an advert — a logo, a headline, a rolling set of frames. An LED screen trailer is a large video wall on a trailer, built to play full-motion video to a crowd: a live camera feed, a highlights reel, a film. If people will stand or sit and watch it, you want a screen trailer. If they will drive or walk past and read it, you want a sign.',
+    a: 'They are the same trailer, named for the job. As an LED trailer sign it carries a fixed message or advert; as an LED screen trailer it runs a rolling set of images, animation and short video for an event or campaign. If you drive or walk past and read it, call it a sign; if it plays content to a crowd or passing traffic, call it a screen.',
   },
   {
-    q: 'How big is the screen, and how far back can people watch from?',
-    a: 'Screen area and pixel pitch set the useful viewing distance. A finer pixel pitch looks sharp from close up; a coarser pitch is made for a crowd further back. As a rule of thumb the minimum comfortable viewing distance in metres is close to the pixel pitch in millimetres, and the screen stays readable to well over a hundred metres. Tell us the crowd size and the depth of the viewing area and we match the trailer to it.',
+    q: 'How big is the screen?',
+    a: 'The screen is 2.4 metres wide by 1.6 metres high, about 3.8 square metres, at a 4 mm pixel pitch. It is a mobile screen for outdoor advertising, sponsor content and event information — not a stage-magnification video wall for a large seated audience, which is a bigger unit than we run.',
+  },
+  {
+    q: 'How far away can people read it?',
+    a: 'At a 4 mm pixel pitch the picture is clean from a few metres and legible well beyond that for text and simple graphics. It suits passing traffic, a market or festival thoroughfare, or a crowd gathered around it, rather than the back of a stadium.',
   },
   {
     q: 'Does it play sound?',
-    a: 'Yes. The trailers carry an onboard PA that covers a modest crowd on their own, and we can feed the screen audio into a larger event PA if you have one.',
+    a: 'No. It is a screen, not a PA. If your content needs audio, run it through your own event sound system.',
+  },
+  {
+    q: 'How is the content updated?',
+    a: 'Send video and image files ahead of the hire and we load them. Changes during the hire go over the trailer’s 4G connection, usually the same day. There is no need for an operator on site.',
   },
   {
     q: 'What do you need on site?',
-    a: 'A level area big enough to park the trailer and raise the screen, clear of overhead lines and low branches, with vehicle access to get it in and out. Power can come from an onboard generator or a site supply. We handle setup, operation and pack-down.',
+    a: 'A level spot to park and position the trailer, clear of overhead lines and low branches, with vehicle access to bring it in and out. Power runs off solar and battery for short hires, or a standard 10 A point for longer ones.',
   },
   {
     q: 'How long does setup take?',
-    a: 'A single screen trailer is running within about half an hour of arriving on a prepared site. We usually deliver the day before for anything with an early start.',
+    a: 'About half an hour once the site is ready. We usually deliver the day before anything with an early start.',
   },
   {
-    q: 'Can you run our content, or do we need an operator?',
-    a: 'We can supply an operator for the event, or set the trailer to loop your content and leave it. Send video files ahead of time and we test them on the screen before the day.',
-  },
-  {
-    q: 'Do you hire screen trailers outside Melbourne?',
+    q: 'Do you hire outside Melbourne?',
     a: 'Yes — Geelong, Ballarat, Bendigo, Gippsland and regional Victoria. Regional bookings want two to three weeks of notice and the delivery charge reflects the distance.',
   },
   {
-    q: 'What is a mobile LED screen trailer?',
-    a: 'A mobile LED screen trailer is a large LED video wall built onto a road-registered trailer. It travels folded, then hydraulics raise and angle the screen once the trailer is parked and levelled. It plays full-motion video — a live camera feed, a replay reel, a film, a sponsor loop — and carries its own sound and power. It is also called an LED trailer screen or a mobile big screen.',
-  },
-  {
     q: 'How much does it cost to hire an LED screen trailer?',
-    a: 'From $45 per day ex GST on a 12-month contract up to $75 per day for a hire under a month. Most event bookings fall in the one-to-six day band, which is a flat $500 plus 8% insurance, ex GST. Delivery and setup is a one-off $350 for hires under three months, and an event operator, if you want one, is quoted separately. See the pricing page for the full rate card.',
+    a: 'From $45 per day ex GST on a 12-month contract up to $75 per day for a hire under a month. Most event bookings fall in the one-to-six day band, which is a flat $500 plus 8% insurance, ex GST. Delivery and setup is a one-off $350 for hires under three months. See the pricing page for the full rate card.',
   },
   {
     q: 'Do you need a permit for a mobile LED screen?',
-    a: 'On private land — an event site, a stadium precinct, a car park — you need the landholder’s agreement, not a road permit. On a public road or reserve you generally need approval from the local council, and the rules differ between councils. We deliver and position the trailer; the approval is yours or your event organiser’s to arrange.',
+    a: 'On private land — an event site, a car park, a dealership forecourt — you need the landholder’s agreement, not a road permit. On a public road or reserve you generally need approval from the local council, and the rules differ between councils. We deliver and position the trailer; the approval is yours or your event organiser’s to arrange.',
   },
   {
     q: 'How bright is the screen, and does it work in daylight?',
-    a: 'The screens are built for outdoor daytime events and stay readable in direct sun; brightness steps down automatically in the evening so it is not glaring at night. A screen facing into low afternoon sun is a harder ask than a shaded or evening position, so tell us the orientation and time of day and we factor it in.',
+    a: 'It runs at 7,500 to 8,000 nits, which stays readable in direct sun. An auto-brightness sensor scales it back through dusk and at night so it is not glaring. A screen facing low afternoon sun is harder than a shaded or evening position, so tell us the orientation and time of day.',
   },
 ];
 
@@ -73,10 +74,10 @@ export default function LedScreenTrailerHire() {
         <span className="sp-eyebrow">LED screen trailer hire · Melbourne &amp; Victoria</span>
         <h1>LED screen trailer hire</h1>
         <p className="sp-lead">
-          Hire a mobile LED screen trailer in Melbourne for festivals, sport, outdoor cinema and
-          brand activations. The screen folds down for travel and raises on site in about half an
-          hour, with onboard sound and power. Day rates and short-term hire; delivery, setup and
-          operation across Greater Melbourne and regional Victoria.
+          Hire a mobile LED screen trailer in Melbourne for outdoor advertising, event information
+          and sponsor content. A 2.4 by 1.6 metre full-colour screen at 4&nbsp;mm pitch, bright
+          enough for direct sun and updated over 4G. Day rates and short-term hire, delivered and
+          set up across Greater Melbourne and regional Victoria.
         </p>
         <div className="sp-actions">
           <a href="#contact" className="btn btn-primary">Get a quote</a>
@@ -88,32 +89,32 @@ export default function LedScreenTrailerHire() {
         <div className="container sp-prose">
           <h2>What a mobile LED screen trailer is</h2>
           <p>
-            A mobile LED screen trailer is a large LED video wall built onto a road-registered
-            trailer. It travels folded, then hydraulics raise and angle the screen once the trailer
-            is parked and levelled. It plays anything a big screen would — a live camera feed, a
-            replay reel, a sponsor loop, a movie — and carries its own sound and power so it can run
-            in a paddock with nothing else on site.
+            A mobile LED screen trailer is a full-colour LED screen on a road-registered trailer. It
+            plays images, simple animation and short video — an advert, an event schedule, a sponsor
+            loop — and you change what it shows by sending us the files, with updates over 4G during
+            the hire. It is also called LED trailer screen hire or a mobile LED screen.
           </p>
           <p>
-            This is also called LED trailer screen hire, mobile LED screen trailer hire, or a mobile
-            big screen. It is a different job from a{' '}
-            <a href="/led-trailer-sign-hire-melbourne/">LED trailer sign</a> (a smaller panel for
-            messages and adverts) and from a <a href="/vms-sign-hire/">VMS board</a> (amber text for
-            traffic).
+            It is the same trailer as our{' '}
+            <a href="/led-trailer-sign-hire-melbourne/">LED trailer sign</a>, used for moving content
+            rather than a fixed message, and a step up from a{' '}
+            <a href="/vms-sign-hire/">VMS board</a> (plain text for traffic). It is not a
+            stage-magnification video wall for a large seated crowd — that is a bigger unit than we
+            run.
           </p>
         </div>
       </section>
 
       <section className="sp-section">
         <div className="container sp-prose">
-          <h2>What people hire them for</h2>
+          <h2>What people hire it for</h2>
           <ul>
-            <li>Festivals and concerts — image magnification of the stage, artist visuals, sponsor content</li>
-            <li>Sport — replays, scores, live coverage, crowd cameras at grounds without a fixed screen</li>
-            <li>Outdoor cinema and community screenings — films, presentations, remembrance events</li>
-            <li>Brand activations and launches — showreels and interactive content where the audience is</li>
-            <li>Race days, shows and expos — schedules, results, wayfinding, live feeds from other areas</li>
-            <li>Public events and civic ceremonies — speeches, live relay, information for large crowds</li>
+            <li>Outdoor advertising campaigns — a bright screen parked where the traffic is</li>
+            <li>Festivals, markets and shows — schedules, wayfinding, sponsor rotations</li>
+            <li>Sport and club days — fixtures, results, gate and parking directions</li>
+            <li>Retail, shopping centres and dealerships — launches, promotions, seasonal campaigns</li>
+            <li>Property and development — land releases, display-home directions, auction promotion</li>
+            <li>Council and community events — public notices, consultation, safety messaging</li>
           </ul>
         </div>
       </section>
@@ -121,58 +122,39 @@ export default function LedScreenTrailerHire() {
       <section className="sp-section">
         <div className="container">
           <div className="sp-prose">
-            <h2>Choosing a screen</h2>
-            <p>
-              Two numbers decide which trailer suits your event: the screen area, and the pixel
-              pitch (the gap between LEDs, in millimetres — smaller is sharper up close).
-            </p>
+            <h2>The screen</h2>
+            <p>One trailer, one screen. Send content sized to 600 by 400 pixels for the sharpest result.</p>
           </div>
           <div className="sp-table-wrap">
             <table className="sp-table">
               <thead>
                 <tr>
-                  <th>If your event is</th>
-                  <th>You want</th>
+                  <th scope="col">Our trailer</th>
+                  <th scope="col">Detail</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Close-up, seated, presentation-style</td>
-                  <td>A finer pixel pitch; screen size matched to the room or marquee</td>
-                </tr>
-                <tr>
-                  <td>A standing festival or sport crowd, viewers spread back 20–100 m</td>
-                  <td>A mid pixel pitch and the largest screen area that fits the site</td>
-                </tr>
-                <tr>
-                  <td>Wayfinding or sponsor content for passing crowds</td>
-                  <td>A coarser pitch is fine; brightness and placement matter more than sharpness</td>
-                </tr>
+                {FLEET_SPECS.map(([label, value]) => (
+                  <tr key={label}>
+                    <td>{label}</td>
+                    <td>{value}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
-          </div>
-          <div className="sp-prose">
-            {/* TODO(owner): list each screen trailer in the fleet with screen size (m and m²),
-                pixel pitch, resolution, brightness in nits, trailer footprint and weight,
-                and onboard generator / PA details. */}
-            <p className="sp-rates-note">
-              Give us the crowd size, how far back the furthest viewers stand, and whether the event
-              runs in daylight, and we match the trailer to it.
-            </p>
           </div>
         </div>
       </section>
 
       <section className="sp-section">
         <div className="container sp-prose">
-          <h2>Delivery, setup and operation</h2>
+          <h2>Delivery and setup</h2>
           <p>
             We deliver across Greater Melbourne and to Geelong, Ballarat, Bendigo, Gippsland and
             regional Victoria, usually the day before an early start. On site we need a level parking
-            area clear of overhead lines, and vehicle access to bring the trailer in and out. Setup
-            of a single screen runs about half an hour. Power comes from the onboard generator or a
-            site supply. We can leave the trailer looping your content, or provide an operator for
-            the event.
+            area clear of overhead lines and vehicle access to bring the trailer in and out. Setup
+            runs about half an hour. The screen loops the content you send; changes during the hire
+            go over 4G, so there is no operator to book.
           </p>
         </div>
       </section>
@@ -194,9 +176,8 @@ export default function LedScreenTrailerHire() {
             </ul>
             <p className="sp-rates-note">
               Most event bookings fall in the 1 to 6 day band. Delivery, setup and installation is a
-              one-off $350 for hires under three months. An event operator, if you need one, is
-              quoted separately. <a href="/pricing/">Open the pricing calculator</a> to price your
-              dates.
+              one-off $350 for hires under three months. <a href="/pricing/">Open the pricing
+              calculator</a> to price your dates.
             </p>
           </div>
         </div>
@@ -207,10 +188,10 @@ export default function LedScreenTrailerHire() {
           <div className="sp-notfor">
             <h3>When an LED screen trailer isn&rsquo;t the right call</h3>
             <ul>
-              <li>The content is a message or an advert, not video — hire an <a href="/led-trailer-sign-hire-melbourne/">LED trailer sign</a>.</li>
-              <li>It is traffic or works messaging — hire a <a href="/vms-sign-hire/">VMS board</a>.</li>
+              <li>You need a large stage screen for a big seated audience — that is a bigger unit than we run.</li>
+              <li>The content is a single fixed message for traffic — hire a <a href="/vms-sign-hire/">VMS board</a>.</li>
               <li>The site has no level ground clear of overhead lines, or no way to tow a trailer in.</li>
-              <li>The audience is small and close and a large TV or projector would do the job for less.</li>
+              <li>The audience is small and close and a large TV or a projector would do the job for less.</li>
             </ul>
           </div>
         </div>
@@ -237,13 +218,13 @@ export default function LedScreenTrailerHire() {
             <li>
               <a href="/led-trailer-sign-hire-melbourne/">
                 LED trailer sign hire Melbourne
-                <span>Full-colour trailer signs for messages and advertising.</span>
+                <span>The same trailer, for a fixed message or advert.</span>
               </a>
             </li>
             <li>
               <a href="/vms-sign-hire/">
                 VMS sign hire
-                <span>Amber message boards for roadworks and traffic management.</span>
+                <span>Plain-text message boards for roadworks and traffic.</span>
               </a>
             </li>
             <li>
@@ -255,7 +236,7 @@ export default function LedScreenTrailerHire() {
             <li>
               <a href="/gallery/">
                 See the fleet
-                <span>Photos of the VMS boards, LED trailer signs and screen trailers.</span>
+                <span>Photos of the trailer on job sites.</span>
               </a>
             </li>
           </ul>

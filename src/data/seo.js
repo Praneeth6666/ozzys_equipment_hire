@@ -76,7 +76,7 @@ export const HIRE_SERVICES = [
     id: 'screen',
     title: 'LED Screen Trailer Hire',
     href: '/led-screen-trailer-hire/',
-    desc: 'Mobile LED video screens for events and outdoor cinema, with onboard sound and power. Delivered, set up and operated.',
+    desc: 'A mobile full-colour LED screen for outdoor advertising, event info and sponsor content. Delivered and set up.',
   },
 ];
 

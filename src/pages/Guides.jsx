@@ -42,13 +42,13 @@ export const GUIDES = [
     href: '/guides/hiring-an-led-screen-for-a-festival/',
     title: 'Hiring an LED screen for a festival: a checklist',
     blurb:
-      'Site, power, content, crew and lead time — what to lock in before an event so the screen is running when the gates open.',
+      'Site, power, content and lead time — what to lock in before an event so the screen is running when the gates open.',
   },
   {
     href: '/guides/solar-vs-mains-power-for-a-long-hire/',
     title: 'Solar or mains power for a long hire?',
     blurb:
-      'When solar and battery are enough, and when to plan a 15A mains connection on site. The day rate is the same either way.',
+      'When solar and battery are enough, and when to plan a 10A power point on site. The day rate is the same either way.',
   },
 ];
 

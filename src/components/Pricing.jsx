@@ -116,7 +116,7 @@ export default function Pricing() {
             </table>
             <p className="pricing-notes">
               Monthly figures based on 30 days. Delivery, setup &amp; installation is an optional one-off $350 fee for rentals less than 3 months (self pickup available).
-              1–6 days is a flat ${LESS_THAN_A_WEEK_FLAT_HIRE}, plus insurance (8%), all prices exclude GST. 15Amp connection to be provided by client. Insurance is 8% of total hire price.
+              1–6 days is a flat ${LESS_THAN_A_WEEK_FLAT_HIRE}, plus insurance (8%), all prices exclude GST. A standard 10A power point (a normal household socket) is provided by the client for longer hires. Insurance is 8% of total hire price.
             </p>
           </div>
 

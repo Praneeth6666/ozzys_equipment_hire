@@ -3,15 +3,15 @@ import GuideLayout from './GuideLayout';
 export const FAQ = [
   {
     q: 'How far ahead should we book a screen for a festival?',
-    a: 'Two to three weeks for a Melbourne event, longer for a regional one or a busy summer weekend. Short notice is sometimes possible for a single trailer — call and ask.',
+    a: 'Two to three weeks for a Melbourne event, longer for a regional one or a busy summer weekend. Short notice is sometimes possible — call and ask.',
   },
   {
     q: 'Do we need to supply power?',
-    a: 'Not necessarily. The trailer can run off its onboard generator, or off a site supply if you have one. Tell us which and we set up accordingly.',
+    a: 'For a short event, no — the trailer runs on solar and battery. For a multi-day booking, or one that starts before three weeks of good sun, plan for a standard 10 A power point near where the trailer sits.',
   },
   {
-    q: 'Can you run the content on the day, or do we do it?',
-    a: 'Either. We can supply an operator to switch between a live feed, replays and sponsor loops, or we set the trailer to loop your file and leave it. Send video ahead of time so we can test it on the screen.',
+    q: 'Can you change the content on the day?',
+    a: 'Yes. We load your files before the event and it loops. Changes during the hire go over the trailer’s 4G connection, so there is no operator to book.',
   },
 ];
 
@@ -20,56 +20,59 @@ export default function HiringAnLedScreenForAFestival() {
     <GuideLayout
       title="Hiring an LED screen for a festival: a checklist"
       slug="hiring-an-led-screen-for-a-festival"
-      intro="Book two to three weeks out, confirm a level spot clear of overhead lines with vehicle access, decide whether power comes from the onboard generator or a site supply, and have your content ready as video files. Setup of a single screen trailer takes about half an hour, and we usually deliver the day before an early start."
+      intro="Book two to three weeks out, confirm a level spot clear of overhead lines with vehicle access, sort power for a multi-day hire, and have your content ready as image and video files sized to 600 by 400 pixels. Setup takes about half an hour, and we usually deliver the day before an early start."
       faq={FAQ}
       related={[
-        ['/led-screen-trailer-hire/', 'LED screen trailer hire', 'The full service page: sizes, sound, power, delivery.'],
-        ['/guides/led-screen-trailer-sizes/', 'What size LED screen trailer do I need?', 'Matching the screen to your crowd and viewing distance.'],
-        ['/guides/vms-sign-hire-cost/', 'How much does hire cost?', 'The rate card, delivery, and the operator line.'],
+        ['/led-screen-trailer-hire/', 'LED screen trailer hire', 'The full service page: the screen, power, delivery.'],
+        ['/guides/led-screen-trailer-sizes/', 'What size LED screen trailer do I need?', 'The one size we run and what it suits.'],
+        ['/guides/vms-sign-hire-cost/', 'How much does hire cost?', 'The rate card and delivery.'],
       ]}
     >
       <h2>The site</h2>
       <p>
-        The trailer needs a level area big enough to park and raise the screen, clear of overhead
-        power lines and low branches, with a path wide enough to tow it in and out. Walk the ground
+        The trailer needs a level area to park and position the screen, clear of overhead power
+        lines and low branches, with a path wide enough to tow it in and out. Walk the ground
         before the event: the best viewing position and the only safe parking spot are not always
         the same place. A photo or a site plan sent ahead lets us tell you what fits.
       </p>
 
       <h2>Power</h2>
       <p>
-        Decide early. The onboard generator makes the trailer self-contained, which suits a paddock
-        or a spot with no nearby supply. A site power feed is quieter and avoids refuelling for a
-        long day. Either works — we just need to know which so we bring the right leads.
+        For a weekend event the trailer runs on its solar and battery with nothing needed from you.
+        For a longer booking, or one that runs through a stretch of overcast weather, plan for a
+        standard 10 A power point on site within reach of where the trailer sits, and we bring the
+        leads.
       </p>
 
       <h2>Content</h2>
       <p>
-        Prepare your material as video files and get them to us before the day so we can test them
-        on the actual screen. Think about what plays when: a holding loop before doors, live vision
-        or image magnification during sets, sponsor frames between acts, and a clear wayfinding or
-        safety message you can cut to if needed.
+        Prepare your material as image and short video files, sized to 600 by 400 pixels, and get
+        them to us before the day so we can test them on the actual screen. Think about what plays
+        when: a holding loop before gates, event and stage times, sponsor frames between acts, and a
+        clear wayfinding or safety message you can point people to. The screen has no sound; run
+        audio through your own event PA.
       </p>
 
-      <h2>Crew</h2>
+      <h2>What the screen suits</h2>
       <p>
-        If the running order changes through the day, or you want to switch between a camera feed
-        and pre-made content, book an operator. If the screen only ever shows one loop, you do not
-        need one and we set it and leave it. The operator is quoted separately from the day rate.
+        It is a 2.4 by 1.6 metre screen — good for a crowd gathered around it, for a thoroughfare or
+        entrance, and for passing traffic. It is not a stage-magnification screen for an audience
+        spread across a large arena. If that is the job, you need a bigger unit than we run.
       </p>
 
       <h2>Timing</h2>
       <p>
         Book two to three weeks ahead for a Melbourne event, more for regional Victoria or a peak
-        summer weekend. We deliver the day before anything with an early start, and setup of a
-        single screen runs about half an hour once the site is ready.
+        summer weekend. We deliver the day before anything with an early start, and setup runs about
+        half an hour once the site is ready. Tell us your bump-in and bump-out windows so delivery
+        and collection fit around them.
       </p>
 
-      <h2>Weather and hours</h2>
+      <h2>Weather</h2>
       <p>
-        The screens are built for outdoor events and daylight. A screen facing low afternoon sun is
-        harder to read than a shaded or evening position, so factor orientation into where it goes.
-        Tell us your bump-in and bump-out windows so delivery and collection fit around them.
+        The screen is built for outdoor use and daylight, at 7,500 to 8,000 nits with an
+        auto-brightness sensor. A screen facing low afternoon sun is harder to read than a shaded or
+        evening position, so factor orientation into where it goes.
       </p>
     </GuideLayout>
   );

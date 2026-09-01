@@ -36,7 +36,7 @@ export default function NotFound() {
             <li>
               <a href="/led-screen-trailer-hire/">
                 LED screen trailer hire
-                <span>Mobile LED video screens for festivals and outdoor events.</span>
+                <span>A mobile LED screen for advertising, events and sponsor content.</span>
               </a>
             </li>
             <li>

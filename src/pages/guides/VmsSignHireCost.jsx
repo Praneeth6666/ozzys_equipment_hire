@@ -7,7 +7,7 @@ export const FAQ = [
   },
   {
     q: 'Does the price change between a VMS board, an LED trailer sign and an LED screen trailer?',
-    a: 'The day-rate card is the same for all three. What changes the total is the hire length, the delivery distance, and whether you need an event operator for a screen trailer.',
+    a: 'The day-rate card is the same for all three. What changes the total is the hire length and the delivery distance.',
   },
   {
     q: 'How is insurance calculated?',
@@ -29,7 +29,7 @@ export default function VmsSignHireCost() {
       related={[
         ['/vms-sign-hire/', 'VMS sign hire', 'The full service page: boards, sizes, programming, delivery.'],
         ['/led-trailer-sign-hire-melbourne/', 'LED trailer sign hire', 'Same rate card, full-colour signs for events.'],
-        ['/led-screen-trailer-hire/', 'LED screen trailer hire', 'Same rate card, event video screens.'],
+        ['/led-screen-trailer-hire/', 'LED screen trailer hire', 'Same rate card, run as a moving-content screen.'],
         ['/pricing/', 'Pricing calculator', 'Price your exact dates and see the insurance and delivery lines.'],
       ]}
     >
@@ -74,7 +74,7 @@ export default function VmsSignHireCost() {
       </p>
       <p>
         <strong>Power.</strong> Short hires run on solar and battery at no extra cost. Hires of
-        about three weeks or more should assume a 15A mains connection that you provide on site.
+        about three weeks or more should assume a 10A power point that you provide on site.
       </p>
       <p>
         <strong>An operator, for screen trailers.</strong> If you want someone to run content live at
