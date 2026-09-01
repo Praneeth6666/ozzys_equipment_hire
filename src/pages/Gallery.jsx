@@ -46,11 +46,11 @@ export default function Gallery() {
 
       <section className="sp-hero container">
         <span className="sp-eyebrow">Gallery</span>
-        <h1>Our fleet on the job</h1>
+        <h1>Our trailer on the job</h1>
         <p className="sp-lead">
-          Photos of Ozzy&rsquo;s VMS boards, LED trailer signs and LED screen trailers on real
-          Melbourne and Victoria sites.
-          {/* TODO(owner): this gallery grows as job photos are added — see src/data/gallery.js */}
+          Ozzy&rsquo;s full-colour LED trailer on real Melbourne sites — running retail, hospitality
+          and dealership campaigns as a trailer sign, and short video as a screen trailer. The same
+          unit also runs plain text as a VMS board.
         </p>
         <div className="sp-actions">
           <a href="#contact" className="btn btn-primary">Get a quote</a>

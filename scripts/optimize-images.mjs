@@ -11,14 +11,20 @@
  */
 
 import sharp from 'sharp';
-import { mkdirSync, existsSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
+import { mkdirSync, existsSync, readdirSync } from 'node:fs';
+import { resolve, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const SRC = resolve(ROOT, 'assets-src');
 const OUT = resolve(ROOT, 'public/img');
+
+// Gallery photos: every assets-src/gallery/*.jpg becomes a responsive set at
+// public/img/gallery/<name>-<w>.<fmt>. The <img> is never rendered wider than
+// ~100vw on a phone, so 1000 is the ceiling. Keep src/data/gallery.js `widths`
+// in sync with this list.
+const GALLERY_WIDTHS = [400, 700, 1000];
 
 // Widths the hero <img> actually gets rendered at, across breakpoints and DPRs.
 // The original is 768x1024, so 768 is the ceiling — asking for more just
@@ -200,16 +206,43 @@ async function buildOgImage() {
   return { width: W, height: H };
 }
 
+async function buildGallery() {
+  const dir = resolve(SRC, 'gallery');
+  if (!existsSync(dir)) return [];
+  ensureDir(resolve(OUT, 'gallery'));
+
+  const files = readdirSync(dir).filter((f) => /\.jpe?g$/i.test(f)).sort();
+  for (const file of files) {
+    const src = resolve(dir, file);
+    const name = basename(file).replace(/\.jpe?g$/i, '');
+
+    for (const w of GALLERY_WIDTHS) {
+      // .rotate() with no args bakes in EXIF orientation (iPhone photos).
+      const base = sharp(src).rotate().resize({ width: w, withoutEnlargement: true });
+
+      await base.clone().avif({ quality: 52, effort: 6 })
+        .toFile(resolve(OUT, `gallery/${name}-${w}.avif`));
+      await base.clone().webp({ quality: 66, effort: 6, smartSubsample: true })
+        .toFile(resolve(OUT, `gallery/${name}-${w}.webp`));
+      await base.clone().jpeg({ quality: 72, progressive: true, mozjpeg: true })
+        .toFile(resolve(OUT, `gallery/${name}-${w}.jpg`));
+    }
+  }
+  return files.map((f) => basename(f).replace(/\.jpe?g$/i, ''));
+}
+
 async function main() {
   ensureDir(OUT);
 
   const hero = await buildHero();
   const logo = await buildLogo();
   const og = await buildOgImage();
+  const gallery = await buildGallery();
 
   console.log(`[img] hero      ${hero.join('w, ')}w  (avif + webp + jpg)`);
   console.log(`[img] logo      ${logo.width}x${logo.height}  (webp + png) + icons 180/192/512`);
   console.log(`[img] og-image  ${og.width}x${og.height}`);
+  console.log(`[img] gallery   ${gallery.length} photo(s) x ${GALLERY_WIDTHS.join('w, ')}w  (avif + webp + jpg)`);
 }
 
 main().catch((err) => {

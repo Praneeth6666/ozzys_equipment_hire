@@ -266,11 +266,17 @@ const HOME_PRODUCT = {
 
 /* --------------------------------------------------------- sitemap images */
 
-// The hero trailer photo is the only real image the site ships with. Until the
-// gallery has real fleet photos (src/data/gallery.js), the service pages point
-// the image sitemap at it with a page-specific title.
+// The stock trailer photo, for pages without a dedicated shot of their own
+// (currently the VMS page — there is no amber road-works photo yet).
 const heroImage = (title, caption) => ({
   loc: `${SITE_URL}/img/hero-trailer-768.jpg`,
+  title,
+  caption,
+});
+
+// A real fleet photo from src/data/gallery.js, at its largest built width.
+const galleryImage = (base, title, caption) => ({
+  loc: `${SITE_URL}/img/${base}-1000.jpg`,
   title,
   caption,
 });
@@ -358,7 +364,7 @@ export const ROUTES = [
       description:
         'LED trailer sign hire Melbourne from $45/day ex GST. Full-colour trailer LED signs for festivals, sport, retail and campaigns — towed in, positioned and collected across Victoria.',
       h1: 'LED trailer sign hire Melbourne',
-      images: [heroImage('LED trailer sign hire Melbourne', 'A full-colour LED trailer sign positioned for an event in Melbourne.')],
+      images: [galleryImage('gallery/trailer-sign-storefront-day', 'LED trailer sign hire Melbourne', 'A full-colour LED trailer sign running a retailer sale campaign kerbside in Melbourne.')],
       breadcrumb: [
         ['Home', '/'],
         ['LED Trailer Sign Hire Melbourne', '/led-trailer-sign-hire-melbourne/'],
@@ -391,7 +397,7 @@ export const ROUTES = [
       description:
         'LED screen trailer hire in Melbourne for outdoor advertising, event information and sponsor content. A 2.4 by 1.6 m full-colour mobile LED screen, delivered and set up across Victoria.',
       h1: 'LED screen trailer hire',
-      images: [heroImage('LED screen trailer hire Melbourne', 'A mobile LED screen trailer positioned and running at an outdoor event.')],
+      images: [galleryImage('gallery/trailer-screen-video', 'LED screen trailer hire Melbourne', 'A mobile LED screen trailer playing short video content on site.')],
       breadcrumb: [
         ['Home', '/'],
         ['LED Screen Trailer Hire', '/led-screen-trailer-hire/'],
